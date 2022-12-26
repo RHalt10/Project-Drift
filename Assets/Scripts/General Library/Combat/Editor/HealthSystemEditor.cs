@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,3 +23,5 @@ public class HealthSystemEditor : Editor
         EditorGUILayout.LabelField(health.GetDebugData(), textStyle);
     }
 }
+
+#endif

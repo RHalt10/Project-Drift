@@ -29,7 +29,7 @@ namespace WSoft.Tools.AssetReferenceViewer
 
         Filter currentFilter = Filter.All;
 
-        [MenuItem("Tools/Asset Reference Viewer")]
+        [MenuItem("WolverineSoft/Asset Reference Viewer")]
         public static void OpenWindow()
         {
             AssetReferenceViewer viewer = GetWindow<AssetReferenceViewer>(false, "Asset Reference Viewer", true);
