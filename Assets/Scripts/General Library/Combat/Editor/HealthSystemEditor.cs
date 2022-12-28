@@ -13,8 +13,6 @@ public class HealthSystemEditor : Editor
     {
         base.OnInspectorGUI();
 
-        DrawDefaultInspector();
-
         HealthSystem health = (HealthSystem)target;
         GUIStyle textStyle = EditorStyles.label;
         textStyle.wordWrap = true;

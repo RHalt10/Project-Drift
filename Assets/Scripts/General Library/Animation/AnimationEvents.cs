@@ -14,6 +14,7 @@ namespace WSoft.Animation
     public class AnimationEvents : MonoBehaviour
     {
         // A struct to wrap the Animation Event in
+        [System.Serializable]
         public struct EventInvoker
         {
             public UnityEvent myEvent;
