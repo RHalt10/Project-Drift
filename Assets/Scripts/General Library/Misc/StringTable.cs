@@ -9,7 +9,7 @@ namespace WSoft
     /// 
     /// Nikhil Ghosh '24
     /// </summary>
-    [CreateAssetMenu(fileName = "New String Table", menuName = "ScriptableObjects/String Table", order = 1)]
+    [CreateAssetMenu(fileName = "New String Table", menuName = "WSoft/String Table", order = 1)]
     public class StringTable : ScriptableObject, IEnumerable<string>
     {
         public List<string> data;

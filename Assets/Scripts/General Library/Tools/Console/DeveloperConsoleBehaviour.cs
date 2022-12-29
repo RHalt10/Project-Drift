@@ -68,6 +68,8 @@ namespace WSoft.Tools.Console
             inputField.onValueChanged.AddListener(AutoComplete);
 
             instance = this;
+
+            uiCanvas.SetActive(false);
         }
 
         private void Update()
