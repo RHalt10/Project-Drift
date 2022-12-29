@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace WSoft.Combat
 {
@@ -15,6 +16,11 @@ namespace WSoft.Combat
 
         [Tooltip("Only damages objects on these layers.")]
         public LayerMask damageLayers;
+
+        [Tooltip("Should we damage on stay")]
+        public bool damageOnStay;
+
+        public UnityEvent OnDamageCaused;
 
         /// <summary>
         /// On a trigger enter, find a health component on the specified object and damage.
@@ -29,7 +35,9 @@ namespace WSoft.Combat
                 HealthSystem health = target.GetComponent<HealthSystem>();
                 if (health)
                 {
-                    health.Damage(damage);
+                    bool damageCaused = health.Damage(damage);
+                    if (damageCaused)
+                        OnDamageCaused.Invoke();
                 }
             }
         }
@@ -41,7 +49,8 @@ namespace WSoft.Combat
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            DoDamage(collision.gameObject);
+            if (damageOnStay)
+                DoDamage(collision.gameObject);
         }
     }
 }
