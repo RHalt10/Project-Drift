@@ -6,7 +6,8 @@ using WSoft.Combat;
 
 public class PlayerGun : MonoBehaviour
 {
-    public PlayerWeaponSO currentWeapon;
+    [SerializeField] PlayerWeaponSO startingWeapon;
+    public PlayerWeaponSO currentWeapon { get; private set; }
 
     int _currentAmmo = 0;
     public int currentAmmo
@@ -22,10 +23,12 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] Transform projectileSpawnPoint;
 
     public UnityEvent OnAmmoAmountChanged;
+    public UnityEvent OnWeaponChanged;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        currentWeapon = startingWeapon;
         currentAmmo = currentWeapon.maxAmmo;
     }
 
@@ -43,5 +46,11 @@ public class PlayerGun : MonoBehaviour
     public void RechargeSingleAmmo()
     {
         currentAmmo = Mathf.Min(currentAmmo + 1, currentWeapon.maxAmmo);
+    }
+
+    public void SwapWeapons(PlayerWeaponSO newWeapon)
+    {
+        currentWeapon = newWeapon;
+        OnWeaponChanged.Invoke();
     }
 }
