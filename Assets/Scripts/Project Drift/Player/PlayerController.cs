@@ -58,9 +58,12 @@ public class PlayerController : MonoBehaviour
 
     public PlayerSubController currentController { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    public static PlayerController Instance { get; private set; }
+
+    private void Awake()
     {
+        Instance = this;
+
         groundController.playerController = this;
         groundController.Initialize();
         dashController.playerController = this;
@@ -69,7 +72,11 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         SetController(groundController);
     }
 
