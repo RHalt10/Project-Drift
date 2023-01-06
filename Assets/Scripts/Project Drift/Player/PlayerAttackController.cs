@@ -17,6 +17,7 @@ public class PlayerAttackData
 public class PlayerAttackController : PlayerSubController
 {
     public float groundSpeed;
+    public GameObject attackRoot;
 
     public PlayerAttackData meleeAttack;
 
@@ -40,6 +41,7 @@ public class PlayerAttackController : PlayerSubController
 
     public override void OnEnable()
     {
+        attackRoot.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, playerController.aimInput));
         playerController.StartCoroutine(PerformAttack(meleeAttack));
     }
 
