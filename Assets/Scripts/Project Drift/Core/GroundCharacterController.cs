@@ -29,6 +29,7 @@ public class GroundCharacterController : MonoBehaviour
     public Vector2 velocity;
 
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask obstacleLayer;
 
     HashSet<Collider2D> groundColliders = new HashSet<Collider2D>();
     public bool isOnGround => groundColliders.Count > 0;
@@ -105,10 +106,17 @@ public class GroundCharacterController : MonoBehaviour
             return;
         }
 
+        Vector2 delta = velocity * (Time.deltaTime + 0.05f);
+        Collider2D col = Physics2D.OverlapPoint((Vector2)transform.position + delta, obstacleLayer);
+        if (col != null)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         if (!canMoveOnAir)
         {
-            Vector2 delta = velocity * (Time.deltaTime + 0.05f);
-            Collider2D col = Physics2D.OverlapPoint((Vector2)transform.position + delta, groundLayer);
+            col = Physics2D.OverlapPoint((Vector2)transform.position + delta, groundLayer);
             if (col == null)
             {
                 rb.velocity = Vector2.zero;
