@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class ProgressionManager : MonoBehaviour
 {
-    Dictionary<string, int> enemyTypesKilled = new Dictionary<string, int>();
-    Dictionary<string, int> weaponsKilledWith = new Dictionary<string, int>();
-    int totalEnemiesKilled = 0;
+    public Dictionary<string, int> enemyTypesKilled = new Dictionary<string, int>();
+    public Dictionary<string, int> weaponsKilledWith = new Dictionary<string, int>();
+    public int totalEnemiesKilled = 0;
+
+    public static ProgressionManager instance { get; private set; }
 
     void Awake()
     {
+        instance = this;
+
         EventBus.Subscribe<EnemyDefeatedEvent>(OnEnemyDefeated);
     }
 
