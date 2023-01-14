@@ -41,6 +41,8 @@ public class PlayerGun : MonoBehaviour
 
         GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
+
+        EventBus.Publish(new PlayerShootEvent(currentWeapon));
     }
 
     public void RechargeSingleAmmo()

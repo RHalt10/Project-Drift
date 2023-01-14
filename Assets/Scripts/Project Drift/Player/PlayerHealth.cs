@@ -56,6 +56,8 @@ public class PlayerHealth : HealthSystem
             Die();
         }
 
+        EventBus.Publish(new PlayerDamagedEvent(amount));
+
         return true;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Player Weapon", menuName = "Project Drift/Player Weapon")]
 public class PlayerWeaponSO : ScriptableObject
 {
+    public string weaponName;
     public GameObject projectilePrefab;
     public int maxAmmo;
 }
