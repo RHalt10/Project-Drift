@@ -75,7 +75,10 @@ namespace WSoft.Achievements
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
 
+        void Start()
+        {
             for (int i = 0; i < achievements.Count; i++)
             {
                 achievements[i].Initialize();

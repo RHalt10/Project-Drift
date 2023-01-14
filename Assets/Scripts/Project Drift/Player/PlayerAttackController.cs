@@ -57,6 +57,8 @@ public class PlayerAttackController : PlayerSubController
 
     IEnumerator PerformAttack(PlayerAttackData attackData)
     {
+        EventBus.Publish(new PlayerAttackEvent(attackData));
+
         animator.SetTrigger(attackData.animationTrigger);
         attackData.gameObject.SetActive(true);
 

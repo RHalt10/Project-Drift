@@ -10,6 +10,7 @@ public class Key : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerInventoryManager>().AcquireKey();
+            EventBus.Publish(new KeyAcquiredEvent());
             Destroy(gameObject);
         }
     }

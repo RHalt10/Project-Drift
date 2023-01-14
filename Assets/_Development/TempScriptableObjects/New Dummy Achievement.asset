@@ -15,4 +15,4 @@ MonoBehaviour:
   ID: 0
   SteamID: DUMMY
   Name: Dummy Achievement
-  Description: '?'
+  Description: A dummy achievement to test the achievement system
