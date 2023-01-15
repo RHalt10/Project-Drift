@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievements:
   - {fileID: 11400000, guid: 9ad13b080c4144248b31b79743132c5b, type: 2}
+  - {fileID: 11400000, guid: e23c811b861edab4196ca2cb39c78da2, type: 2}
 --- !u!114 &4273307042325590868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,3 +60,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8008a646fa746ff43bb460581b25b722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalEnemiesKilled: 0
