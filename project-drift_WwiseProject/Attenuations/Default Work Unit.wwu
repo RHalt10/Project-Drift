@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{53019987-F172-4FD4-B485-CAF8BC432E2B}" SchemaVersion="110">
 	<Attenuations>
-		<WorkUnit Name="Default Work Unit" ID="{53019987-F172-4FD4-B485-CAF8BC432E2B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{53019987-F172-4FD4-B485-CAF8BC432E2B}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+		</WorkUnit>
 	</Attenuations>
 </WwiseDocument>

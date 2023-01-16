@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A082893F-6551-4180-A742-FCCFFCB40DDC}" SchemaVersion="110">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{A082893F-6551-4180-A742-FCCFFCB40DDC}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A082893F-6551-4180-A742-FCCFFCB40DDC}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="PreProduction" ID="{352C7AFC-E907-483A-B70E-51400C1F72E1}" ShortID="568997909">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<SoundBank Name="Master" ID="{77EA509B-E1A1-4092-8ED7-E0D04BF95406}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectInclusionList>
+								<ObjectRef Name="Music" ID="{4C84786A-339F-407A-ADFD-20992769CE55}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}" Origin="Manual" Filter="7"/>
+								<ObjectRef Name="SFX" ID="{15C0F916-56FC-4707-B60D-63C30B2114AD}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}" Origin="Manual" Filter="7"/>
+							</ObjectInclusionList>
+							<ObjectExclusionList/>
+							<GameSyncExclusionList/>
+						</SoundBank>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
