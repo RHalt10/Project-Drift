@@ -19,7 +19,7 @@ namespace WSoft.Achievements
         public string Name;
         public string Description;
 
-        public bool IsUnlocked { get; set; } 
+        public bool IsUnlocked { get; private set; } 
 
         public abstract void Initialize();
 

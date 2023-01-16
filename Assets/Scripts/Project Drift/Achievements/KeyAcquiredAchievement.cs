@@ -13,7 +13,6 @@ public class KeyAcquiredAchievement : BaseAchievement
     public override void Initialize()
     {
         EventBus.Subscribe<KeyAcquiredEvent>(OnKeyAcquired);
-        IsUnlocked = false;
     }
 
     void OnKeyAcquired(KeyAcquiredEvent e)

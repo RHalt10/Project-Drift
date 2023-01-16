@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebe15d3e172f6c4a82a7ac359006b96, type: 3}
   m_Name: Key Acquired Achievement
   m_EditorClassIdentifier: 
-  ID: 0
-  SteamID: 
-  Name: 
-  Description: 
-  numKeys: 0
+  ID: 2
+  SteamID: KEY
+  Name: Key Acquired Achievement
+  Description: Unlocked after player collects <Num Keys>
+  numKeys: 1
