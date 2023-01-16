@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{BDCE2468-4169-4B5F-85FE-6250575A708D}" SchemaVersion="110">
 	<Conversions>
 		<WorkUnit Name="Default Work Unit" ID="{BDCE2468-4169-4B5F-85FE-6250575A708D}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Conversion Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}">
 					<PropertyList>
@@ -11,6 +15,7 @@
 								<Value Platform="Windows">4</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Color" Type="int16" Value="23"/>
 						<Property Name="LRMix" Type="Real64">
 							<ValueList>
 								<Value Platform="Mac">0</Value>
@@ -29,6 +34,7 @@
 								<Value Platform="Windows">0</Value>
 							</ValueList>
 						</Property>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
 								<Value Platform="Mac">0</Value>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{08CD8E8F-44FC-415D-8158-92FB550BF391}" SchemaVersion="110">
 	<VirtualAcoustics>
-		<WorkUnit Name="Default Work Unit" ID="{08CD8E8F-44FC-415D-8158-92FB550BF391}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{08CD8E8F-44FC-415D-8158-92FB550BF391}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+		</WorkUnit>
 	</VirtualAcoustics>
 </WwiseDocument>

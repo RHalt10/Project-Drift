@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{1F5C20E4-30BB-4452-8968-35B02372D02B}" SchemaVersion="110">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{1F5C20E4-30BB-4452-8968-35B02372D02B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{1F5C20E4-30BB-4452-8968-35B02372D02B}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>

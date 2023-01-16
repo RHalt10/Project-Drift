@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{60106E39-B533-46EF-9C0A-1487533055DB}" SchemaVersion="110">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{60106E39-B533-46EF-9C0A-1487533055DB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{60106E39-B533-46EF-9C0A-1487533055DB}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Music" ID="{4C84786A-339F-407A-ADFD-20992769CE55}" ShortID="1055006351">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="22"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+				</Folder>
+				<Folder Name="SFX" ID="{15C0F916-56FC-4707-B60D-63C30B2114AD}" ShortID="604011096">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Folder Name="Onboarding" ID="{567F0B28-9EC4-4331-8BFA-B6B52B8B1096}" ShortID="1021610075">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Event Name="marioStart_Play" ID="{B3504F50-327A-4161-B5CE-E4AFEBF0D3D3}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{7D680E27-5AEA-4C08-9473-5A8E3F55B979}" ShortID="514390498">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="marioStart" ID="{EF989C19-EC8A-486A-9313-04FC3230A4BB}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
