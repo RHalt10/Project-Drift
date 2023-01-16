@@ -19,8 +19,7 @@ namespace WSoft.Achievements
         public string Name;
         public string Description;
 
-        [HideInInspector]
-        public bool IsUnlocked { get; private set; }
+        public bool IsUnlocked { get; private set; } 
 
         public abstract void Initialize();
 
@@ -39,7 +38,7 @@ namespace WSoft.Achievements
         {
             if (IsUnlocked)
                 return;
-
+            
             IsUnlocked = true;
 
 #if WSOFT_STEAM

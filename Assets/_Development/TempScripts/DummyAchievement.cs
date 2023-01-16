@@ -21,6 +21,7 @@ public class DummyAchievement : BaseAchievement
         Unlock();
     }
 
+    
     IEnumerator TempCoroutine()
     {
         yield return new WaitForSeconds(2);
@@ -31,4 +32,5 @@ public class DummyAchievement : BaseAchievement
 
         TempUnlock();
     }
+    
 }
