@@ -7,7 +7,7 @@ public class Invincible : ConsoleCommand
 {
     public Invincible()
     {
-        commandWord = "invinsible";
+        commandWord = "invincible";
     }
 
     public override List<string> GetValidArgs()
