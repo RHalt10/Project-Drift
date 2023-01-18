@@ -106,7 +106,7 @@ public class GroundCharacterController : MonoBehaviour
             return;
         }
 
-        Vector2 delta = velocity * (Time.deltaTime + 0.05f);
+        Vector2 delta = velocity * (Time.deltaTime + 0.07f);
         Collider2D col = Physics2D.OverlapPoint((Vector2)transform.position + delta, obstacleLayer);
         if (col != null)
         {
