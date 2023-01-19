@@ -8,10 +8,6 @@
 			</PropertyList>
 			<ChildrenList>
 				<ControlSurfaceSession Name="Default Control Surface Session" ID="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}">
-					<PropertyList>
-						<Property Name="Color" Type="int16" Value="23"/>
-						<Property Name="OverrideColor" Type="bool" Value="True"/>
-					</PropertyList>
 					<ChildrenList>
 						<ControlSurfaceBindingGroup Name="Global" ID="{58E6F608-8954-4255-904D-B904168C00F0}"/>
 						<ControlSurfaceBindingGroup Name="Current Selection" ID="{4185FF92-4166-4B89-99E8-F1458200992B}">
