@@ -30,4 +30,21 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         keys++;
     }
+
+    // allows for setting specific values
+    public void SetValue(string resource, int value)
+    {
+        if (resource == "keys")
+        {
+            keys = value;
+        }
+        else if (resource == "currency")
+        {
+            currency = value;
+        }
+
+        // return for all other resource string values
+        return;
+    }
 }
+
