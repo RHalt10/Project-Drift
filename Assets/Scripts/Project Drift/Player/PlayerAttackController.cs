@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Combat;
 
+/// <summary>
+/// A struct with data about a player's attack. Makes it easier to group items in the inspector
+/// </summary>
 [System.Serializable]
 public class PlayerAttackData
 {
@@ -13,6 +16,9 @@ public class PlayerAttackData
     public float endDamageTime;
 }
 
+/// <summary>
+/// A player subcontroller that handles the attack state of the player
+/// </summary>
 [System.Serializable]
 public class PlayerAttackController : PlayerSubController
 {

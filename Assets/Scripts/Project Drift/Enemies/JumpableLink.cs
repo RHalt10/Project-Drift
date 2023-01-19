@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A special type of link that tells our pathfinding system to create a jumpable link between
+/// two places
+/// </summary>
 public class JumpableLink : MonoBehaviour
 {
     public Vector3 startPoint = new Vector3(0.0f, 0.0f, -2.5f);

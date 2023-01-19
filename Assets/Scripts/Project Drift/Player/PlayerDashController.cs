@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A player subcontroller that control the dash ability
+/// </summary>
 [System.Serializable]
 public class PlayerDashController : PlayerSubController
 {

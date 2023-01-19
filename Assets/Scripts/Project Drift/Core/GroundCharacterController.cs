@@ -4,14 +4,29 @@ using UnityEngine;
 using UnityEngine.Events;
 using WSoft.Math;
 
+/// <summary>
+/// A script that controls a character on the ground
+/// When a velocity is passed in, the ground character controller
+/// will move on ground tiles, taking into account the settings specified.
+/// Written by Nikhil Ghosh '24
+/// </summary>
 public class GroundCharacterController : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    /// <summary>
+    /// Is this controller enabled. If this is false, the script will stop calculating, saving performance
+    /// </summary>
     public bool isEnabled = true;
 
+    /// <summary>
+    /// Is this controller allowed to move when there is no ground underneath
+    /// </summary>
     public bool canMoveOnAir = false;
     
+    /// <summary>
+    /// If this controller is not on ground, will it fall.
+    /// </summary>
     [SerializeField] bool _willFallOnAir = true;
     public bool willFallOnAir
     {
@@ -25,10 +40,16 @@ public class GroundCharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The velocity that the character controller is moving at.
+    /// If not enabled or can't move, it will not move.
+    /// </summary>
     [HideInInspector]
     public Vector2 velocity;
 
+    /// <summary> The ground layermask (for checking if the character is on ground) </summary>
     [SerializeField] LayerMask groundLayer;
+    /// <summary> The obstacle layermask (for checking if the character is going on an obstacle) </summary>
     [SerializeField] LayerMask obstacleLayer;
 
     HashSet<Collider2D> groundColliders = new HashSet<Collider2D>();
@@ -54,6 +75,9 @@ public class GroundCharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move this character to the new position. The controller will recalculate if it is on the ground.
+    /// </summary>
     public void Teleport(Vector2 newPosition)
     {
         rb.MovePosition(newPosition);

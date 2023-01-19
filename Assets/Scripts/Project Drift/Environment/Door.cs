@@ -17,13 +17,18 @@ public class Door : MonoBehaviour
             PlayerInventoryManager inventoryManager = collision.gameObject.GetComponent<PlayerInventoryManager>();
             if (inventoryManager.keys >= keysNeeded)
             {
-                OnDoorUnlocked.Invoke();
-                Destroy(gameObject);
+                Open();
             }
             else
             {
                 OnDoorAttemptedEntry.Invoke();
             }
         }
+    }
+
+    void Open()
+    {
+        OnDoorUnlocked.Invoke();
+        Destroy(gameObject);
     }
 }

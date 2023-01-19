@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A player subcontroller that processes walking around.
+/// Also acts as the central state that process a lot of input
+/// </summary>
 [System.Serializable]
 public class PlayerGroundController : PlayerSubController
 {

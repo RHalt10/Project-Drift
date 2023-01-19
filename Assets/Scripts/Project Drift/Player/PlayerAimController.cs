@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A player subcontroller that deals with aiming the player's gun.
+/// Written by Nikhil Ghosh '24
+/// </summary>
 [System.Serializable]
 public class PlayerAimController : PlayerSubController
 {

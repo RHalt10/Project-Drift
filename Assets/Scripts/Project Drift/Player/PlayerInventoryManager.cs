@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component that stores the player's current inventory
+/// Written by Nikhil Ghosh '24
+/// </summary>
 public class PlayerInventoryManager : MonoBehaviour
 {
     public static PlayerInventoryManager Instance { get; private set; }
