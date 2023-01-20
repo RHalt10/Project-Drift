@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using WSoft.Combat;
 
+/// <summary>
+/// An overridden version of a health system designed for the player's abilities
+/// Written by Nikhil Ghosh
+/// </summary>
 public class PlayerHealth : HealthSystem
 {
     [System.Serializable]

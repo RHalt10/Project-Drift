@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using WSoft.Combat;
 
+/// <summary>
+/// A script that controls the player shooting and ammo amounts
+/// Note that it is not a player subcontroller
+/// Written by Nikhil Ghosh '24
+/// </summary>
 public class PlayerGun : MonoBehaviour
 {
     [SerializeField] PlayerWeaponSO startingWeapon;

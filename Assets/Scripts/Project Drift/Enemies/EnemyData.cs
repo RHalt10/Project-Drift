@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Combat;
 
+/// <summary>
+/// A generic script that exists on every enemy.
+/// Ensures events get called as expected.
+/// </summary>
 public class EnemyData : MonoBehaviour
 {
     public string enemyKey;

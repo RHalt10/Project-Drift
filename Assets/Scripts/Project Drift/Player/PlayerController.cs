@@ -13,6 +13,9 @@ public enum PlayerInputType
     Shoot
 }
 
+/// <summary>
+/// The script that contains all the player states, and handles player input processing
+/// </summary>
 [System.Serializable]
 public abstract class PlayerSubController
 {

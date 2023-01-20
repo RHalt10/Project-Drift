@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the Player's ability to respawn when they fall
+/// Written by Nikhil Ghosh '24
+/// </summary>
 public class PlayerCheckpointManager : MonoBehaviour
 {
     PlayerController playerController;

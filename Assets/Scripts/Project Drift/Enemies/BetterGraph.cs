@@ -6,6 +6,11 @@ using Pathfinding.Serialization;
 using Pathfinding.Util;
 using System;
 
+/// <summary>
+/// A custom pathfinding graph that only allows nodes on ground tiles
+/// and has links on jumpable links.
+/// Written by Nikhil Ghosh '24
+/// </summary>
 [JsonOptIn]
 [Preserve]
 public class BetterGraph : PointGraph
