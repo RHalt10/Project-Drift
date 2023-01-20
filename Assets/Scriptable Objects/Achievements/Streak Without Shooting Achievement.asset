@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87b8f67fd9a5fd4891e98e7fb0609ef, type: 3}
+  m_Name: Streak Without Shooting Achievement
+  m_EditorClassIdentifier: 
+  ID: 3
+  SteamID: SRK_NO_SHT
+  Name: Streak Without Shooting Achievement
+  Description: Kill 5 enemies without shooting
+  EnemyKilledStreakRequired: 5
+  indicateProgressInterval: 1
