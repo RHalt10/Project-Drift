@@ -1,0 +1,14 @@
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	85412153	Ambience			\Default Work Unit\MasterBus\SFXBus\Ambience	
+	131953974	PrioritySFX			\Default Work Unit\MasterBus\SFXBus\PrioritySFX	
+	835198467	MasterBus			\Default Work Unit\MasterBus	
+	1069431850	Player			\Default Work Unit\MasterBus\SFXBus\Player	
+	1551306167	UI			\Default Work Unit\MasterBus\SFXBus\UI	
+	2242381963	Enemies			\Default Work Unit\MasterBus\SFXBus\Enemies	
+	2886307548	MusicBus			\Default Work Unit\MasterBus\MusicBus	
+	3803850708	SFXBus			\Default Work Unit\MasterBus\SFXBus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

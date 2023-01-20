@@ -41,6 +41,28 @@
 										</Reference>
 									</ReferenceList>
 								</Sound>
+								<Sound Name="myriapodAttack" ID="{1DFBAEE5-F99E-4E23-83DB-5470097F56FA}" ShortID="790320835">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="myriapodAttack" ID="{952CE18E-A235-4191-B166-98D574962232}">
+											<Language>SFX</Language>
+											<AudioFile>myriapodAttack.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="734476372"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="myriapodAttack" ID="{952CE18E-A235-4191-B166-98D574962232}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

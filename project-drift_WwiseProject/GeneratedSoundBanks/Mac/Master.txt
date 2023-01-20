@@ -1,0 +1,7 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2526159498	marioStart_Play			\Default Work Unit\SFX\Onboarding\marioStart_Play	
+	3901950111	myriapodAttack_Play			\Default Work Unit\SFX\Onboarding\myriapodAttack_Play	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	734476372	myriapodAttack	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\myriapodAttack_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\myriapodAttack		576096
+

@@ -36,6 +36,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="myriapodAttack_Play" ID="{A9567CD0-9ACC-469B-880F-D9C3C8BBDFDB}">
+									<ChildrenList>
+										<Action Name="" ID="{B3F46D11-67CD-4561-94E4-0640472833B8}" ShortID="289455000">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="myriapodAttack" ID="{1DFBAEE5-F99E-4E23-83DB-5470097F56FA}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
