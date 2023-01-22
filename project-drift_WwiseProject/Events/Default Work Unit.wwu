@@ -58,6 +58,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="earthboundSmash_Play" ID="{5D3D383E-F97B-4B10-9CF0-B92C1A244734}">
+									<ChildrenList>
+										<Action Name="" ID="{9C3FC845-1A9F-490E-BC3C-30F79C81511B}" ShortID="769803511">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="smashEarthbound" ID="{42771512-148D-4538-BB49-3B8248029EE2}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
