@@ -14,7 +14,7 @@ namespace WSoft.Tools.Console
     {
         public UnlockAchievementCommand()
         {
-            commandWord = "UnlockAchievement";
+            commandWord = "unlockachievement";
         }
 
         public override List<string> GetValidArgs()

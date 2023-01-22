@@ -8,7 +8,7 @@ public class InventoryCommand : ConsoleCommand
 {
     public InventoryCommand()
     {
-        commandWord = "inventorycommand";
+        commandWord = "inventory";
     }
 
     public override List<string> GetValidArgs()

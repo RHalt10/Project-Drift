@@ -7,7 +7,7 @@ public class RechargeGun : ConsoleCommand
 {
     public RechargeGun()
     {
-        commandWord = "rechargeGun";
+        commandWord = "rechargegun";
     }
 
     public override List<string> GetValidArgs()
