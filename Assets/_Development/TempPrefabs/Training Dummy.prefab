@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8379783561711305475}
   - component: {fileID: 8379783561711305476}
   - component: {fileID: 5846760478565098401}
+  - component: {fileID: 5829540818912357821}
   m_Layer: 9
   m_Name: Training Dummy
   m_TagString: Untagged
@@ -183,3 +184,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyKey: Dummy
+--- !u!114 &5829540818912357821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379783561711305474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2116d5b0996f1af4aa776fce6a70c637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 128
