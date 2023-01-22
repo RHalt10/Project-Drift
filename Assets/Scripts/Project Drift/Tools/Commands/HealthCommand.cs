@@ -7,7 +7,7 @@ public class HealthCommand : ConsoleCommand
 {
     public HealthCommand()
     {
-        commandWord = "healthcommand";
+        commandWord = "health";
     }
 
     public override List<string> GetValidArgs()
