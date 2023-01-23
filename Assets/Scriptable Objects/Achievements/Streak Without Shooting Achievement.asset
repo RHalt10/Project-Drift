@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87b8f67fd9a5fd4891e98e7fb0609ef, type: 3}
   m_Name: Streak Without Shooting Achievement
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 6
   SteamID: SRK_NO_SHT
   Name: Streak Without Shooting Achievement
   Description: Kill 5 enemies without shooting
