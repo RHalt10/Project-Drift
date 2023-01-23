@@ -33,6 +33,9 @@ public class PlayerDashController : PlayerSubController
         currentDashTime = 0;
         characterController.canMoveOnAir = true;
         characterController.willFallOnAir = false;
+
+        if (dashDirection != Vector2.zero)
+            AkSoundEngine.PostEvent("PlayerDash_Play", PlayerController.Instance.gameObject);
     }
 
     public override void Update()
