@@ -30,11 +30,6 @@
 								<Sound Name="marioStart" ID="{EF989C19-EC8A-486A-9313-04FC3230A4BB}" ShortID="1026799931">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="Inclusion" Type="bool">
-											<ValueList>
-												<Value>False</Value>
-											</ValueList>
-										</Property>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
