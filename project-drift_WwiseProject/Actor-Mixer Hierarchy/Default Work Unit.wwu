@@ -30,6 +30,11 @@
 								<Sound Name="marioStart" ID="{EF989C19-EC8A-486A-9313-04FC3230A4BB}" ShortID="1026799931">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -109,6 +114,34 @@
 								</Sound>
 							</ChildrenList>
 						</Folder>
+						<Sound Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" ShortID="205879300">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0552032491340666"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.115006769029305"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.232873453893001"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>sine-tone-300hz.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="779569106"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
