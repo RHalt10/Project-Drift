@@ -109,51 +109,78 @@
 								</Sound>
 							</ChildrenList>
 						</Folder>
-						<Sound Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" ShortID="205879300">
+						<ActorMixer Name="Player" ID="{40CA3140-EBF2-4DCD-BF73-DDFB0E458DFD}" ShortID="935129222">
 							<PropertyList>
-								<Property Name="MaxSoundPerInstance" Type="int16">
-									<ValueList>
-										<Value>3</Value>
-									</ValueList>
-								</Property>
-								<Property Name="UseMaxSoundPerInstance" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+									<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}">
+								<Sound Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" ShortID="205879300">
 									<PropertyList>
-										<Property Name="FadeInDuration" Type="Real64" Value="0.0552032491340666"/>
-										<Property Name="FadeOutDuration" Type="Real64" Value="0.115006769029305"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.232873453893001"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{4A980E56-0188-494E-92CF-5A5043C94C82}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="30"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>sine-tone-300hz.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="779569106"/>
-									</MediaIDList>
-								</AudioFileSource>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0552032491340666"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.115006769029305"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.232873453893001"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>sine-tone-300hz.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="779569106"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
