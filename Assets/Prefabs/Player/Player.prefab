@@ -567,6 +567,10 @@ MonoBehaviour:
   aimController:
     playerController: {fileID: 0}
     aimObject: {fileID: 5541513476490804648}
+  dashSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 844ccadb32513ad46bb0e53825d41a98, type: 2}
 --- !u!114 &5541513476851453213
 MonoBehaviour:
   m_ObjectHideFlags: 0

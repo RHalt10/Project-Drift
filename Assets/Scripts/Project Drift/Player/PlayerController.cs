@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
 
+    public AK.Wwise.Event dashSfx;
+
     public Vector2 movementInput { get; private set; }
     public Vector2 aimInput { get; private set; }
 
@@ -106,6 +108,7 @@ public class PlayerController : MonoBehaviour
     public void Dash(InputAction.CallbackContext ctx)
     {
         currentController.RecieveInput(PlayerInputType.Dash);
+        dashSfx.Post(gameObject);
     }
 
     public void Melee(InputAction.CallbackContext ctx)
