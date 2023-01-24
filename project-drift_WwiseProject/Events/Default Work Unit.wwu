@@ -84,6 +84,17 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="SliceSound_Play" ID="{752AB1DC-84F8-4A07-8903-AF96D5ADA63C}">
+					<ChildrenList>
+						<Action Name="" ID="{BC9CF7E0-FF91-4C5F-8D8B-2FFAEEA762AC}" ShortID="754786138">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SliceSound" ID="{BCDDD69E-4311-451E-AC5E-80FC9D41E1C8}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
