@@ -505,6 +505,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a2f57bb0-4c43-4948-8c55-66f786e6b99d
     m_ActionName: Player/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9aa5a353-9c13-40e7-bd79-4fc4e0e6e02e
+    m_ActionName: Player/Heal[/XInputControllerWindows/leftShoulder,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eab91294-ecb4-4716-adb8-eaefb474942c
+    m_ActionName: Player/Special[/XInputControllerWindows/rightShoulder,/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5463b554-665d-4be6-84c5-454a956af4ac
+    m_ActionName: Player/Interact[/XInputControllerWindows/buttonNorth,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8016410-c65d-4f9e-9e88-56275b3472c0
+    m_ActionName: Player/Swap Weapon[/XInputControllerWindows/buttonEast,/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52cc73bb-bfce-4bcd-9bf9-e9b0231e6803
+    m_ActionName: Player/Sit[/XInputControllerWindows/dpad/down,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4591fa78-a788-43d6-be09-be0948f52d03
+    m_ActionName: Player/Menu[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c213401-8ec8-417e-ab0e-56e84530a3ec
+    m_ActionName: Player/Inventory[/XInputControllerWindows/select,/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -547,6 +575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84651903e68a940419a19a5ffff0adb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerMelee_Play:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fbf12bc8451f1d947aaa3c8e9dbccf5f, type: 2}
   groundController:
     playerController: {fileID: 0}
     groundSpeed: 3
@@ -567,10 +599,6 @@ MonoBehaviour:
   aimController:
     playerController: {fileID: 0}
     aimObject: {fileID: 5541513476490804648}
-  dashSfx:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 844ccadb32513ad46bb0e53825d41a98, type: 2}
 --- !u!114 &5541513476851453213
 MonoBehaviour:
   m_ObjectHideFlags: 0
