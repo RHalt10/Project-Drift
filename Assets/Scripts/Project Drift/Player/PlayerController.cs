@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public enum PlayerInputType
 {
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     void CalculateAimInput()
     {
+        
         if (Gamepad.current != null)
         {
             aimInput = Gamepad.current.rightStick.ReadValue();
@@ -138,5 +140,6 @@ public class PlayerController : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             aimInput = (mouseWorldPosition - (Vector2)transform.position).normalized;
         }
+        
     }
 }
