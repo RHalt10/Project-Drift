@@ -16,6 +16,7 @@
 							</PropertyList>
 							<ObjectInclusionList>
 								<ObjectRef Name="Music" ID="{4C84786A-339F-407A-ADFD-20992769CE55}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}" Origin="Manual" Filter="7"/>
+								<ObjectRef Name="PlayerMelee_Play" ID="{C1D6BAB1-E618-46C6-B543-CB9FE5AFBD81}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}" Origin="Manual" Filter="7"/>
 								<ObjectRef Name="SFX" ID="{15C0F916-56FC-4707-B60D-63C30B2114AD}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}" Origin="Manual" Filter="7"/>
 							</ObjectInclusionList>
 							<ObjectExclusionList/>
