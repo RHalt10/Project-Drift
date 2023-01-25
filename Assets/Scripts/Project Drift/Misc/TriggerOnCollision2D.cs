@@ -4,6 +4,10 @@ using System.Diagnostics;
 using UnityEngine;
 using WSoft.Math;
 
+/*
+ * Utilized by environment interactables, such as the switch
+ * Written by Brandom Fox 
+ */
 public class TriggerOnCollision2D : MonoBehaviour
 {
     [Tooltip("Only triggers objects on these layers.")]
@@ -13,7 +17,8 @@ public class TriggerOnCollision2D : MonoBehaviour
     {
         if (LayermaskFunctions.IsInLayerMask(triggerLayers, collision.gameObject.layer))
         {
-            collision.gameObject.GetComponent<SwitchController>().Flip();
+            GameObject gameObject = collision.gameObject;
+            if (gameObject.GetComponent<SwitchController>() != null) { gameObject.GetComponent<SwitchController>().Flip();  }
         }
     }
 }
