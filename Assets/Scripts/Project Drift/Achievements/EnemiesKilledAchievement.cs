@@ -17,6 +17,9 @@ public class EnemiesKilledAchievement : BaseAchievement
 
     void OnEnemyKilled(EnemyDefeatedEvent e)
     {
+        if (!ProgressionManager.instance.enemyTypesKilled.ContainsKey(enemyKey))
+            return;
+
         int totalEnemiesKilled = ProgressionManager.instance.enemyTypesKilled[enemyKey];
 
         if (totalEnemiesKilled >= numEnemiesToKill)
