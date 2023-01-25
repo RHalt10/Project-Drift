@@ -24,6 +24,7 @@ public class PlayerAttackController : PlayerSubController
 {
     public float groundSpeed;
     public GameObject attackRoot;
+    public float destructibleRechargePercentage;
 
     public PlayerAttackData meleeAttack;
 
@@ -96,8 +97,11 @@ public class PlayerAttackController : PlayerSubController
         
     }
 
-    void OnDamageCaused()
+    void OnDamageCaused(GameObject target)
     {
-        playerGun.RechargeSingleAmmo();
+        if (target.GetComponent<EnemyData>() != null)
+            playerGun.RechargeSingleAmmo();
+        else
+            playerGun.RechargeAmmo(destructibleRechargePercentage);
     }
 }

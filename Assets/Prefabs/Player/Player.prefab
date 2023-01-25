@@ -575,10 +575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84651903e68a940419a19a5ffff0adb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMelee_Play:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: fbf12bc8451f1d947aaa3c8e9dbccf5f, type: 2}
   groundController:
     playerController: {fileID: 0}
     groundSpeed: 3
@@ -590,6 +586,7 @@ MonoBehaviour:
     playerController: {fileID: 0}
     groundSpeed: 3
     attackRoot: {fileID: 5541513477606870549}
+    destructibleRechargePercentage: 0.05
     meleeAttack:
       animationTrigger: Attack
       gameObject: {fileID: 5541513477126352670}
