@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1cf62382a6be94e87d9420a73e99c0, type: 3}
-  m_Name: Basic Weapon
+  m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
+  m_Name: C1D6BAB1-E618-46C6-B543-CB9FE5AFBD81
   m_EditorClassIdentifier: 
-  weaponName: 
-  projectilePrefab: {fileID: 4576122382636938949, guid: 7be99c4bb0e0f734c922b76fbd3f0e53, type: 3}
-  ammoSubdivisions: 5
+  objectName: PlayerMelee_Play
+  id: 2338986347
+  guid: C1D6BAB1-E618-46C6-B543-CB9FE5AFBD81

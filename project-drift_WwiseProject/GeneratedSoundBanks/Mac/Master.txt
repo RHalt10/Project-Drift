@@ -1,7 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
+	2338986347	PlayerMelee_Play			\Default Work Unit\SFX\PlayerMelee_Play	
 	2526159498	marioStart_Play			\Default Work Unit\SFX\Onboarding\marioStart_Play	
+	2677230016	earthboundSmash_Play			\Default Work Unit\SFX\Onboarding\earthboundSmash_Play	
+	3750529451	clickersScream_Play			\Default Work Unit\SFX\Onboarding\clickersScream_Play	
 	3901950111	myriapodAttack_Play			\Default Work Unit\SFX\Onboarding\myriapodAttack_Play	
+	3960195147	PlayerDash_Play			\Default Work Unit\SFX\PlayerDash_Play	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	188470547	clickersScream	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\clickersScream_TLOU_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\clickersScream		480096
+	365743779	smashEarthbound	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\SmaaashEarthBound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\smashEarthbound		296448
 	734476372	myriapodAttack	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\myriapodAttack_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\myriapodAttack		576096
+	758589057	playerMelee	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\sine-tone-400hz_F9E3FAEF.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerMelee		22712
+	779569106	playerDash	C:\Users\User\Documents\GitHub\project-drift\project-drift_WwiseProject\.cache\Mac\SFX\sine-tone-300hz_48FF0D9F.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerDash		22452
 

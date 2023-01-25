@@ -24,6 +24,7 @@ public class PlayerAttackController : PlayerSubController
 {
     public float groundSpeed;
     public GameObject attackRoot;
+    public float destructibleRechargePercentage;
 
     public PlayerAttackData meleeAttack;
 
@@ -49,6 +50,8 @@ public class PlayerAttackController : PlayerSubController
     {
         attackRoot.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, playerController.aimInput));
         playerController.StartCoroutine(PerformAttack(meleeAttack));
+
+        
     }
 
     public override void Update()
@@ -66,6 +69,7 @@ public class PlayerAttackController : PlayerSubController
         EventBus.Publish(new PlayerAttackEvent(attackData));
 
         animator.SetTrigger(attackData.animationTrigger);
+        AkSoundEngine.PostEvent("PlayerMelee_Play", PlayerController.Instance.gameObject);
         attackData.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(attackData.startDamageTime);
@@ -82,16 +86,22 @@ public class PlayerAttackController : PlayerSubController
         attackData.gameObject.SetActive(false);
 
         playerController.SetController(playerController.groundController);
+
+        
     }
 
     void InitializeAttack(PlayerAttackData attackData)
     {
         attackData.gameObject.SetActive(false);
         attackData.gameObject.GetComponentInChildren<DamageOnTrigger2D>().OnDamageCaused.AddListener(OnDamageCaused);
+        
     }
 
-    void OnDamageCaused()
+    void OnDamageCaused(GameObject target)
     {
-        playerGun.RechargeSingleAmmo();
+        if (target.GetComponent<EnemyData>() != null)
+            playerGun.RechargeSingleAmmo();
+        else
+            playerGun.RechargeAmmo(destructibleRechargePercentage);
     }
 }

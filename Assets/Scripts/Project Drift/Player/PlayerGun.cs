@@ -14,13 +14,14 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] PlayerWeaponSO startingWeapon;
     public PlayerWeaponSO currentWeapon { get; private set; }
 
-    int _currentAmmo = 0;
-    public int currentAmmo
+    /* Always from 0 to 1*/
+    float _currentAmmo = 0f;
+    public float currentAmmo
     {
         get { return _currentAmmo; }
         set
         {
-            _currentAmmo = value;
+            _currentAmmo = Mathf.Clamp(value, 0, 1);
             OnAmmoAmountChanged.Invoke();
         }
     }
@@ -34,15 +35,15 @@ public class PlayerGun : MonoBehaviour
     void Awake()
     {
         currentWeapon = startingWeapon;
-        currentAmmo = currentWeapon.maxAmmo;
+        currentAmmo = 1f;
     }
 
     public void Shoot(Vector2 direction)
     {
-        if(currentAmmo == 0)
+        if(currentAmmo < currentWeapon.BulletPercentage)
             return;
 
-        currentAmmo--;
+        currentAmmo -= currentWeapon.BulletPercentage;
 
         GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
@@ -50,9 +51,14 @@ public class PlayerGun : MonoBehaviour
         EventBus.Publish(new PlayerShootEvent(currentWeapon));
     }
 
+    public void RechargeAmmo(float percentage)
+    {
+        currentAmmo = currentAmmo + percentage;
+    }
+
     public void RechargeSingleAmmo()
     {
-        currentAmmo = Mathf.Min(currentAmmo + 1, currentWeapon.maxAmmo);
+        currentAmmo = currentAmmo + currentWeapon.BulletPercentage;
     }
 
     public void SwapWeapons(PlayerWeaponSO newWeapon)
