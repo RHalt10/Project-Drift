@@ -18,7 +18,7 @@ public class RechargeGun : ConsoleCommand
     public override bool Process(string[] args)
     {
         PlayerGun gunComponent = PlayerController.Instance.GetComponent<PlayerGun>();
-        int ammoAmount = gunComponent.currentWeapon.maxAmmo;
+        int ammoAmount = gunComponent.currentWeapon.ammoSubdivisions;
         if(args.Length > 0)
         {
             int inputAmmo;

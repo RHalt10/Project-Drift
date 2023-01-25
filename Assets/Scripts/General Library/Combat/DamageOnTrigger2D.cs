@@ -11,6 +11,9 @@ namespace WSoft.Combat
 {
     public class DamageOnTrigger2D : MonoBehaviour
     {
+        [System.Serializable]
+        public class DamageEvent : UnityEvent<GameObject> { }
+
         [Tooltip("The amount of damage that should be inflicted")]
         public int damage;
 
@@ -20,7 +23,7 @@ namespace WSoft.Combat
         [Tooltip("Should we damage on stay")]
         public bool damageOnStay;
 
-        public UnityEvent OnDamageCaused;
+        public DamageEvent OnDamageCaused;
 
         /// <summary>
         /// On a trigger enter, find a health component on the specified object and damage.
@@ -37,7 +40,7 @@ namespace WSoft.Combat
                 {
                     bool damageCaused = health.Damage(damage);
                     if (damageCaused)
-                        OnDamageCaused.Invoke();
+                        OnDamageCaused.Invoke(target);
                 }
             }
         }

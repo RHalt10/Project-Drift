@@ -7,5 +7,7 @@ public class PlayerWeaponSO : ScriptableObject
 {
     public string weaponName;
     public GameObject projectilePrefab;
-    public int maxAmmo;
+    public int ammoSubdivisions;
+    
+    public float BulletPercentage { get => 1f / ammoSubdivisions; }
 }

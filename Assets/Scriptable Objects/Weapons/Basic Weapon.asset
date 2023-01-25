@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1cf62382a6be94e87d9420a73e99c0, type: 3}
   m_Name: Basic Weapon
   m_EditorClassIdentifier: 
+  weaponName: 
   projectilePrefab: {fileID: 4576122382636938949, guid: 7be99c4bb0e0f734c922b76fbd3f0e53, type: 3}
-  maxAmmo: 6
+  ammoSubdivisions: 5
