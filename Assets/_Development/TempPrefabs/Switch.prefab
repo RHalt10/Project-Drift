@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7280128193030084813}
   - component: {fileID: 8243436273155567394}
-  - component: {fileID: -2018219372655178339}
-  m_Layer: 0
+  - component: {fileID: 9130224965293214184}
+  - component: {fileID: -1959733726587895498}
+  m_Layer: 8
   m_Name: Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2018219372655178339
+--- !u!114 &9130224965293214184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +95,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4326791944692597744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3674b8a6344a4f64496054d591c6b210, type: 3}
+  m_Script: {fileID: 11500000, guid: 44134090905224442958dbe85c5b8e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledObjects: []
+--- !u!58 &-1959733726587895498
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326791944692597744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

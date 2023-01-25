@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1468050774346351715}
   - component: {fileID: 4823302548106881191}
   - component: {fileID: 3580800367254829625}
+  - component: {fileID: -7019701575979762880}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
@@ -184,5 +185,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMaskToDestroy:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   hitParticle: {fileID: 0}
+--- !u!114 &-7019701575979762880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4576122382636938949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
