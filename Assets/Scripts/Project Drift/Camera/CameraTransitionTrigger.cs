@@ -32,11 +32,6 @@ public class CameraTransitionTrigger : MonoBehaviour
         {
             player = other.gameObject;
             StartCoroutine(FadeAndTeleport());
-
-            if (!canReEnterCurrentArea)
-            {
-                gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            }
         }
     }
 
@@ -49,6 +44,7 @@ public class CameraTransitionTrigger : MonoBehaviour
         //should already have a set to 0 but just in case
         transitionScreen.GetComponent<Image>().color = new Color(screenColor.r, screenColor.g, screenColor.b, 0f);
 
+        //fade in transition screen
         while (transitionScreen.GetComponent<Image>().color.a < 1)
         {
             fadeOutAmount = transitionScreen.GetComponent<Image>().color.a + (5.0f * Time.deltaTime * 1/(transitionTime/2));
@@ -57,14 +53,22 @@ public class CameraTransitionTrigger : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
-        
+        //teleport player
         player.GetComponent<Transform>().position = teleportPlayerTo;
+
         //set new active camera 
         Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
         cinamachine.VirtualCameraGameObject.SetActive(true);
+
+        //make into collider instead of trigger if cannot reenter area
+        if (!canReEnterCurrentArea)
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+
         yield return new WaitForSeconds(transitionTime/2);
 
-
+        //done moving player and switching camera, fade out screen
         while (transitionScreen.GetComponent<Image>().color.a > 0)
         {
             fadeOutAmount = transitionScreen.GetComponent<Image>().color.a - (5.0f * Time.deltaTime * 1/(transitionTime/2));

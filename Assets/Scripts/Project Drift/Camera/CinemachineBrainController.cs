@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraController : MonoBehaviour
+public class CinemachineBrainController : MonoBehaviour
 {
     //disable virtual cameras at start that aren't chosen by cinemachine brain
     [SerializeField] bool disableNonActiveVCams;
