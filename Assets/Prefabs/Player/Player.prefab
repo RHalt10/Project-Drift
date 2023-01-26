@@ -56,7 +56,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5541513476490804649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -708,6 +708,7 @@ GameObject:
   - component: {fileID: 5541513477126352739}
   - component: {fileID: 5541513477126352736}
   - component: {fileID: 5541513477126352737}
+  - component: {fileID: 1007547146471283417}
   m_Layer: 8
   m_Name: Triangle
   m_TagString: Untagged
@@ -828,6 +829,21 @@ MonoBehaviour:
   OnDamageCaused:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1007547146471283417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541513477126352670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &5541513477159241637
 GameObject:
   m_ObjectHideFlags: 0
