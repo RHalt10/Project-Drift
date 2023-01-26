@@ -11,6 +11,7 @@ public class CameraTransitionTrigger : MonoBehaviour
 {   
     
     [SerializeField] bool canReEnterCurrentArea;
+
     //black screen or image covering the screen while scene transition takes place
     [SerializeField] GameObject transitionScreen;
 
@@ -20,6 +21,8 @@ public class CameraTransitionTrigger : MonoBehaviour
     //if you do have a bounding shape set, make sure the cinamachine is inside those bounds.
     [SerializeField] CinemachineVirtualCamera cinamachine;
 
+    [Range(1, 10)]
+    [SerializeField] float transitionTime;
     private GameObject player;
 
 
@@ -40,28 +43,31 @@ public class CameraTransitionTrigger : MonoBehaviour
     IEnumerator FadeAndTeleport()
     {
         float fadeOutAmount = 0.0f;
+
+
         Color screenColor = transitionScreen.GetComponent<Image>().color;
         //should already have a set to 0 but just in case
         transitionScreen.GetComponent<Image>().color = new Color(screenColor.r, screenColor.g, screenColor.b, 0f);
 
         while (transitionScreen.GetComponent<Image>().color.a < 1)
         {
-            fadeOutAmount = transitionScreen.GetComponent<Image>().color.a + (5.0f * Time.deltaTime);
+            fadeOutAmount = transitionScreen.GetComponent<Image>().color.a + (5.0f * Time.deltaTime * 1/(transitionTime/2));
             transitionScreen.GetComponent<Image>().color = new Color(screenColor.r, screenColor.g, screenColor.b, fadeOutAmount);
 
             yield return new WaitForSeconds(0.025f);
         }
 
-
+        
         player.GetComponent<Transform>().position = teleportPlayerTo;
         //set new active camera 
         Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
         cinamachine.VirtualCameraGameObject.SetActive(true);
-        
+        yield return new WaitForSeconds(transitionTime/2);
+
 
         while (transitionScreen.GetComponent<Image>().color.a > 0)
         {
-            fadeOutAmount = transitionScreen.GetComponent<Image>().color.a - (5.0f * Time.deltaTime);
+            fadeOutAmount = transitionScreen.GetComponent<Image>().color.a - (5.0f * Time.deltaTime * 1/(transitionTime/2));
             transitionScreen.GetComponent<Image>().color = new Color(screenColor.r, screenColor.g, screenColor.b, fadeOutAmount);
 
             yield return new WaitForSeconds(0.025f);
