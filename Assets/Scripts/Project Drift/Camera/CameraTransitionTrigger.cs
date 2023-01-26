@@ -25,6 +25,11 @@ public class CameraTransitionTrigger : MonoBehaviour
     [SerializeField] float transitionTime;
     private GameObject player;
 
+    private void Start()
+    {
+        //make sure screen starts transparent
+        transitionScreen.GetComponent<Image>().color = new Color(transitionScreen.GetComponent<Image>().color.r, transitionScreen.GetComponent<Image>().color.g, transitionScreen.GetComponent<Image>().color.b, 0f);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
