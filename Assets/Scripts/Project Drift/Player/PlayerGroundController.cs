@@ -42,7 +42,7 @@ public class PlayerGroundController : PlayerSubController
             case PlayerInputType.Dash:
                 playerController.SetController(playerController.dashController);
                 return;
-            case PlayerInputType.Melee:
+            case PlayerInputType.MeleePressed:
                 playerController.SetController(playerController.attackController);
                 return;
             case PlayerInputType.StartAim:
