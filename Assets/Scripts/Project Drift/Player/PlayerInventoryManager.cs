@@ -14,6 +14,8 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public int currency { get; private set; }
 
+    public AK.Wwise.Event keyAcquiredSfx;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,6 +35,7 @@ public class PlayerInventoryManager : MonoBehaviour
     public void AcquireKey()
     {
         keys++;
+        keyAcquiredSfx.Post(gameObject);
     }
 
     // allows for setting specific values
