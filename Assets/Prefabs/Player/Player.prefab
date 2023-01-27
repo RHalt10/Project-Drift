@@ -618,6 +618,9 @@ MonoBehaviour:
     playerController: {fileID: 0}
     dashSpeed: 12
     dashTime: 0.2
+    dashCooldown: 0.2
+    chainDashAllowed: 1
+    chainDashTimeWindow: 0.1
   attackController:
     playerController: {fileID: 0}
     groundSpeed: 3
