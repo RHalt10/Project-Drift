@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Melee_Charged",
+                    "type": "Button",
+                    "id": "d5200936-79fb-49cd-845e-bcf064f58d78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=1,pressPoint=0.5)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Aim",
                     "type": "Button",
                     "id": "827c0ce9-feb3-44f0-8f1c-f2583d879a2b",
@@ -420,6 +429,28 @@
                     "processors": "",
                     "groups": "Keyboard + Mouse",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f66259b-0f60-461f-842b-00bec05d5eff",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Melee_Charged",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf127ecb-4d5a-4adc-9001-769f1e693aa2",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Melee_Charged",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
