@@ -21,22 +21,11 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Event Name="marioStart_Play" ID="{B3504F50-327A-4161-B5CE-E4AFEBF0D3D3}">
+								<Event Name="myriapodAttack_Play" ID="{A9567CD0-9ACC-469B-880F-D9C3C8BBDFDB}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
-									<ChildrenList>
-										<Action Name="" ID="{7D680E27-5AEA-4C08-9473-5A8E3F55B979}" ShortID="514390498">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="marioStart" ID="{EF989C19-EC8A-486A-9313-04FC3230A4BB}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="myriapodAttack_Play" ID="{A9567CD0-9ACC-469B-880F-D9C3C8BBDFDB}">
 									<ChildrenList>
 										<Action Name="" ID="{B3F46D11-67CD-4561-94E4-0640472833B8}" ShortID="289455000">
 											<ReferenceList>
@@ -48,6 +37,10 @@
 									</ChildrenList>
 								</Event>
 								<Event Name="clickersScream_Play" ID="{FB9800CA-4CF4-48C0-A58F-176B844E084F}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Action Name="" ID="{0FFCFD4B-EBE0-4E33-9687-510269A3FC9D}" ShortID="68466862">
 											<ReferenceList>
@@ -59,6 +52,10 @@
 									</ChildrenList>
 								</Event>
 								<Event Name="earthboundSmash_Play" ID="{5D3D383E-F97B-4B10-9CF0-B92C1A244734}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Action Name="" ID="{9C3FC845-1A9F-490E-BC3C-30F79C81511B}" ShortID="769803511">
 											<ReferenceList>
@@ -71,41 +68,103 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
-						<Event Name="PlayerDash_Play" ID="{4E372EA3-7FE2-4ED9-9344-4147F9DAC7E9}">
+						<Folder Name="Player" ID="{32ED0364-76CA-4423-989C-CBFFC4E2A6E8}" ShortID="328484764">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
-								<Action Name="" ID="{4EFF9B3B-6642-4214-846D-F0C456FFC7E8}" ShortID="887148130">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
+								<Event Name="PlayerDash_Play" ID="{4E372EA3-7FE2-4ED9-9344-4147F9DAC7E9}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{4EFF9B3B-6642-4214-846D-F0C456FFC7E8}" ShortID="887148130">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PlayerMelee_Play" ID="{C1D6BAB1-E618-46C6-B543-CB9FE5AFBD81}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{FAB9FEEE-0EC4-4CEF-A9A0-56CAEF5C4956}" ShortID="106146903">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerMelee" ID="{02ECAFC7-643D-4192-A37B-0C6ABA7666F3}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="SliceSound_Play" ID="{752AB1DC-84F8-4A07-8903-AF96D5ADA63C}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{BC9CF7E0-FF91-4C5F-8D8B-2FFAEEA762AC}" ShortID="754786138">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SliceSound" ID="{BCDDD69E-4311-451E-AC5E-80FC9D41E1C8}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
-						</Event>
-						<Event Name="PlayerMelee_Play" ID="{C1D6BAB1-E618-46C6-B543-CB9FE5AFBD81}">
+						</Folder>
+						<Folder Name="Enemies" ID="{9B7916A3-A16B-4057-84E2-E9BD0F1BF9F1}" ShortID="860723331">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
-								<Action Name="" ID="{FAB9FEEE-0EC4-4CEF-A9A0-56CAEF5C4956}" ShortID="106146903">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="playerMelee" ID="{02ECAFC7-643D-4192-A37B-0C6ABA7666F3}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
+								<Event Name="trainingDummyIdle_Stop" ID="{1DA3F06D-0432-497D-AD27-F0B0BC337CEE}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{D22A7AE8-E3C1-410F-A0B4-7916C408C706}" ShortID="683470852">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="trainingDummyIdle_Play" ID="{85138BB5-1C08-48C9-AFCA-4DC9358B1EF3}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{436F7051-8896-41D7-95CD-83DBB31D4F16}" ShortID="197202979">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
-						</Event>
+						</Folder>
 					</ChildrenList>
 				</Folder>
-				<Event Name="SliceSound_Play" ID="{752AB1DC-84F8-4A07-8903-AF96D5ADA63C}">
-					<ChildrenList>
-						<Action Name="" ID="{BC9CF7E0-FF91-4C5F-8D8B-2FFAEEA762AC}" ShortID="754786138">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SliceSound" ID="{BCDDD69E-4311-451E-AC5E-80FC9D41E1C8}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
