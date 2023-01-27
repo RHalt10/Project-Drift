@@ -8,7 +8,8 @@ public enum PlayerInputType
 {
     Dash,
     Heal,
-    Melee,
+    MeleePressed,
+    MeleeReleased,
     StartAim,
     StopAim,
     Shoot
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 aimInput { get; private set; }
 
     public PlayerSubController currentController { get; private set; }
+    public string debugCurrCtrlr;
 
     public static PlayerController Instance { get; private set; }
 
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        debugCurrCtrlr = currentController.ToString();
         CalculateAimInput();
         currentController.Update();
     }
@@ -112,7 +115,10 @@ public class PlayerController : MonoBehaviour
 
     public void Melee(InputAction.CallbackContext ctx)
     {
-        currentController.RecieveInput(PlayerInputType.Melee);
+        if (ctx.canceled)
+            currentController.RecieveInput(PlayerInputType.MeleeReleased);
+        else
+            currentController.RecieveInput(PlayerInputType.MeleePressed);
     }
 
     public void Aim(InputAction.CallbackContext ctx)

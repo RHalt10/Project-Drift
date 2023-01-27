@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}" SchemaVersion="110">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="MasterBus_Compressor" ID="{0ED8EAFD-2F05-4224-BE3A-72E44D39EE80}" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+					<PropertyList>
+						<Property Name="AttackTime" Type="Real32" Value="0.3"/>
+						<Property Name="ChannelLink" Type="bool" Value="False"/>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="ProcessLFE" Type="bool" Value="False"/>
+						<Property Name="Ratio" Type="Real32" Value="3"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="0.3"/>
+						<Property Name="Threshold" Type="Real32" Value="-9"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="MasterTransient_Compressor" ID="{1DB61E06-ED11-46F1-AC5E-A174DC948A4C}" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+					<PropertyList>
+						<Property Name="AttackTime" Type="Real32" Value="0.001"/>
+						<Property Name="ChannelLink" Type="bool" Value="False"/>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="ProcessLFE" Type="bool" Value="False"/>
+						<Property Name="Ratio" Type="Real32" Value="50"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="0.01"/>
+						<Property Name="Threshold" Type="Real32" Value="-6"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="ParallelBus_Compressor" ID="{C091198B-1B5B-4EDD-8225-5950811AA037}" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+					<PropertyList>
+						<Property Name="AttackTime" Type="Real32" Value="0.001"/>
+						<Property Name="OutputGain" Type="Real32" Value="6"/>
+						<Property Name="Ratio" Type="Real32" Value="20"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
+						<Property Name="Threshold" Type="Real32" Value="-12"/>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>
