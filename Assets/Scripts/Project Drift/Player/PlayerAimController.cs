@@ -11,6 +11,9 @@ public class PlayerAimController : PlayerSubController
 {
     public Transform aimObject;
 
+    public AK.Wwise.Event startAimSfx;
+    public AK.Wwise.Event stopAimSfx;
+
     PlayerGun playerGun;
 
     public override void Initialize()
@@ -22,11 +25,13 @@ public class PlayerAimController : PlayerSubController
     public override void OnDisable()
     {
         aimObject.gameObject.SetActive(false);
+        stopAimSfx.Post(playerController.gameObject);
     }
 
     public override void OnEnable()
     {
         aimObject.gameObject.SetActive(true);
+        startAimSfx.Post(playerController.gameObject);
     }
 
     public override void RecieveInput(PlayerInputType type)

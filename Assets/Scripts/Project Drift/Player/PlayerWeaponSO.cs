@@ -10,4 +10,7 @@ public class PlayerWeaponSO : ScriptableObject
     public int ammoSubdivisions;
     
     public float BulletPercentage { get => 1f / ammoSubdivisions; }
+
+    public AK.Wwise.Event shootSfx;
+
 }
