@@ -84,5 +84,6 @@ public class PlayerDashController : PlayerSubController
         dashDirection = playerController.movementInput;
         currentDashTime = 0;
         chainDashActivated = false;
+        AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
     }
 }
