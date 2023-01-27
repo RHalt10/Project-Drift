@@ -23,7 +23,11 @@ public class TextPromptOnEnter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(ShowPrompt());
+        //only player should trigger coroutine
+        if (collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(ShowPrompt());
+        }
     }
 
     IEnumerator ShowPrompt()
