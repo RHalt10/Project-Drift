@@ -161,6 +161,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="enemyDeathSound_Play" ID="{40BB5215-D2D8-432C-A6C4-2FAF6A6C7955}">
+									<ChildrenList>
+										<Action Name="" ID="{7B15FAD2-B082-4BF9-AD24-BE88B8FA0962}" ShortID="522335501">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="enemyDeathSound" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
