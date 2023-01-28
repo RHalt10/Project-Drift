@@ -43,14 +43,22 @@ public class PlayerRespawnManager : MonoBehaviour
     PlayerHealth playerHealth;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         playerHealth = GetComponent<PlayerHealth>();
         playerHealth.events.OnDeath.AddListener(SceneReload);
+        
+        // Avoid nullref in GroundCharacterController script.
+        StartCoroutine(LateStart());
+    }
+    
+    private IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
         RespawnPlayer();
     }
 
-    void SceneReload()
+    private void SceneReload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
