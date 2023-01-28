@@ -119,6 +119,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="PlayerRanged_Play" ID="{338B982D-C169-4D4B-A0FD-736608B87852}">
+									<ChildrenList>
+										<Action Name="" ID="{8F2ECADC-81E1-409B-9A29-0D96F0EA659B}" ShortID="539282619">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerRanged" ID="{B42CC057-B70C-43CE-8507-5C9E63EB11A6}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Enemies" ID="{9B7916A3-A16B-4057-84E2-E9BD0F1BF9F1}" ShortID="860723331">

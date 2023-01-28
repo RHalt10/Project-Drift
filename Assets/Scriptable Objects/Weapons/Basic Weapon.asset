@@ -15,3 +15,7 @@ MonoBehaviour:
   weaponName: 
   projectilePrefab: {fileID: 4576122382636938949, guid: 7be99c4bb0e0f734c922b76fbd3f0e53, type: 3}
   ammoSubdivisions: 5
+  shootSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f49dafb10e31b465eaecb65395cbbff1, type: 2}
