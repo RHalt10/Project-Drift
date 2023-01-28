@@ -172,6 +172,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="enemyDeath_Play" ID="{C4B15A73-850E-42F5-88E9-B1F0BCE9683D}">
+									<ChildrenList>
+										<Action Name="" ID="{43E3AC1F-9D4B-4BC5-B35B-CAC17A96CFFA}" ShortID="455185322">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="enemyDeath" ID="{0087DBFB-5CB7-4FD9-A117-23FDFA4E4269}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

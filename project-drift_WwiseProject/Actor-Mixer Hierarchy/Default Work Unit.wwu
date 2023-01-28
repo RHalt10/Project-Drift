@@ -385,6 +385,28 @@
 										<ActiveSource Name="sine-tone-200hz" ID="{B4B6B268-4122-4089-A1CE-E1CB1A1C864A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="enemyDeath" ID="{0087DBFB-5CB7-4FD9-A117-23FDFA4E4269}" ShortID="511784286">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TempDeathSound" ID="{AB294137-030C-4999-AEC8-887A466C9630}">
+											<Language>SFX</Language>
+											<AudioFile>TempDeathSound.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="114653929"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="TempDeathSound" ID="{AB294137-030C-4999-AEC8-887A466C9630}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>

@@ -1,4 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
+	1304566144	enemyDeath_Play			\Default Work Unit\SFX\Enemies\enemyDeath_Play	
 	1315400010	trainingDummyIdle_Stop			\Default Work Unit\SFX\Enemies\trainingDummyIdle_Stop	
 	1823407560	PlayerRanged_Play			\Default Work Unit\SFX\Player\PlayerRanged_Play	
 	1976501131	SliceSound_Play			\Default Work Unit\SFX\Player\SliceSound_Play	
@@ -10,12 +11,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	3960195147	PlayerDash_Play			\Default Work Unit\SFX\Player\PlayerDash_Play	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	177677362	trainingDummyIdle	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-200hz_27D657C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Enemies\trainingDummyIdle		960272
-	188470547	clickersScream	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\clickersScream_TLOU_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\clickersScream		480096
-	262681893	playerRanged	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\playerRanged_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerRanged		60104
-	365743779	smashEarthbound	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\SmaaashEarthBound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\smashEarthbound		296448
-	734476372	myriapodAttack	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\myriapodAttack_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\myriapodAttack		576096
-	758589057	playerMelee	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-400hz_F9E3FAEF.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerMelee		22712
-	779569106	playerDash	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-300hz_48FF0D9F.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerDash		22452
-	913289454	SliceSound	Y:\Desktop\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\Slice sound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\SliceSound		285484
+	114653929	enemyDeath	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\TempDeathSound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Enemies\enemyDeath		432160
+	177677362	trainingDummyIdle	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-200hz_27D657C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Enemies\trainingDummyIdle		960272
+	188470547	clickersScream	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\clickersScream_TLOU_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\clickersScream		480096
+	262681893	playerRanged	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\playerRanged_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerRanged		60104
+	365743779	smashEarthbound	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\SmaaashEarthBound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\smashEarthbound		296448
+	734476372	myriapodAttack	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\myriapodAttack_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\myriapodAttack		576096
+	758589057	playerMelee	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-400hz_F9E3FAEF.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerMelee		22712
+	779569106	playerDash	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\sine-tone-300hz_48FF0D9F.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Player\playerDash		22452
+	913289454	SliceSound	Z:\Applications\Unity\Projects\project-drift\project-drift_WwiseProject\.cache\Windows\SFX\Slice sound_28ED012B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Onboarding\SliceSound		285484
 
