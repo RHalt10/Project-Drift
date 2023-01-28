@@ -80,7 +80,6 @@ public class PlayerAttackController : PlayerSubController
             attackRoot.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseWorldPosition.y - attackRoot.transform.position.y,
             mouseWorldPosition.x - attackRoot.transform.position.x) * Mathf.Rad2Deg - 90);
 
-            //attackRoot.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, playerController.aimInput));
 
             if (timer < PlayerInventoryManager.Instance.MeleeWeapon.ChargeTime)
             {

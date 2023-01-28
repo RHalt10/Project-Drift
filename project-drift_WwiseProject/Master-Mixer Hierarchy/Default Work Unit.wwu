@@ -16,6 +16,12 @@
 						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
 							<ObjectRef Name="System" ID="{B1F57208-A966-4557-860D-3DAC78F8158B}" WorkUnitID="{32ED53AE-6C40-4626-A2BC-FE0225864789}"/>
 						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+							<ObjectRef Name="MasterBus_Compressor" ID="{0ED8EAFD-2F05-4224-BE3A-72E44D39EE80}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+						</Reference>
+						<Reference Name="Effect1" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+							<ObjectRef Name="MasterTransient_Compressor" ID="{1DB61E06-ED11-46F1-AC5E-A174DC948A4C}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<Bus Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}">
@@ -26,42 +32,172 @@
 							<ChildrenList>
 								<Bus Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Color" Type="int16" Value="21"/>
+										<Property Name="MaxDuckVolume" Type="Real64" Value="-12"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="RecoveryTime" Type="Real64" Value="0.3"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.300000011920929</FadeInTime>
+												<FadeOutTime>0.100000001490116</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+												<TargetProp>BusVolume</TargetProp>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
 								</Bus>
 								<Bus Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Color" Type="int16" Value="21"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="RecoveryTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
 								</Bus>
 								<Bus Name="Ambience" ID="{DA9A4515-1A67-47AC-ADEC-D545C1EE46F5}">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Color" Type="int16" Value="21"/>
+										<Property Name="HdrEnable" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="HdrRatio" Type="Real64">
+											<ValueList>
+												<Value>2.7</Value>
+											</ValueList>
+										</Property>
+										<Property Name="HdrReleaseTime" Type="Real64">
+											<ValueList>
+												<Value>0.15</Value>
+											</ValueList>
+										</Property>
+										<Property Name="HdrThreshold" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 								</Bus>
 								<Bus Name="UI" ID="{A3355C8A-E7C6-48FA-BA0B-667671FE9D71}">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Color" Type="int16" Value="21"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 								</Bus>
 								<Bus Name="PrioritySFX" ID="{9878DB1F-5131-448D-84E3-89782758D393}">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="Color" Type="int16" Value="21"/>
+										<Property Name="MaxDuckVolume" Type="Real64" Value="-12"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="RecoveryTime" Type="Real64" Value="0.3"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<DuckingList>
+										<DuckItem>
+											<BusRef Name="Ambience" ID="{DA9A4515-1A67-47AC-ADEC-D545C1EE46F5}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.300000011920929</FadeInTime>
+												<FadeOutTime>0.100000001490116</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+												<TargetProp>BusVolume</TargetProp>
+											</DuckingParam>
+										</DuckItem>
+										<DuckItem>
+											<BusRef Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.300000011920929</FadeInTime>
+												<FadeOutTime>0.100000001490116</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+												<TargetProp>BusVolume</TargetProp>
+											</DuckingParam>
+										</DuckItem>
+										<DuckItem>
+											<BusRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.300000011920929</FadeInTime>
+												<FadeOutTime>0.100000001490116</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+												<TargetProp>BusVolume</TargetProp>
+											</DuckingParam>
+										</DuckItem>
+										<DuckItem>
+											<BusRef Name="UI" ID="{A3355C8A-E7C6-48FA-BA0B-667671FE9D71}"/>
+											<DuckingParam>
+												<Volume>-3</Volume>
+												<FadeInTime>0.300000011920929</FadeInTime>
+												<FadeOutTime>0.100000001490116</FadeOutTime>
+												<FadeCurve>FadeExp1</FadeCurve>
+												<TargetProp>BusVolume</TargetProp>
+											</DuckingParam>
+										</DuckItem>
+									</DuckingList>
 								</Bus>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="MusicBus" ID="{43BF7984-6E8F-4FE5-B2B4-33E905DD1D0F}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="HdrEnable" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="HdrRatio" Type="Real64">
+									<ValueList>
+										<Value>2.7</Value>
+									</ValueList>
+								</Property>
+								<Property Name="HdrReleaseTime" Type="Real64">
+									<ValueList>
+										<Value>0.15</Value>
+									</ValueList>
+								</Property>
+								<Property Name="HdrThreshold" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 						</Bus>
+						<AuxBus Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+									<ObjectRef Name="ParallelBus_Compressor" ID="{C091198B-1B5B-4EDD-8225-5950811AA037}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+								</Reference>
+							</ReferenceList>
+						</AuxBus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

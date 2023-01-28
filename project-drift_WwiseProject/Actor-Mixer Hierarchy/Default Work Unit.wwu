@@ -23,25 +23,15 @@
 					<ChildrenList>
 						<Folder Name="Onboarding" ID="{C1A178EB-FEA7-443C-8AE1-8F8E7EEF8938}" ShortID="1070585821">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="20"/>
+								<Property Name="Color" Type="int16" Value="21"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Sound Name="marioStart" ID="{EF989C19-EC8A-486A-9313-04FC3230A4BB}" ShortID="1026799931">
+								<Sound Name="myriapodAttack" ID="{1DFBAEE5-F99E-4E23-83DB-5470097F56FA}" ShortID="790320835">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-									</ReferenceList>
-								</Sound>
-								<Sound Name="myriapodAttack" ID="{1DFBAEE5-F99E-4E23-83DB-5470097F56FA}" ShortID="790320835">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
@@ -64,6 +54,10 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="clickersScream" ID="{5C732C73-9C5A-4723-AA76-12AD68EC861A}" ShortID="180760038">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
@@ -86,6 +80,10 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="smashEarthbound" ID="{42771512-148D-4538-BB49-3B8248029EE2}" ShortID="382990610">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
@@ -108,6 +106,10 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="SliceSound" ID="{BCDDD69E-4311-451E-AC5E-80FC9D41E1C8}" ShortID="965700556">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
@@ -133,7 +135,10 @@
 						</Folder>
 						<ActorMixer Name="Player" ID="{40CA3140-EBF2-4DCD-BF73-DDFB0E458DFD}" ShortID="935129222">
 							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ModifierList>
 										<ModifierInfo>
@@ -153,11 +158,13 @@
 							<ChildrenList>
 								<Sound Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" ShortID="205879300">
 									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
 											<ValueList>
 												<Value>3</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -176,9 +183,6 @@
 											</ValueList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>5</Value>
-											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{BE58E3A5-4CBC-4179-9575-9F397BC8C24E}"/>
@@ -215,11 +219,13 @@
 								</Sound>
 								<Sound Name="playerMelee" ID="{02ECAFC7-643D-4192-A37B-0C6ABA7666F3}" ShortID="272116093">
 									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
 											<ValueList>
 												<Value>1</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -239,9 +245,6 @@
 											</ValueList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>5</Value>
-											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{AFE0EBCE-A618-4835-AE45-6A95BB7D4904}">
@@ -280,6 +283,77 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="sine-tone-400hz" ID="{160F0D54-2570-4B89-8A19-1BE160038BCF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Enemies" ID="{C2AEC986-5F20-4F02-9E66-4383B5906D81}" ShortID="415996191">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" ShortID="446798029">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="testAttenuation" ID="{00954507-2167-49E0-AD86-3D022E46A724}" WorkUnitID="{53019987-F172-4FD4-B485-CAF8BC432E2B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sine-tone-200hz" ID="{B4B6B268-4122-4089-A1CE-E1CB1A1C864A}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.1"/>
+												<Property Name="FadeInShape" Type="int16" Value="2"/>
+												<Property Name="LoopBegin" Type="Real64" Value="1"/>
+												<Property Name="LoopEnd" Type="Real64" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="VolumeOffset" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>sine-tone-200hz.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="177677362"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{8D391FFE-1922-43B5-8A9F-4F2B86DFA74F}"/>
+									</PositioningInfo>
+									<ActiveSourceList>
+										<ActiveSource Name="sine-tone-200hz" ID="{B4B6B268-4122-4089-A1CE-E1CB1A1C864A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
