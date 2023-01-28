@@ -7,8 +7,6 @@ public class Hammer : MeleeWeaponBase
 {
     [Header("Hammer Basic Configuration")]
     [SerializeField] float StaminaCost;
-    [SerializeField] float AmmoGainOnEnemy;
-    [SerializeField] float AmmoGainOnObject;
 
     [Header("Hammer Knockback Configuration")]
     [SerializeField] DamageOnTrigger2D HammerTrigger;
@@ -19,8 +17,7 @@ public class Hammer : MeleeWeaponBase
     [Header("Hammer Stun Configuraiton")]
     [SerializeField] float StunSeconds;
 
-    [Header("Debug Info")]
-    public float cooldownTimer = 0f;
+    float cooldownTimer = 0f;
     bool taskdone = true;
 
     protected override void Awake()
@@ -51,7 +48,10 @@ public class Hammer : MeleeWeaponBase
 
     public override void ApplyGain(GameObject target)
     {
-        Debug.Log("Hammer ApplyGain()");
+        if (target.GetComponent<EnemyData>() != null)
+            playerGun.RechargeAmmo(normalRechargePercentage);
+        else
+            playerGun.RechargeAmmo(destructibleRechargePercentage);
     }
 
     void HammerKnockback(GameObject target)

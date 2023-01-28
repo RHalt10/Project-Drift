@@ -3,25 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Combat;
 
-public enum MeleeWeaponTypes { None, Hammer } // Add more weapon types here. * Note: Also add new weapon type to "MeleeWeaponType" global var.
+public enum MeleeWeaponTypes { None, Hammer, Sword } // Add more weapon types here. * Note: Also add new weapon type to "MeleeWeaponType" global var.
 public abstract class MeleeWeaponBase : MonoBehaviour
 {
     [Header("Melee Weapon Basic Configuration")]
     [SerializeField] public float ChargeTime; // Must be set
     [SerializeField] protected float NormalAttackCooldown;
     [SerializeField] protected float ChargedAttackCooldown;
+    [SerializeField] public float normalRechargePercentage;
+    [SerializeField] public float destructibleRechargePercentage;
     [SerializeField] protected List<GameObject> Hitboxes;
 
     public List<DamageOnTrigger2D> DamageTriggers { get { return hitboxDamageTriggers; } }
-    public MeleeWeaponTypes MeleeWeaponType { 
+    public MeleeWeaponTypes MeleeWeaponType;
+
+    [HideInInspector] public PlayerInventoryManager owningInventoryManager;
+
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+
+    // The owning inventory manager may not necessarily be initialized on Awake
+    // so we initialize it here
+    PlayerGun m_playerGun;
+    protected PlayerGun playerGun
+    {
         get
         {
-            if (gameObject.GetComponent<Hammer>() != null) return MeleeWeaponTypes.Hammer;
-            return MeleeWeaponTypes.None;
-        } 
+            if (m_playerGun == null)
+                m_playerGun = owningInventoryManager.GetComponent<PlayerGun>();
+
+            return m_playerGun;
+        }
     }
 
-    SpriteRenderer m_SpriteRenderer;
+    protected Animator animator;
 
     private List<Collider2D> hitboxColliders = new List<Collider2D>();
     private List<DamageOnTrigger2D> hitboxDamageTriggers = new List<DamageOnTrigger2D>();
@@ -30,6 +44,7 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
 
         for(int i = 0; i < Hitboxes.Count; ++i)
         {
@@ -54,8 +69,6 @@ public abstract class MeleeWeaponBase : MonoBehaviour
             hitboxColliders.Add(hitboxCollider);
             hitboxDamageTriggers.Add(hitboxDamageTrigger);
         }
-
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
         HideWeapon();
     }
@@ -114,9 +127,9 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     void HideWeapon()
     {
-        Color tmp = m_SpriteRenderer.color;
+        Color tmp = spriteRenderer.color;
         tmp.a = 0;
-        m_SpriteRenderer.color = tmp;
+        spriteRenderer.color = tmp;
 
         foreach(Collider2D _collider in hitboxColliders)
         {
@@ -126,9 +139,9 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     void ShowWeapon()
     {
-        Color tmp = m_SpriteRenderer.color;
+        Color tmp = spriteRenderer.color;
         tmp.a = 255;
-        m_SpriteRenderer.color = tmp;
+        spriteRenderer.color = tmp;
 
         foreach (Collider2D _collider in hitboxColliders)
         {
