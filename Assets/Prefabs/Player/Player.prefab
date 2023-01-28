@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 7
   m_Name: Melee Weapon
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -627,16 +627,18 @@ MonoBehaviour:
     groundSpeed: 3
     attackRoot: {fileID: 5541513477606870549}
     destructibleRechargePercentage: 0.05
-    meleeAttack:
-      animationTrigger: Attack
-      gameObject: {fileID: 5541513477126352670}
-      attackDuration: 0.41667
-      startDamageTime: 0.13333
-      endDamageTime: 0.28333
     DefaultWeapon: {fileID: 0}
   aimController:
     playerController: {fileID: 0}
     aimObject: {fileID: 5541513476490804648}
+    startAimSfx:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 0}
+    stopAimSfx:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 0}
   debugCurrCtrlr: 
 --- !u!114 &5541513476851453213
 MonoBehaviour:
@@ -651,6 +653,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUntilFall: 0.4
+  resetPositionSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!95 &5541513476851453212
 Animator:
   serializedVersion: 5
@@ -738,6 +744,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b80d5cc1b49c39498c8b1dcee0c4792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeWeaponParentObject: {fileID: 5466668088381474323}
+  keyAcquiredSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &7863576250185103368
 MonoBehaviour:
   m_ObjectHideFlags: 0

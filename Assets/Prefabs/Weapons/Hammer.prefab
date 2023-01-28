@@ -103,19 +103,21 @@ MonoBehaviour:
   ChargeTime: 1
   NormalAttackCooldown: 0.3
   ChargedAttackCooldown: 0.3
+  normalRechargePercentage: 0
+  destructibleRechargePercentage: 0
   Hitboxes:
   - {fileID: 2891304189211986301}
   - {fileID: 952192274329815634}
   - {fileID: 1857756445986412389}
+  MeleeWeaponType: 0
+  owningInventoryManager: {fileID: 0}
+  spriteRenderer: {fileID: 591668911856286637}
   StaminaCost: 0
-  AmmoGainOnEnemy: 0
-  AmmoGainOnObject: 0
   HammerTrigger: {fileID: 8174403725883231035}
   AOETrigger: {fileID: 4658616003847279907}
   HammerKnockbackForce: 2
   AOEKnockbackForce: 1
   StunSeconds: 0
-  cooldownTimer: 0
 --- !u!1001 &676908105044888276
 PrefabInstance:
   m_ObjectHideFlags: 0

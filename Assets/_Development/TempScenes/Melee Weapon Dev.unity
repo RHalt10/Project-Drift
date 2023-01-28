@@ -1009,6 +1009,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MeleeWeaponParentObject: {fileID: 1342285220}
+  keyAcquiredSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &642888961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,6 +1101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUntilFall: 0.4
+  resetPositionSfx:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &642888965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,16 +1132,18 @@ MonoBehaviour:
     groundSpeed: 3
     attackRoot: {fileID: 1342285219}
     destructibleRechargePercentage: 0.05
-    meleeAttack:
-      animationTrigger: Attack
-      gameObject: {fileID: 1784468532}
-      attackDuration: 0.41667
-      startDamageTime: 0.13333
-      endDamageTime: 0.28333
     DefaultWeapon: {fileID: 591668911856286636, guid: 7bd123d29786d434a8b3d19854bb5557, type: 3}
   aimController:
     playerController: {fileID: 0}
     aimObject: {fileID: 784610854}
+    startAimSfx:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 0}
+    stopAimSfx:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 0}
   debugCurrCtrlr: 
 --- !u!114 &642888966
 MonoBehaviour:
@@ -3465,14 +3475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4027279888792346000, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 5466668088381474323, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5541513476851453205, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3484,7 +3486,7 @@ PrefabInstance:
     - target: {fileID: 5541513476851453208, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
       propertyPath: attackController.DefaultWeapon
       value: 
-      objectReference: {fileID: 591668911856286636, guid: 7bd123d29786d434a8b3d19854bb5557, type: 3}
+      objectReference: {fileID: 900856742772545702, guid: bcda61e29fccf9f4fa2dced5fbfde14d, type: 3}
     - target: {fileID: 5541513476851453209, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3533,14 +3535,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1227151727}
-    - target: {fileID: 5541513476851453281, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
-      propertyPath: MeleeWeaponParentObject
-      value: 
-      objectReference: {fileID: 5541513477429737250}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
---- !u!4 &5541513477429737250 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5466668088381474323, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
-  m_PrefabInstance: {fileID: 5541513477429737249}
-  m_PrefabAsset: {fileID: 0}

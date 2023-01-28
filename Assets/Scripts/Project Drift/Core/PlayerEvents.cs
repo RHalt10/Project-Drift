@@ -33,19 +33,6 @@ public class PlayerShootEvent
 }
 
 /// <summary>
-/// Called when the player attacks
-/// </summary>
-public class PlayerAttackEvent
-{
-    public PlayerAttackData attack;
-
-    public PlayerAttackEvent(PlayerAttackData _attack)
-    {
-        attack = _attack;
-    }
-}
-
-/// <summary>
 /// Called when a key is acquired
 /// </summary>
 public class KeyAcquiredEvent { }
