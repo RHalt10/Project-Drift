@@ -91,6 +91,7 @@ public class PlayerInventoryManager : MonoBehaviour
         GameObject clone = Instantiate(WeaponPrefab, MeleeWeaponParentObject.position, Quaternion.identity);
         clone.transform.SetParent(MeleeWeaponParentObject);
         meleeWeapon = clone.GetComponent<MeleeWeaponBase>();
+        meleeWeapon.owningInventoryManager = this;
     }
 }
 
