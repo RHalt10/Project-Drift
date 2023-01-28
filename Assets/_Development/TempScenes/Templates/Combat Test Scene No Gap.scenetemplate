@@ -18,6 +18,8 @@ MonoBehaviour:
     testing enemies.
   preview: {fileID: 5844474414811787165}
   dependencies:
+  - dependency: {fileID: 2800000, guid: ebd0157d1cf578f4db6c46249f19e2b4, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 9ad13b080c4144248b31b79743132c5b, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 01e6e1fe51119c741bd6bb8daefbcc55, type: 2}

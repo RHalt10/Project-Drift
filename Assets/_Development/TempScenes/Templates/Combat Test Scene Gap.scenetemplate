@@ -131,11 +131,13 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 719136438682926274, guid: a8881d4bf259e3f4e9920252ea865cb5, type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 5126884327654623849, guid: 26419e4f73a79d84ca3f8ac3c96c7bb8, type: 3}
-    instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 6267c94129d874d7bafe507aa753046a, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 5126884327654623849, guid: 26419e4f73a79d84ca3f8ac3c96c7bb8, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: ebd0157d1cf578f4db6c46249f19e2b4, type: 3}
     instantiationMode: 1
   templatePipeline: {fileID: 0}
   addToDefaults: 0

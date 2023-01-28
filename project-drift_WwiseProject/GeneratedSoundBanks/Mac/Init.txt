@@ -8,6 +8,14 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	2886307548	MusicBus			\Default Work Unit\MasterBus\MusicBus	
 	3803850708	SFXBus			\Default Work Unit\MasterBus\SFXBus	
 
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	4165136284	ParallelCompressionBus			\Default Work Unit\MasterBus\ParallelCompressionBus	
+
+Effect plug-ins	ID	Name	Type				Notes
+	35523026	ParallelBus_Compressor	Wwise Compressor			
+	712068021	MasterBus_Compressor	Wwise Compressor			
+	3704104161	MasterTransient_Compressor	Wwise Compressor			
+
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
 	3859886410	System	System			

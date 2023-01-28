@@ -13,6 +13,7 @@ public class PlayerCheckpointManager : MonoBehaviour
     Vector2 lastGroundPosition;
 
     [SerializeField] float timeUntilFall;
+    [SerializeField] AK.Wwise.Event resetPositionSfx;
 
     // Start is called before the first frame update
     void Start()
@@ -47,5 +48,6 @@ public class PlayerCheckpointManager : MonoBehaviour
         yield return new WaitForSeconds(timeUntilFall);
 
         characterController.Teleport(lastGroundPosition);
+        resetPositionSfx.Post(gameObject);
     }
 }
