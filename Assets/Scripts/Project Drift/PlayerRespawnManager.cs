@@ -40,7 +40,6 @@ public class PlayerRespawnManager : MonoBehaviour
         get { return SaveManager.Load<CheckpointInfo>("current_checkpoint"); }
         set { SaveManager.Save<CheckpointInfo>("current_checkpoint", value); }
     }
-    GroundCharacterController characterController;
     PlayerHealth playerHealth;
 
     // Start is called before the first frame update
@@ -48,7 +47,6 @@ public class PlayerRespawnManager : MonoBehaviour
     {
         playerHealth = GetComponent<PlayerHealth>();
         playerHealth.events.OnDeath.AddListener(SceneReload);
-        
         RespawnPlayer();
     }
 

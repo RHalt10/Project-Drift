@@ -13,7 +13,7 @@ public class GameCheckpoint : MonoBehaviour
     [Tooltip("Checkpoint identifier")]
     [SerializeField] string checkPointName;
 
-    [Tooltip("Change where player respawns for this checkpoint zone.")]
+    [Tooltip("Change where player respawns relative to center of checkpoint zone.")]
     [SerializeField] private Vector2 respawnOffset = Vector2.zero;
     private Vector2 checkpointLocation;
 
