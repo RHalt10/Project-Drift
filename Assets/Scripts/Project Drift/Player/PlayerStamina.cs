@@ -26,14 +26,14 @@ public class PlayerStamina : MonoBehaviour
         }
 
         recharging = false;
-        rechargeDelayCoroutines.Add(StartCoroutine(RechargeDelay(3f)));
-    }
-
-    IEnumerator RechargeDelay(float delay) {
+        rechargeDelayCoroutines.Add(StartCoroutine(RechargeDelay(10f)));
         if(rechargeDelayCoroutines.Count > 1) {
             StopCoroutine(rechargeDelayCoroutines[0]);
             rechargeDelayCoroutines.RemoveAt(0);
         }
+    }
+
+    IEnumerator RechargeDelay(float delay) {
         yield return new WaitForSeconds(delay);
         recharging = true;
         // Start recharging stamina
@@ -41,14 +41,13 @@ public class PlayerStamina : MonoBehaviour
     }
 
     IEnumerator Recharge() {
-        currentStamina += 0.1f;
-        if(currentStamina >= 1f) {
-            currentStamina = 1f;
-            recharging = false;
-        }
-        yield return new WaitForSeconds(1f);
-        if(currentStamina < 1) {
-            yield return StartCoroutine(Recharge());
+        while(recharging) {
+            currentStamina += 0.1f;
+            if(currentStamina >= 1f) {
+                currentStamina = 1f;
+                recharging = false;
+            }
+            yield return new WaitForSeconds(3f);
         }
     }
 
