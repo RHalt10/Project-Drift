@@ -6,7 +6,7 @@ public class LerpOverTime : MonoBehaviour
 {
     // public variables to allow for changing the shake parameters for testing
     public float lerpTime = 1.0f;
-    public float[] offsetValues = { 10.0f, 10.0f, 0.0f };
+    public float[] offsetValues = { 0.0f, 100.0f, 0.0f };
 
     // private variables to store references to transform and start/end locations
     private Transform UITransform;

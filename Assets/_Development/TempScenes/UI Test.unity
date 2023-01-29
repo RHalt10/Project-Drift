@@ -242,6 +242,9 @@ MonoBehaviour:
   spacing: 10
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  k: 0.3
+  friction: 0.9
+  offset: 50
 --- !u!114 &322790970
 MonoBehaviour:
   m_ObjectHideFlags: 0
