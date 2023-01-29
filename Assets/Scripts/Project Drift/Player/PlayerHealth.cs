@@ -16,6 +16,15 @@ public class PlayerHealth : HealthSystem
     [Tooltip("The maximum amount of health. Also the starting amount")]
     public int maxHealth;
 
+    [Tooltip("The current amount of health.")]
+    public int currentHealth;
+
+    [Tooltip("The maximum amount of shield. Also the starting amount")]
+    public int maxShield;
+
+    [Tooltip("The current amount of shield.")]
+    public int currentShield;
+
     [Tooltip("Are invincibility frames enabled when the health takes damage")]
     public bool iframesEnabled = false;
 
@@ -31,11 +40,16 @@ public class PlayerHealth : HealthSystem
     [Tooltip("Invoked when the player's health is upgraded")]
     public UnityEvent OnHealthUpgrade;
 
+    private List<Coroutine> shieldDelayCoroutines = new List<Coroutine>();
+    private bool shieldBroken;
+
     protected override void Initialize()
     {
         base.Initialize();
 
-        current = maxHealth;
+        current = maxHealth + maxShield;
+        currentHealth = maxHealth;
+        currentShield = maxShield;
     }
 
     protected override bool ApplyDamage(int amount, object obj = null)
@@ -52,7 +66,23 @@ public class PlayerHealth : HealthSystem
             iframesEnd = Time.time + iframesDuration;
         }
 
-        current -= amount;
+        if(currentShield > 0) { // Shield remaining -> apply damage to shield
+            currentShield -= Mathf.Min(currentShield, amount);
+        } else {
+            currentHealth -= Mathf.Min(currentHealth, amount);
+        }
+
+        current = currentHealth + currentShield;
+
+        // Shield break
+        if(currentShield <= 0) {
+            shieldBroken = true;
+        }
+
+        // Delay shield regeneration
+        if(shieldBroken) {
+            shieldDelayCoroutines.Add(StartCoroutine(ShieldDelay(5f)));
+        }
 
         if (current <= 0)
         {
@@ -67,10 +97,13 @@ public class PlayerHealth : HealthSystem
 
     protected override bool ApplyHeal(int amount, object obj = null)
     {
-        current += amount;
+        currentHealth += amount;
 
-        if (current > maxHealth)
-            current = maxHealth;
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+        }
+
+        current = currentHealth + currentShield;
 
         return true;
     }
@@ -78,14 +111,38 @@ public class PlayerHealth : HealthSystem
     public void UpgradeHealth(int healthAmount)
     {
         maxHealth += healthAmount;
-        current = maxHealth;
+        currentHealth = maxHealth;
+        current = currentHealth + currentShield;
 
         OnHealthUpgrade.Invoke();
     }
 
     public override string GetDebugData()
     {
-        return "Current: " + current + "/" + maxHealth +
+        return "Current: " + current + "/" + (maxHealth + maxShield) +
             "\n" + (Time.time < iframesEnd ? "iFrames active" : "iFrames inactive");
     }
+
+    IEnumerator ShieldDelay(float delay) {
+        if(shieldDelayCoroutines.Count > 1) {
+            StopCoroutine(shieldDelayCoroutines[0]);
+            shieldDelayCoroutines.RemoveAt(0);
+        }
+        yield return new WaitForSeconds(delay);
+        shieldBroken = false;
+        // Start regening shield
+        StartCoroutine(ShieldRegen(1f));
+    }
+
+    IEnumerator ShieldRegen(float regenTime) {
+        currentShield += 1;
+        if(currentShield > maxShield) {
+            currentShield = maxShield;
+        }
+        yield return new WaitForSeconds(regenTime);
+        if(currentShield < maxShield) {
+            yield return StartCoroutine(ShieldRegen(1f));
+        }
+    }
+
 }
