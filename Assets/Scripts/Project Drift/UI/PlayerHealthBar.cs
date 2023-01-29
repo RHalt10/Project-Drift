@@ -14,8 +14,14 @@ public class PlayerHealthBar : MonoBehaviour
 
     public Color validColor;
     public Color invalidColor;
+    public Color midColor;
+    public Color lowColor;
+    
+    public float midThreshold = 0.6f;
+    public float lowThreshold = 0.4f;
 
     RectTransform rectTransform;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,20 +36,39 @@ public class PlayerHealthBar : MonoBehaviour
 
     void GenerateHealthBar()
     {
-        for (int i = transform.childCount - 1; i >= 0; i--)
-            Destroy(transform.GetChild(i).gameObject);
+        for (int i = rectTransform.childCount - 1; i >= 0; i--)
+            Destroy(rectTransform.GetChild(i).gameObject);
 
         float width = rectTransform.GetWidth();
         float segmentWidth = (width - spacing * (playerHealth.maxHealth + 1)) / playerHealth.maxHealth;
 
+        // set color depending on player health
+        Debug.Log(playerHealth.Current + "/" + playerHealth.maxHealth);
+        float playerHealthPercent = (float)playerHealth.Current / (float)playerHealth.maxHealth;
+
+        Color currentColor;
+        if (playerHealthPercent <= lowThreshold)
+        {
+            currentColor = lowColor;
+        }
+        else if (playerHealthPercent <= midThreshold)
+        {
+            currentColor = midColor;
+        }
+        else
+        {
+            currentColor = validColor;
+        }
+
+
         for (int i = 0; i < playerHealth.maxHealth; i++)
         {
-            GameObject spawnedPrefab = Instantiate(healthSegmentPrefab, transform);
+            GameObject spawnedPrefab = Instantiate(healthSegmentPrefab, rectTransform);
             RectTransform spawnedTransform = spawnedPrefab.GetComponent<RectTransform>();
             spawnedTransform.SetWidth(segmentWidth);
             spawnedTransform.anchoredPosition = new Vector2(i * (segmentWidth + spacing) + spacing, 0);
 
-            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.Current ? invalidColor : validColor;
+            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.Current ? invalidColor : currentColor;
         }
     }
 }
