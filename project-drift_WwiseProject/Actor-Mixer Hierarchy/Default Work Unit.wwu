@@ -314,6 +314,65 @@
 										<ActiveSource Name="playerRanged" ID="{66109FB8-3456-4923-BC13-F8A72BBC9CC5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="playerDamage" ID="{B67693A5-197C-4A52-80F4-6C3CCD8512BF}" ShortID="749659074">
+									<PropertyList>
+										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{F41B402B-D1B6-406E-89DE-B224C527D996}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FEF7BF60-F2A1-47A1-A99E-13819B05065E}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="2"/>
+															<Property Name="Min" Type="Real64" Value="-2"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="playerDamage" ID="{0AAEC57D-446C-4E05-A65D-B7F4F3FB543C}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.583445134575572"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>playerDamage.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="828891"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="playerDamage" ID="{0AAEC57D-446C-4E05-A65D-B7F4F3FB543C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="Enemies" ID="{C2AEC986-5F20-4F02-9E66-4383B5906D81}" ShortID="415996191">
@@ -405,6 +464,61 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="TempDeathSound" ID="{B6DEDCFD-E8B5-4B0B-B658-152DB8251F9B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="enemyDamage" ID="{5A711BCB-B6B6-4D76-B516-C6D76CE33D2B}" ShortID="441750313">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2363E532-2FAC-4691-B3C9-29FC61D403B2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-300"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{B828CB1F-0B75-461B-A654-620F29AB6BA2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="2"/>
+															<Property Name="Min" Type="Real64" Value="-2"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="enemyDamage" ID="{0DEED4F4-7A19-4AEA-A5EE-4383CE4F1216}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.112471678192961"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="9.8845920902157"/>
+												<Property Name="TrimEnd" Type="Real64" Value="10.2112264406372"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>enemyDamage.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="160556910"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="enemyDamage" ID="{0DEED4F4-7A19-4AEA-A5EE-4383CE4F1216}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
