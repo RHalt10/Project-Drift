@@ -130,6 +130,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="PlayerDamage_Play" ID="{F998D391-013B-4758-8A37-87F1474191BE}">
+									<ChildrenList>
+										<Action Name="" ID="{01F5DA44-34CD-451D-9B98-D09E5209A61B}" ShortID="677955635">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDamage" ID="{B67693A5-197C-4A52-80F4-6C3CCD8512BF}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Enemies" ID="{9B7916A3-A16B-4057-84E2-E9BD0F1BF9F1}" ShortID="860723331">
@@ -178,6 +189,17 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="enemyDeathSound" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="enemyDamage_Play" ID="{3427B3C1-BB5D-496F-AA83-94750B39C488}">
+									<ChildrenList>
+										<Action Name="" ID="{ACE1AF4E-20D7-4020-A348-B68E00F36311}" ShortID="785919182">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="enemyDamage" ID="{5A711BCB-B6B6-4D76-B516-C6D76CE33D2B}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
