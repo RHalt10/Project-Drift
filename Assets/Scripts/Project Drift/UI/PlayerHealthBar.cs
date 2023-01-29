@@ -14,22 +14,14 @@ public class PlayerHealthBar : MonoBehaviour
 
     public Color validColor;
     public Color invalidColor;
+    public Color midColor;
+    public Color lowColor;
+    
+    public float midThreshold = 0.6f;
+    public float lowThreshold = 0.4f;
 
     RectTransform rectTransform;
 
-    // Hooke's Law variables
-    // k is roughly how stiff/reactive the "spring" is
-    public float k_stiff = 0.3f;
-    // higher value seems to produce more of the intended "springiness"
-    public float friction = 0.9f;
-    public float offset = 50.0f;
-
-    private float vel = 0.0f;
-
-    // testing variable
-    private float startY;
-
-    
 
     // Start is called before the first frame update
     void Start()
@@ -38,24 +30,8 @@ public class PlayerHealthBar : MonoBehaviour
 
         playerHealth.events.OnHealthChange.AddListener(GenerateHealthBar);
         playerHealth.OnHealthUpgrade.AddListener(GenerateHealthBar);
-        // new event, for use in shake callback
-        playerHealth.events.OnDamage.AddListener(DisplaceForShake);
 
         GenerateHealthBar();
-
-        // set original y position
-        startY = rectTransform.position.y;
-    }
-
-    // debug trigger the shake
-    private void Update()
-    {
-        // displacement from target
-        float x = startY - rectTransform.position.y;
-        float accel = k_stiff * x;
-        vel += accel;
-        vel *= friction;
-        rectTransform.position = new Vector3(rectTransform.position.x, rectTransform.position.y + vel, rectTransform.position.z);
     }
 
     void GenerateHealthBar()
@@ -66,6 +42,25 @@ public class PlayerHealthBar : MonoBehaviour
         float width = rectTransform.GetWidth();
         float segmentWidth = (width - spacing * (playerHealth.maxHealth + 1)) / playerHealth.maxHealth;
 
+        // set color depending on player health
+        Debug.Log(playerHealth.Current + "/" + playerHealth.maxHealth);
+        float playerHealthPercent = (float)playerHealth.Current / (float)playerHealth.maxHealth;
+
+        Color currentColor;
+        if (playerHealthPercent <= lowThreshold)
+        {
+            currentColor = lowColor;
+        }
+        else if (playerHealthPercent <= midThreshold)
+        {
+            currentColor = midColor;
+        }
+        else
+        {
+            currentColor = validColor;
+        }
+
+
         for (int i = 0; i < playerHealth.maxHealth; i++)
         {
             GameObject spawnedPrefab = Instantiate(healthSegmentPrefab, rectTransform);
@@ -73,14 +68,7 @@ public class PlayerHealthBar : MonoBehaviour
             spawnedTransform.SetWidth(segmentWidth);
             spawnedTransform.anchoredPosition = new Vector2(i * (segmentWidth + spacing) + spacing, 0);
 
-            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.Current ? invalidColor : validColor;
+            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.Current ? invalidColor : currentColor;
         }
     }
-
-    // callback function to initiate shake effect
-    private void DisplaceForShake()
-    {
-        rectTransform.position = new Vector3(rectTransform.position.x, rectTransform.position.y + offset, rectTransform.position.z);
-    }
-
 }
