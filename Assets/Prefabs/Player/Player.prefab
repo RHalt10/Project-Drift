@@ -725,6 +725,9 @@ MonoBehaviour:
         m_Calls: []
   isInvincible: 0
   maxHealth: 10
+  currentHealth: 0
+  maxShield: 2
+  currentShield: 0
   iframesEnabled: 1
   iframesDuration: 0.5
   OnIframes:
