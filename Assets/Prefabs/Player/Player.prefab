@@ -629,7 +629,7 @@ MonoBehaviour:
     groundSpeed: 3
     attackRoot: {fileID: 5541513477606870549}
     destructibleRechargePercentage: 0.05
-    DefaultWeapon: {fileID: 0}
+    DefaultWeapon: {fileID: 900856742772545702, guid: bcda61e29fccf9f4fa2dced5fbfde14d, type: 3}
   aimController:
     playerController: {fileID: 0}
     aimObject: {fileID: 5541513476490804648}

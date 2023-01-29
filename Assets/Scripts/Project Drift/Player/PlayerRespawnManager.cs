@@ -66,11 +66,10 @@ public class PlayerRespawnManager : MonoBehaviour
     // Teleport player to last checkpoint location and restore health/stamina.
     private void RespawnPlayer()
     {
-        Vector2 respawnLoc = current_checkpoint.Getlocation();
-        if(respawnLoc != null) {
+        if(current_checkpoint != null) 
+        {
             GetComponent<GroundCharacterController>().Teleport(current_checkpoint.Getlocation());
         }
-        //Debug.Log("respawned at checkpoint: " + current_checkpoint.name + "of location " + current_checkpoint.Getlocation());
         
         playerHealth.Heal(100);
         // TODO: restore stamina to full (already complete if scene starts with full stamina)

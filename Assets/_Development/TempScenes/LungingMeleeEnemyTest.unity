@@ -179,6 +179,10 @@ MonoBehaviour:
   spacing: 10
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  midColor: {r: 0, g: 0, b: 0, a: 0}
+  lowColor: {r: 0, g: 0, b: 0, a: 0}
+  midThreshold: 0.6
+  lowThreshold: 0.4
 --- !u!114 &322790970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,6 +1458,10 @@ PrefabInstance:
     - target: {fileID: 7670977992641997397, guid: 7515f4d53a0744be2abdcfa0bfc153fb, type: 3}
       propertyPath: m_Name
       value: LungingMeleeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670977992641997406, guid: 7515f4d53a0744be2abdcfa0bfc153fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7670977992641997407, guid: 7515f4d53a0744be2abdcfa0bfc153fb, type: 3}
       propertyPath: m_RootOrder
