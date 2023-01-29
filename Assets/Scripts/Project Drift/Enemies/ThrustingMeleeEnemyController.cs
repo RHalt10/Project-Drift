@@ -20,7 +20,7 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
     public float hitboxRadiusMin = 0.8f;
     public float hitboxRadiusMax = 1.1f;
     public float attackSpeed = 3.0f;
-    public float attackDuration = 0.2f;
+    public float thrustStep = 0.01f;
 
     EnemyState state;
     public EnemyState State
@@ -39,17 +39,24 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
     GroundCharacterController characterController;
     RaycastHit2D hit;
     Vector2 playerPosition;
+    GameObject hitbox;
 
     private float time = 0;
 
     void Start()
     {
+        hitbox = transform.GetChild(0).gameObject;
+
         characterController = GetComponent<GroundCharacterController>();
         State = startingState;
     }
     private void Update()
     {
         playerPosition = PlayerController.Instance.transform.position;
+        if (State != EnemyState.Attack)
+        {
+            hitbox.transform.position = (Vector2)transform.position + ((playerPosition - (Vector2)transform.position).normalized) * 0.5f;
+        }
         hit = Physics2D.Raycast(transform.position, playerPosition - (Vector2)transform.position, 1f, LayerMask.GetMask("Obstacle"));
         Debug.DrawRay(transform.position, playerPosition - (Vector2)transform.position, Color.black);
         time += Time.deltaTime;
@@ -97,6 +104,7 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
     {
         while (Vector2.Distance(playerPosition, transform.position) < hitboxRadiusMax)
         {
+            float attackTime = 0;
             if (Vector2.Distance(playerPosition, transform.position) < hitboxRadiusMin)
             {
                 State = EnemyState.BackUp;
@@ -104,6 +112,8 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
             }
             else
             {
+                hitbox.transform.position = (Vector2)transform.position + ((playerPosition - (Vector2)transform.position).normalized) * 0.5f;
+
                 if (time > attackCooldown)
                 {
                     characterController.velocity = Vector2.zero;
@@ -111,11 +121,23 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
 
                     yield return new WaitForSeconds(attackWindup);
 
-
                     Vector2 direction = playerPositionNow - (Vector2)transform.position;
+                    characterController.velocity = attackSpeed * direction.normalized;
+                    yield return new WaitForSeconds(thrustStep);
+                    characterController.velocity = Vector2.zero;
 
-                    characterController.velocity = attackSpeed * direction;
-                    yield return new WaitForSeconds(attackDuration);
+                    while (attackTime < 0.5f)
+                    {
+                        hitbox.transform.position = Vector2.Lerp(hitbox.transform.position, playerPositionNow, attackTime / 3f);
+                        attackTime += Time.deltaTime;
+                        yield return null;
+                    }
+                    while (attackTime < 1f)
+                    {
+                        hitbox.transform.position = Vector2.Lerp(hitbox.transform.position, (Vector2)transform.position + ((playerPosition - (Vector2)transform.position).normalized) * 0.5f, attackTime / 3f);
+                        attackTime += Time.deltaTime;
+                        yield return null;
+                    }
                     time = 0;
                 }
                 yield return null;
@@ -142,12 +164,30 @@ public class ThrustingMeleeEnemyController : MonoBehaviour
     }
     IEnumerator Avoid()
     {
+        //scuff
         while(hit.collider != null)
         {
-            characterController.velocity = Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()).normalized * movementSpeed;
+            if (Physics2D.Raycast(transform.position, Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()), 1f, LayerMask.GetMask("Obstacle")).collider != null)
+            {
+                characterController.velocity = -Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()).normalized * movementSpeed;
+
+            }
+            else
+            {
+                characterController.velocity = Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()).normalized * movementSpeed;
+            }
             yield return new WaitForSeconds(1f);
         }
+        if (Physics2D.Raycast(transform.position, Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()), 1f, LayerMask.GetMask("Obstacle")).collider != null)
+        {
+            characterController.velocity = -Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()).normalized * movementSpeed;
 
+        }
+        else
+        {
+            characterController.velocity = Vector2.Perpendicular((Vector2)transform.position - ComputeNextWalkingPosition()).normalized * movementSpeed;
+        }
+        yield return new WaitForSeconds(1f);
         State = EnemyState.MoveTowardsPlayer;
     }
 
