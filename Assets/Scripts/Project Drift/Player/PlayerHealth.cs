@@ -82,6 +82,10 @@ public class PlayerHealth : HealthSystem
         // Delay shield regeneration
         if(shieldBroken) {
             shieldDelayCoroutines.Add(StartCoroutine(ShieldDelay(5f)));
+            if(shieldDelayCoroutines.Count > 1) {
+                StopCoroutine(shieldDelayCoroutines[0]);
+                shieldDelayCoroutines.RemoveAt(0);
+            }
         }
 
         if (current <= 0)
@@ -124,10 +128,6 @@ public class PlayerHealth : HealthSystem
     }
 
     IEnumerator ShieldDelay(float delay) {
-        if(shieldDelayCoroutines.Count > 1) {
-            StopCoroutine(shieldDelayCoroutines[0]);
-            shieldDelayCoroutines.RemoveAt(0);
-        }
         yield return new WaitForSeconds(delay);
         shieldBroken = false;
         // Start regening shield
@@ -135,13 +135,12 @@ public class PlayerHealth : HealthSystem
     }
 
     IEnumerator ShieldRegen(float regenTime) {
-        currentShield += 1;
-        if(currentShield > maxShield) {
-            currentShield = maxShield;
-        }
-        yield return new WaitForSeconds(regenTime);
-        if(currentShield < maxShield) {
-            yield return StartCoroutine(ShieldRegen(1f));
+        while(currentShield < maxShield) {
+            currentShield += 1;
+            if(currentShield > maxShield) {
+                currentShield = maxShield;
+            }
+            yield return new WaitForSeconds(regenTime);
         }
     }
 
