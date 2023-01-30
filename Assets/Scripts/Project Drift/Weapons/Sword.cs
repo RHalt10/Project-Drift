@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class Sword : MeleeWeaponBase
 {
+    [Header("Sword Configuration")]
     public float attackTime;
-
-    [Header("Combo Configuration")]
-    public float comboCooldown;
-    public int comboAmount;
-
-    bool taskOngoing;
-    bool comboActivated;
-    int currentComboAmount;
-    float cooldownTimer;
 
     protected override void Awake()
     {
         base.Awake(); // Call the parent's awake function first
-        cooldownTimer = comboCooldown;
-    }
-
-    private void Update()
-    {
-        if (!taskOngoing) cooldownTimer += Time.unscaledDeltaTime;
     }
 
     public override void ApplyCost(bool isNormalAttack)
@@ -46,35 +32,27 @@ public class Sword : MeleeWeaponBase
 
     protected override IEnumerator NormalAttackRoutine(int ComboCount)
     {
-        if (cooldownTimer < comboCooldown) yield break;
-
-        if (taskOngoing)
+        /*
+        switch (ComboCount)
         {
-            if (currentComboAmount < comboAmount)
-            {
-                currentComboAmount++;
-                comboActivated = true;
-            }
+            case 1:
+                // Combo 1 Stuff
+                break;
+            case 2:
+                // Combo 1 Stuff
+                break;
 
-            yield return new WaitWhile(() => taskOngoing);
-            yield break;
+            // ... //
+
+            default:
+                break;
         }
+        */
 
-        currentComboAmount = 1;
-        do
-        {
-            taskOngoing = true;
-            comboActivated = false;
+        // Outside if all combos do the same thing
+        animator.SetTrigger("Normal Attack");
 
-            animator.SetTrigger("Normal Attack");
+        yield return new WaitForSeconds(attackTime);
 
-            yield return new WaitForSeconds(attackTime);
-
-            taskOngoing = false;
-
-        }
-        while (comboActivated);
-
-        currentComboAmount = 0;
     }
 }
