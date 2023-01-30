@@ -103,7 +103,7 @@ MonoBehaviour:
   MeleeWeaponType: 1
   MaxComboCount: 3
   ChargeTime: 1
-  NormalAttackCooldown: 10
+  NormalAttackCooldown: 2
   ChargedAttackCooldown: 0.3
   Hitboxes:
   - {fileID: 2891304189211986301}
@@ -121,6 +121,7 @@ MonoBehaviour:
   AOETrigger: {fileID: 4658616003847279907}
   HammerKnockbackForce: 2
   AOEKnockbackForce: 1
+  KnockbackDuration: 0.5
   StunSeconds: 0
 --- !u!1001 &676908105044888276
 PrefabInstance:
