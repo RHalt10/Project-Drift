@@ -13,6 +13,7 @@ public class Hammer : MeleeWeaponBase
     [SerializeField] DamageOnTrigger2D AOETrigger;
     [SerializeField] float HammerKnockbackForce;
     [SerializeField] float AOEKnockbackForce;
+    [SerializeField] float KnockbackDuration; 
 
     [Header("Hammer Stun Configuraiton")]
     [SerializeField] float StunSeconds;
@@ -51,7 +52,7 @@ public class Hammer : MeleeWeaponBase
         {
             Vector3 Force = HammerKnockbackForce * Vector3.Normalize(target.transform.position - transform.position); 
             Debug.Log("Hammer Knockback on " + target);
-            EventBus.Publish(new KnockbackEvent(Force, target));
+            EventBus.Publish(new KnockbackEvent(Force, KnockbackDuration, target));
         }
     }
 
@@ -61,7 +62,7 @@ public class Hammer : MeleeWeaponBase
         {
             Vector3 Force = AOEKnockbackForce * Vector3.Normalize(target.transform.position - transform.position);
             Debug.Log("Hammer Knockback on " + target);
-            EventBus.Publish(new KnockbackEvent(Force, target));
+            EventBus.Publish(new KnockbackEvent(Force, KnockbackDuration, target));
         }
     }
 

@@ -5,10 +5,12 @@ using UnityEngine;
 public class KnockbackEvent
 {
     public Vector3 KnockbackForce;
-    public GameObject Participant; 
-    public KnockbackEvent(Vector3 _force, GameObject _participant)
+    public GameObject Participant;
+    public float Duration;
+    public KnockbackEvent(Vector3 _force, float _seconds, GameObject _participant)
     {
         KnockbackForce = _force; 
+        Duration = _seconds;
         Participant = _participant;
     }
 }

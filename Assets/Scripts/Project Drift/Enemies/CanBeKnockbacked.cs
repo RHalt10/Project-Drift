@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanBeKnockbacked : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private GroundCharacterController controller;
     Subscription<KnockbackEvent> knockback_event;
     private void Awake()
     {
@@ -12,14 +12,20 @@ public class CanBeKnockbacked : MonoBehaviour
     }
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        controller = GetComponent<GroundCharacterController>();
     }
 
     void OnKnockback(KnockbackEvent e)
     {
         if (e.Participant != gameObject) return;
+        StartCoroutine(KnockbackRoutine(e.KnockbackForce, e.Duration));
+    }
 
-        rb.AddForce(e.KnockbackForce, ForceMode2D.Impulse);
+    IEnumerator KnockbackRoutine(Vector3 force, float duration)
+    {
+        controller.velocity = force;
+        yield return new WaitForSecondsRealtime(duration);
+        controller.velocity = Vector2.zero;
     }
 
 

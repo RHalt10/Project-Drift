@@ -44,7 +44,7 @@ public class GroundCharacterController : MonoBehaviour
     /// The velocity that the character controller is moving at.
     /// If not enabled or can't move, it will not move.
     /// </summary>
-    [HideInInspector]
+    //[HideInInspector]
     public Vector2 velocity;
 
     /// <summary> The ground layermask (for checking if the character is on ground) </summary>
