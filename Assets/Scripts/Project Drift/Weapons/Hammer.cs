@@ -81,7 +81,7 @@ public class Hammer : MeleeWeaponBase
     protected override IEnumerator NormalAttackRoutine(int ComboCount)
     {
         Debug.Log("[START] Hammer NormalAttack(), Combo: " + ComboCount);
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(0.8f);
         Debug.Log("[END] Hammer NormalAttack(), Combo: " + ComboCount);
     }
 }

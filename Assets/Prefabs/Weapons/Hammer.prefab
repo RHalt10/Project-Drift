@@ -100,19 +100,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1abc380433424397cb7d14faba63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeWeaponType: 1
   MaxComboCount: 3
   ChargeTime: 1
-  NormalAttackCooldown: 0.3
+  NormalAttackCooldown: 10
   ChargedAttackCooldown: 0.3
   Hitboxes:
   - {fileID: 2891304189211986301}
   - {fileID: 952192274329815634}
   - {fileID: 1857756445986412389}
+  spriteRenderer: {fileID: 591668911856286637}
   normalRechargePercentage: 0
   destructibleRechargePercentage: 0
-  MeleeWeaponType: 1
   owningInventoryManager: {fileID: 0}
-  spriteRenderer: {fileID: 591668911856286637}
+  NormalAttackDone: 1
+  ComboCounter: 0
+  NormalAttackQueue: 0
   StaminaCost: 0
   HammerTrigger: {fileID: 8174403725883231035}
   AOETrigger: {fileID: 4658616003847279907}

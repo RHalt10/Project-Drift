@@ -47,9 +47,9 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     // Normal Attack
     public bool NormalAttackDone = true;
-    private Coroutine NormalAttackInstance;
     public int ComboCounter = 0;
     private float NormalCooldownTimer = 0;
+    public int NormalAttackQueue; 
 
     // Charged Attack
     private float ChargedCooldownTimer = 0;
@@ -92,27 +92,31 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (NormalAttackDone && NormalAttackQueue > 0)
+        {
+            StartCoroutine(NormalAttackWrapper());
+            NormalAttackQueue--;
+        }
+
         if (NormalAttackDone) NormalCooldownTimer += Time.fixedDeltaTime;
         if (ChargedAttackDone) ChargedCooldownTimer += Time.fixedDeltaTime; 
     }
 
     public void NormalAttack()
     {
-        if (NormalAttackDone && NormalCooldownTimer < NormalAttackCooldown) return;
+        if (NormalCooldownTimer < NormalAttackCooldown && ComboCounter + NormalAttackQueue >= MaxComboCount)
+        {
+            return; 
+        }
+
+        if (NormalCooldownTimer >= NormalAttackCooldown)
+        {
+            ComboCounter = 0;
+        }
+
+        NormalAttackQueue++;
 
         NormalCooldownTimer = 0;
-
-        if (NormalAttackDone)
-        {
-            NormalAttackInstance = StartCoroutine(NormalAttackWrapper());
-        }
-        else
-        {
-            if (ComboCounter >= MaxComboCount) return; 
-            StopCoroutine(NormalAttackInstance);
-            NormalAttackInstance = StartCoroutine(NormalAttackWrapper());
-        }
-
 
     }
 
@@ -128,13 +132,14 @@ public abstract class MeleeWeaponBase : MonoBehaviour
     public IEnumerator NormalAttackWrapper()
     {
         NormalAttackDone = false;
+        NormalCooldownTimer = 0;
         ComboCounter++;
         ShowWeapon();
         currentAttackType = AttackType.Normal;
         yield return StartCoroutine(NormalAttackRoutine(ComboCounter));
         HideWeapon();
+        yield return new WaitForSeconds(0.1f); 
         NormalAttackDone = true;
-        ComboCounter = 0; 
     }
 
     public IEnumerator ChargedAttackWrapper()
