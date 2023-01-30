@@ -7,19 +7,23 @@ public enum MeleeWeaponTypes { None, Hammer, Sword } // Add more weapon types he
 public abstract class MeleeWeaponBase : MonoBehaviour
 {
     [Header("Melee Weapon Basic Configuration")]
+    public MeleeWeaponTypes MeleeWeaponType;
+    [SerializeField] public int MaxComboCount; 
     [SerializeField] public float ChargeTime; // Must be set
     [SerializeField] protected float NormalAttackCooldown;
     [SerializeField] protected float ChargedAttackCooldown;
-    [SerializeField] public float normalRechargePercentage;
-    [SerializeField] public float destructibleRechargePercentage;
     [SerializeField] protected List<GameObject> Hitboxes;
 
+    [Header("Components References")]
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+
+    [Header("Melee Weapon Basic Gains")]
+    [SerializeField] public float normalRechargePercentage;
+    [SerializeField] public float destructibleRechargePercentage;
+    
     public List<DamageOnTrigger2D> DamageTriggers { get { return hitboxDamageTriggers; } }
-    public MeleeWeaponTypes MeleeWeaponType;
 
     [HideInInspector] public PlayerInventoryManager owningInventoryManager;
-
-    [SerializeField] protected SpriteRenderer spriteRenderer;
 
     // The owning inventory manager may not necessarily be initialized on Awake
     // so we initialize it here
@@ -37,8 +41,21 @@ public abstract class MeleeWeaponBase : MonoBehaviour
 
     protected Animator animator;
 
+    // Hit Boxes
     private List<Collider2D> hitboxColliders = new List<Collider2D>();
     private List<DamageOnTrigger2D> hitboxDamageTriggers = new List<DamageOnTrigger2D>();
+
+    // Normal Attack
+    public bool NormalAttackDone = true;
+    public int ComboCounter = 0;
+    private float NormalCooldownTimer = 0;
+    public int NormalAttackQueue; 
+
+    // Charged Attack
+    private float ChargedCooldownTimer = 0;
+    private bool ChargedAttackDone = true; 
+
+    // State
     protected enum AttackType { Normal, Charged }
     protected AttackType currentAttackType = AttackType.Normal;
 
@@ -73,37 +90,73 @@ public abstract class MeleeWeaponBase : MonoBehaviour
         HideWeapon();
     }
 
+    protected virtual void Update()
+    {
+        if (NormalAttackDone && NormalAttackQueue > 0)
+        {
+            StartCoroutine(NormalAttackWrapper());
+            NormalAttackQueue--;
+        }
+
+        if (NormalAttackDone) NormalCooldownTimer += Time.fixedDeltaTime;
+        if (ChargedAttackDone) ChargedCooldownTimer += Time.fixedDeltaTime; 
+    }
+
     public void NormalAttack()
     {
-        StartCoroutine(NormalAttackWrapper());
+        if (NormalCooldownTimer < NormalAttackCooldown && ComboCounter + NormalAttackQueue >= MaxComboCount)
+        {
+            return; 
+        }
+
+        if (NormalCooldownTimer >= NormalAttackCooldown)
+        {
+            ComboCounter = 0;
+        }
+
+        NormalAttackQueue++;
+
+        NormalCooldownTimer = 0;
+
     }
 
     public void ChargedAttack()
     {
+        if (ChargedCooldownTimer < ChargedAttackCooldown) return;
+
+        ChargedCooldownTimer = 0; 
+
         StartCoroutine(ChargedAttackWrapper());
     }
 
     public IEnumerator NormalAttackWrapper()
     {
+        NormalAttackDone = false;
+        NormalCooldownTimer = 0;
+        ComboCounter++;
         ShowWeapon();
         currentAttackType = AttackType.Normal;
-        yield return StartCoroutine(NormalAttackRoutine());
+        yield return StartCoroutine(NormalAttackRoutine(ComboCounter));
         HideWeapon();
+        yield return new WaitForSeconds(0.1f); 
+        NormalAttackDone = true;
     }
 
     public IEnumerator ChargedAttackWrapper()
     {
+        ChargedAttackDone = false;
         ShowWeapon();
         currentAttackType = AttackType.Charged;
         yield return StartCoroutine(ChargedAttackRoutine());
         HideWeapon();
+        ChargedAttackDone = true; 
     }
 
     /// <summary>
     /// Implement Weapon's Normal Attack Routine.
     /// <para> - Be sure to include any cooldown logic. Input class will call this function whenever a "Melee Attack" input is detected. </para>
     /// </summary>
-    protected abstract IEnumerator NormalAttackRoutine();
+    protected abstract IEnumerator NormalAttackRoutine(int ComboCount);
 
     /// <summary>
     /// Implement Weapon's Charged Attack Routine.

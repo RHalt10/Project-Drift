@@ -178,16 +178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ef7be605e3e184a9cf03757bb7af18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeWeaponType: 2
+  MaxComboCount: 3
   ChargeTime: 1
-  NormalAttackCooldown: 0
-  ChargedAttackCooldown: 0
-  normalRechargePercentage: 0.2
-  destructibleRechargePercentage: 0.05
+  NormalAttackCooldown: 5
+  ChargedAttackCooldown: 5
   Hitboxes:
   - {fileID: 312820011630673847}
-  MeleeWeaponType: 2
-  owningInventoryManager: {fileID: 0}
   spriteRenderer: {fileID: 1681686882609869653}
+  normalRechargePercentage: 0.2
+  destructibleRechargePercentage: 0.05
+  owningInventoryManager: {fileID: 0}
+  NormalAttackDone: 1
+  ComboCounter: 0
+  NormalAttackQueue: 0
   attackTime: 0.425
   comboCooldown: 0.3
   comboAmount: 3
