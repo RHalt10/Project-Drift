@@ -298,6 +298,10 @@ MonoBehaviour:
   spacing: 10
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  midColor: {r: 0, g: 0, b: 0, a: 0}
+  lowColor: {r: 0, g: 0, b: 0, a: 0}
+  midThreshold: 0.6
+  lowThreshold: 0.4
 --- !u!114 &322790970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1044,9 @@ MonoBehaviour:
         m_Calls: []
   isInvincible: 0
   maxHealth: 10
+  currentHealth: 0
+  maxShield: 0
+  currentShield: 0
   iframesEnabled: 1
   iframesDuration: 0.5
   OnIframes:
@@ -3486,7 +3493,7 @@ PrefabInstance:
     - target: {fileID: 5541513476851453208, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
       propertyPath: attackController.DefaultWeapon
       value: 
-      objectReference: {fileID: 900856742772545702, guid: bcda61e29fccf9f4fa2dced5fbfde14d, type: 3}
+      objectReference: {fileID: 591668911856286636, guid: 7bd123d29786d434a8b3d19854bb5557, type: 3}
     - target: {fileID: 5541513476851453209, guid: 2ee1a126861bbd543b142ac126182d23, type: 3}
       propertyPath: m_RootOrder
       value: 4

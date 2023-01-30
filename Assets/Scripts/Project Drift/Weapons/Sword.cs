@@ -44,7 +44,7 @@ public class Sword : MeleeWeaponBase
         yield break;
     }
 
-    protected override IEnumerator NormalAttackRoutine()
+    protected override IEnumerator NormalAttackRoutine(int ComboCount)
     {
         if (cooldownTimer < comboCooldown) yield break;
 
