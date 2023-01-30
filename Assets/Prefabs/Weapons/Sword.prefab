@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 8906879010032179963}
   - component: {fileID: 8778418291835733537}
   - component: {fileID: 6093142329597303028}
+  - component: {fileID: 5498040176509425214}
   m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
@@ -193,8 +194,6 @@ MonoBehaviour:
   ComboCounter: 0
   NormalAttackQueue: 0
   attackTime: 0.425
-  comboCooldown: 0.3
-  comboAmount: 3
 --- !u!95 &6093142329597303028
 Animator:
   serializedVersion: 5
@@ -215,3 +214,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5498040176509425214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900856742772545702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89a4667dd031458fbf68d8722cae152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fbf12bc8451f1d947aaa3c8e9dbccf5f, type: 2}
