@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5739086006493595766}
   - component: {fileID: 222089465612065385}
   - component: {fileID: 1681686882609869653}
+  - component: {fileID: 9218497679177964601}
   m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
@@ -132,6 +133,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9218497679177964601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312820011630673847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &900856742772545702
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,8 +209,6 @@ MonoBehaviour:
   ComboCounter: 0
   NormalAttackQueue: 0
   attackTime: 0.425
-  comboCooldown: 0.3
-  comboAmount: 3
 --- !u!95 &6093142329597303028
 Animator:
   serializedVersion: 5

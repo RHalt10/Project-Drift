@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * A class that handles the basic operations of a switch
- * Written by Brandom Fox 
+ * Written by Brandon Fox 
  * 
  * User Guide:
         1. Place switch prefab in desired location in scene 
