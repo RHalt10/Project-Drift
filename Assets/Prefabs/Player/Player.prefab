@@ -627,7 +627,7 @@ MonoBehaviour:
   attackController:
     playerController: {fileID: 0}
     groundSpeed: 3
-    attackRoot: {fileID: 5541513477606870549}
+    attackRoot: {fileID: 4027279888792346000}
     destructibleRechargePercentage: 0.05
     DefaultWeapon: {fileID: 900856742772545702, guid: bcda61e29fccf9f4fa2dced5fbfde14d, type: 3}
   aimController:
