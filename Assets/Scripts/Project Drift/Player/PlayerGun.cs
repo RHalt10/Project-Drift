@@ -56,8 +56,9 @@ public class PlayerGun : MonoBehaviour
 
         currentAmmo -= currentWeapon.BulletPercentage;
 
-        GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
+        currentWeapon.FireProjectile(direction, projectileSpawnPoint.position);
+        // GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        // spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
 
         currentWeapon.shootSfx.Post(gameObject);
 
