@@ -13,26 +13,29 @@ using UnityEngine;
  */
 public class EnvironmentManager : MonoBehaviour
 {
-    public GameObject[] EnvironmentObjects;
 
+    [Header("Smash Trash")]
     public SmashTrash[] SmashTrash;
 
-    [Header("Smash Trash Respawn Settings")]
     [Tooltip("How long until respawn? By defualt set to 30 seconds")]
-    public float respawnTime = 30.0f;
+    public float smashTrashRespawnTime = 30.0f;
 
+    public FallingTile[][] FallingTileGroups;
+
+    [Tooltip("How long until respawn? By defualt set to 30 seconds")]
+    public float fallingTileRespawnTime = 30.0f;
     private void Start()
     {
-        StartCoroutine(StartRespawn());
+        StartCoroutine(SmashTrashRespawn());
     }
 
     // Will try to respawn any smash trash in scene that has respawn set to true each interval
     // At the moment using while(true) until we can check for game instance
-    public IEnumerator StartRespawn()
+    public IEnumerator SmashTrashRespawn()
     {
         while (true)
         {
-            yield return new WaitForSeconds(respawnTime);
+            yield return new WaitForSeconds(smashTrashRespawnTime);
 
             for (int i = 0; i < SmashTrash.Length; ++i)
             {
