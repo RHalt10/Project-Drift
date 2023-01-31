@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Combat;
 
-public enum MeleeWeaponTypes { None, Hammer, Sword } // Add more weapon types here. * Note: Also add new weapon type to "MeleeWeaponType" global var.
+public enum MeleeWeaponTypes { None, Hammer, Sword, Spear } // Add more weapon types here. * Note: Also add new weapon type to "MeleeWeaponType" global var.
 public abstract class MeleeWeaponBase : MonoBehaviour
 {
     [Header("Melee Weapon Basic Configuration")]
