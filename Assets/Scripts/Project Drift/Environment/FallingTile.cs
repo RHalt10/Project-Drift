@@ -14,6 +14,8 @@ public class FallingTile : MonoBehaviour
     [Header("Settings")]
     [Tooltip("How long can a player stand on this before it falls? Default is 1 second")]
     public float timeUntillFall = 1f;
+    [Tooltip("Will the tile respawn? Default false")]
+    public bool respawn = false;
 
     private Coroutine fallCoroutineContainer;
 
@@ -36,14 +38,15 @@ public class FallingTile : MonoBehaviour
         if (isDashing) { return; }
 
         // otherwise, begin fall sequence
-        if (fallCoroutineContainer == null) { 
-            fallCoroutineContainer = StartCoroutine(Fall());
-        }
+        fallCoroutineContainer = StartCoroutine(Fall());
+        
     }
 
     IEnumerator Fall()
     {
         yield return new WaitForSeconds(timeUntillFall);
+        FindObjectOfType<EnvironmentManager>().InitiateRespawn(1);
         gameObject.SetActive(false);
+        yield return null;
     }
 }
