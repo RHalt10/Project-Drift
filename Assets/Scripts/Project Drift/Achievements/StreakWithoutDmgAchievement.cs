@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Achievements;
 
-[CreateAssetMenu(fileName = "Streak without Damage Achievement", menuName = "Project Drift/Streak without Damage Achievement")]
+[CreateAssetMenu(fileName = "Streak without Damage Achievement", menuName = "Project Drift/Achievements/Streak without Damage Achievement")]
 public class StreakWithoutDmgAchievement : BaseAchievement
 {
     public int streakRequired;

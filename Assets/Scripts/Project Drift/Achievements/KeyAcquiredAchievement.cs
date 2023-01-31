@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using WSoft.Achievements;
 
 
-[CreateAssetMenu(fileName = "New Key Acquired Achievement", menuName = "Project Drift/Key Acquired Achievement")]
+[CreateAssetMenu(fileName = "New Key Acquired Achievement", menuName = "Project Drift/Achievements/Key Acquired Achievement")]
 public class KeyAcquiredAchievement : BaseAchievement
 {
     public int numKeys;

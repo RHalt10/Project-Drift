@@ -11,10 +11,13 @@ public class PlayerDashController : PlayerSubController
     public float dashSpeed;
     public float dashTime;
     public float dashCooldown;
+    public float dashStaminaCost;
     public bool chainDashAllowed;
     public float chainDashTimeWindow;
+    public float chainDashStaminaCost;
 
     GroundCharacterController characterController;
+    PlayerStamina playerStamina;
     Vector2 dashDirection;
     float currentDashTime = 0;
     bool chainDashActivated;
@@ -24,6 +27,7 @@ public class PlayerDashController : PlayerSubController
     public override void Initialize()
     {
         characterController = playerController.GetComponent<GroundCharacterController>();
+        playerStamina = playerController.GetComponent<PlayerStamina>();
     }
 
     public override void OnDisable()
@@ -40,6 +44,7 @@ public class PlayerDashController : PlayerSubController
         characterController.canMoveOnAir = true;
         characterController.willFallOnAir = false;
         chainDashActivated = false;
+        playerStamina.UseStamina(dashStaminaCost);
 
         if (dashDirection != Vector2.zero)
             AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
@@ -84,6 +89,7 @@ public class PlayerDashController : PlayerSubController
         dashDirection = playerController.movementInput;
         currentDashTime = 0;
         chainDashActivated = false;
+        playerStamina.UseStamina(chainDashStaminaCost);
         AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
     }
 }
