@@ -34,8 +34,7 @@ public class EncounterSystem : MonoBehaviour
     [Tooltip("if every item in the onEncounterSwitchState you also want to switch state when the encounter ends, just check this box")]
     [SerializeField] bool onEndEncounterAlsoSwitch; //if every item in the onEncounterSwitchState you also want to switch state when the encounter ends, just check this box 
 
-    [Tooltip("For event system")]
-    public UnityEvent OnEncounter;
+
 
     [Space(10)]
     [Range(0,2)]
@@ -52,41 +51,63 @@ public class EncounterSystem : MonoBehaviour
     [Tooltip("Place the gameobjects you want the state of to switch when the encounter ends." +
         "If onEndEncounterAlsoSwitch is true, do not put anything from onEncounterSwitchState in here")]
 
-    [SerializeField] GameObject[] onEndEncounterSwitchState; //put into the order you want them to switch states of, if onEndEncounterAlsoSwitch set true, dont put any items from onEncounterSwitchState in here
+    [SerializeField] GameObject[] onEndEncounterSwitchState; //put into the order you want them to switch states of, if onEndEncounterAlsoSwitch set true, dont put any items from onEncounterSwitchState in here   
 
-    [Tooltip("For event system")]
-    public UnityEvent OnEndEncounter;
+    
 
     [Space(10)]
     [Range(0, 2)]
     [SerializeField] float onEndEncounterTimeBetweenEachSwitch; //set to 0 for all to switch at once
 
 
+    [Space(20)]
+
+
+    [Header("End of Encounter")]
+    public UnityEvent OnStartEncounter;
+    public UnityEvent OnEndEncounter;
+
 
     int enemiesLeft;
-    SwitchController switchOnEncounter;
-    SwitchController switchOnEndEncounter;
+    //temp instances that will be destroyed on end encounter
+    GameObject OnEncounterSwitch;
+    GameObject OnEndEncounterSwitch;
 
-
+    private void Awake()
+    {
+        OnStartEncounter = new UnityEvent();
+        OnEndEncounter = new UnityEvent();
+    }
     void Start()
     {
         enemiesLeft = toDefeat.Length;
-        switchOnEncounter = new SwitchController(onEncounterSwitchState, onEncounterTimeBetweenEachSwitch);
 
+        //temp switch controller instances for encounter system 
+        OnEncounterSwitch = new GameObject("On Encounter Switch");
+        SwitchController controllerOn = OnEncounterSwitch.AddComponent<SwitchController>();
+        OnEndEncounterSwitch = new GameObject("On End Encounter Switch");
+        SwitchController controllerEnd = OnEndEncounterSwitch.AddComponent<SwitchController>();
+
+        //set variables of switch controllers components
+        controllerOn.controlledObjects = onEncounterSwitchState;
+        controllerOn.timeBetweenEachSwitch = onEncounterTimeBetweenEachSwitch;
+
+        controllerEnd.timeBetweenEachSwitch = onEncounterTimeBetweenEachSwitch;
         if (onEndEncounterAlsoSwitch)
         {
+            //if the ones given in onEncounterSwitchState is also expect to switch on endCounter, must merge arrays for switch controller
             GameObject[] endSwitches = new GameObject[onEncounterSwitchState.Length + onEndEncounterSwitchState.Length];
             onEncounterSwitchState.CopyTo(endSwitches, 0);
             onEndEncounterSwitchState.CopyTo(endSwitches, onEncounterSwitchState.Length);
 
-            switchOnEndEncounter = new SwitchController(endSwitches, onEndEncounterTimeBetweenEachSwitch);
+            controllerEnd.controlledObjects = endSwitches;
         }
         else
         {
-            switchOnEndEncounter = new SwitchController(onEndEncounterSwitchState, onEndEncounterTimeBetweenEachSwitch);
+            controllerEnd.controlledObjects = onEndEncounterSwitchState;
         }
-        
 
+        //check enemy is still alive
         foreach (GameObject enemy in toDefeat)
         {
             if (enemy.scene.IsValid())
@@ -103,13 +124,31 @@ public class EncounterSystem : MonoBehaviour
             }
 
         }
+
+        //this wont be noticeable or do anything if onEncounterTimeBetweenEachSwitch or onEndEncounterTimeBetweenEachSwitch is 0, but if it isn't itll add to
+        //juice and also make for cleaner game play
+        controllerOn.FinishedSwitching.AddListener(EnableMovement); // when encounter starts, player and enemies wont be able to move, then once switching ends, they both can
+        controllerEnd.FinishedSwitching.AddListener(EnablePlayerMovement); //when encounter ends, enemies will be dead, and we will freeze player movement just of a moment to add emphasis to switching objects
     }
 
     public void StartEncounter()
     {
-        OnEncounter.Invoke(); //for audio <3
-        switchOnEncounter.Flip();
+        //freeze player until flip is done
+        GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
+        OnStartEncounter.Invoke(); //for audio <3 
+        OnEncounterSwitch.GetComponent<SwitchController>().Flip(); //when finished EnableMovement will be called
+
+
+    }
+
+    void EnableMovement()
+    {   
+        //give player movement again
+        GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = true;
+
+        //let enemies move
         foreach (GameObject enemy in toDefeat)
         {
             if (enemy.GetComponent<GroundCharacterController>())
@@ -124,20 +163,27 @@ public class EncounterSystem : MonoBehaviour
         enemiesLeft--;
 
         if (enemiesLeft == 0)
-        { 
-            switchOnEndEncounter.Flip();
+        {
+            //freeze player until flip is done
+            GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+
+            OnEndEncounterSwitch.GetComponent<SwitchController>().Flip();
 
             //event
             OnEndEncounter.Invoke();
+
+            //make sure endEncounter can finish first
+            Invoke("Destroy(OnEncounterSwitch)", 10);
+            Invoke("Destroy(OnEndEncounterSwitch)", 10);
+            OnEndEncounter.Invoke(); //for audio <3 
         }
     }
 
-    private void OnDestroy()
+    void EnablePlayerMovement()
     {
-        Destroy(switchOnEncounter);
-        Destroy(switchOnEndEncounter);
+        //give player movement again
+        GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = true;
     }
-
-
-
 }

@@ -17,20 +17,16 @@ public class OnEnterTriggerEncounter : MonoBehaviour
 {
     [SerializeField] EncounterSystem encounterController;
 
-    bool hasBeenActivated; //this may not be necesssary but will be held here for those working on progress and saving incase it is needed to keep track of whether the encounter has happened or not
-
     void Start()
     {
         //just incase!
-        GetComponent<BoxCollider2D>().isTrigger = true;
-        hasBeenActivated = false;      
+        GetComponent<BoxCollider2D>().isTrigger = true;      
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Players")
+        if (collision.gameObject.tag == "Player")
         {
-            hasBeenActivated = true;
 
             encounterController.StartEncounter();
 
