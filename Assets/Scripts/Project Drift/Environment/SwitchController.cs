@@ -19,14 +19,32 @@ public class SwitchController : MonoBehaviour
 {
 
     [Tooltip("Place objects that you want the switch to link to here")]
-    public GameObject[] controlledObjects;
+    public GameObject[] controlledObjects; //put into the order you want them to switch states of, if onEndEncounterAlsoSwitch set true, dont put any items from onEncounterSwitchState in here
+    [Range(0, 2)]
+    [SerializeField] float timeBetweenEachSwitch; //time between each switch for jUiCe - allie
 
     private bool state = false;
    
+    //constructor -Allie
+    public SwitchController(GameObject[] controlledObjectsIn, float timeBetweenEachSwitchIn)
+    {
+        controlledObjects = controlledObjectsIn;
+        timeBetweenEachSwitch = timeBetweenEachSwitchIn;
+    }
+
     public void Flip()
     {
         state = !state;
-        SwapStates();
+        //no coroutine needed if 0
+        if (timeBetweenEachSwitch == 0)
+        {
+            SwapStates();
+        }
+        else
+        {
+            StartCoroutine(SwapStatesStaggered());
+        }
+
     }
 
     private void SwapStates()
@@ -34,6 +52,15 @@ public class SwitchController : MonoBehaviour
         for (int i = 0; i < controlledObjects.Length; i++)
         {
             controlledObjects[i].gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
+        }
+    }
+
+    IEnumerator SwapStatesStaggered()
+    {
+        for (int i = 0; i < controlledObjects.Length; i++)
+        {
+            controlledObjects[i].gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
+            yield return new WaitForSeconds(timeBetweenEachSwitch);
         }
     }
 }
