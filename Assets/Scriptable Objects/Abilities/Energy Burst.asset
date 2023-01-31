@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5251620a9c2a84b9f962013a9e2bfd, type: 3}
+  m_Name: Energy Burst
+  m_EditorClassIdentifier: 
+  staminaCost: 0.5
+  time: 0.5
+  radius: 1.5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  destroyProjectilesInterval: 0.1
+  knockbackForce: 4
+  knockbackTime: 0.2
