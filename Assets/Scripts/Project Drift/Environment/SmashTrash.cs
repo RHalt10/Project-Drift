@@ -61,6 +61,7 @@ public class SmashTrash : MonoBehaviour
         {
             Instantiate(droppedObjects[i], transform.position, Quaternion.identity);
         }
+        if (respawn) { FindObjectOfType<EnvironmentManager>().InitiateRespawn(0);}
         gameObject.SetActive(false);
     }
 

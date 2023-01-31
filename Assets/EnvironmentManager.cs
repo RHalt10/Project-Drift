@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Environment Manager, used to keep track of smash trash so far
+ * Environment Manager, used to keep track of smash trash, falling tiles
  * Written by Brandon Fox 
  * 
  * User Guide:
@@ -13,37 +13,65 @@ using UnityEngine;
  */
 public class EnvironmentManager : MonoBehaviour
 {
-    public GameObject[] EnvironmentObjects;
 
+    [Header("Smash Trash")]
     public SmashTrash[] SmashTrash;
 
-    [Header("Smash Trash Respawn Settings")]
     [Tooltip("How long until respawn? By defualt set to 30 seconds")]
-    public float respawnTime = 30.0f;
+    public float sTRespawnTime = 30.0f;
 
-    private void Start()
+    [Header("Falling Tiles")]
+    public FallingTile[] FallingTiles;
+
+    [Tooltip("How long until respawn? By defualt set to 30 seconds")]
+    public float fTRespawnTime = 30.0f;
+
+    private Coroutine SmashTrashRespawnCoroutineContainer;
+    private Coroutine FallingTilesRespawnCoroutineContainer;
+
+    // will change this to enum later
+    public void InitiateRespawn(int type)
     {
-        StartCoroutine(StartRespawn());
+        if (type == 0)
+        {
+            SmashTrashRespawnCoroutineContainer = StartCoroutine(SmashTrashRespawn());
+        }
+        if (type == 1)
+        {
+            FallingTilesRespawnCoroutineContainer = StartCoroutine(FallingTileRespawn());
+        }
     }
 
-    // Will try to respawn any smash trash in scene that has respawn set to true each interval
-    // At the moment using while(true) until we can check for game instance
-    public IEnumerator StartRespawn()
+    // Will try to respawn any smash trash in scene that has respawn set to true 
+    private IEnumerator SmashTrashRespawn()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(respawnTime);
+         yield return new WaitForSeconds(sTRespawnTime);
 
-            for (int i = 0; i < SmashTrash.Length; ++i)
+         for (int i = 0; i < SmashTrash.Length; ++i)
             {
-                if (SmashTrash[i].respawn)
-                {
+             if (SmashTrash[i].respawn)
+                 {
                     SmashTrash[i].gameObject.SetActive(true);
                     SmashTrash[i].Respawn();
-                }
+                 }
 
             }
+         yield return null;
+    }
+
+    // tried to respawn any and all falling tiles in scene
+    private IEnumerator FallingTileRespawn()
+    {
+        yield return new WaitForSeconds(fTRespawnTime);
+
+        for (int i = 0; i < FallingTiles.Length; ++i)
+        {
+            if (FallingTiles[i].respawn)
+            {
+                FallingTiles[i].gameObject.SetActive(true);
+            }
+            
         }
-      
+        yield return null;
     }
 }
