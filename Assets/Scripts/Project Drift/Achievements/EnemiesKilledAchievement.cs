@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Achievements;
 
-[CreateAssetMenu(fileName = "New Enemies Killed Achievement", menuName = "Achievements/Enemies Killed")]
+[CreateAssetMenu(fileName = "New Enemies Killed Achievement", menuName = "Project Drift/Achievements/Enemies Killed")]
 public class EnemiesKilledAchievement : BaseAchievement
 {
     public string enemyKey;
