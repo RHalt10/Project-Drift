@@ -11,8 +11,19 @@ using WSoft.Combat;
 /// </summary>
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] PlayerWeaponSO startingWeapon;
-    public PlayerWeaponSO currentWeapon { get; private set; }
+    [SerializeField] GameObject startingWeaponObj;
+    public GameObject currentWeaponObj { get; private set; }
+    public RangedWeaponBase currentWeapon 
+    { 
+        get 
+        { 
+            RangedWeaponBase weaponInfo = currentWeaponObj.GetComponent<RangedWeaponBase>(); 
+            if(weaponInfo == null) { Debug.LogError("Current weapon '" + startingWeaponObj.name + "' not a weapon"); }
+            return weaponInfo; 
+        }
+        private set{} 
+    }
+    
 
     /* Always from 0 to 1*/
     float _currentAmmo = 0f;
@@ -34,7 +45,7 @@ public class PlayerGun : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        currentWeapon = startingWeapon;
+        currentWeaponObj = startingWeaponObj;
         currentAmmo = 1f;
     }
 
@@ -63,9 +74,9 @@ public class PlayerGun : MonoBehaviour
         currentAmmo = currentAmmo + currentWeapon.BulletPercentage;
     }
 
-    public void SwapWeapons(PlayerWeaponSO newWeapon)
+    public void SwapWeapons(GameObject newWeapon)
     {
-        currentWeapon = newWeapon;
+        currentWeaponObj = newWeapon;
         OnWeaponChanged.Invoke();
     }
 }
