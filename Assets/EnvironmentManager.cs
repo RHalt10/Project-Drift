@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Environment Manager, used to keep track of smash trash so far
+ * Environment Manager, used to keep track of smash trash, falling tiles
  * Written by Brandon Fox 
  * 
  * User Guide:

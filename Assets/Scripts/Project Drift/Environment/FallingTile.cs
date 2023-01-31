@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Math;
 
+
+/*
+ * Falling Tile script
+ * Written by Brandon Fox 
+ * 
+ * User Guide:
+        1. Place falling tile prefab in desired location in scene 
+        3. From the hierarchy, drag Falling Tile prefab into Falling Tile list on Environment Interactables Manager inspector
+        4. Can set if individual falling tile will respawn and how long it takes for it to fall
+ */
 public class FallingTile : MonoBehaviour
 {
     // simply check to see if willFallOnAir value to determine if dashing or not over tile
@@ -19,6 +29,11 @@ public class FallingTile : MonoBehaviour
 
     private Coroutine fallCoroutineContainer;
 
+    private void Start()
+    {
+        if (timeUntillFall < 0) { timeUntillFall = 0.01f; }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (LayermaskFunctions.IsInLayerMask(triggerLayers, collision.gameObject.layer))
@@ -32,10 +47,10 @@ public class FallingTile : MonoBehaviour
     }
 
 
-    public void CheckFall(bool isDashing)
+    public void CheckFall(bool isWalking)
     {
         // if player is dashing, do not initiate fall sequence
-        if (isDashing) { return; }
+        if (!isWalking) { return; }
 
         // otherwise, begin fall sequence
         fallCoroutineContainer = StartCoroutine(Fall());
