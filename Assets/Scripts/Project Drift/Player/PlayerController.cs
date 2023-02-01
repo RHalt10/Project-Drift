@@ -12,7 +12,8 @@ public enum PlayerInputType
     MeleeReleased,
     StartAim,
     StopAim,
-    Shoot
+    Shoot,
+    SwapRanged,
 }
 
 /// <summary>
@@ -139,6 +140,12 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.started)
             currentController.RecieveInput(PlayerInputType.Shoot);
+    }
+
+    public void SwapWeapon(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+            currentController.RecieveInput(PlayerInputType.SwapRanged);
     }
 
     public void Special(InputAction.CallbackContext ctx)

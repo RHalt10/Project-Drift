@@ -40,6 +40,8 @@ public class PlayerAimController : PlayerSubController
             playerController.SetController(playerController.groundController);
         else if (type == PlayerInputType.Shoot)
             playerGun.Shoot(playerController.aimInput);
+        else if (type == PlayerInputType.SwapRanged)
+            playerGun.SwapWeapons();
     }
 
     public override void Update()

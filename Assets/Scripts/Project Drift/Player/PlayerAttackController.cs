@@ -19,7 +19,6 @@ public class PlayerAttackController : PlayerSubController
     Animator animator;
     PlayerGun playerGun;
 
-    bool movementEnabled = true;
     bool keyPressed = false;
     float timer = 0f;
 
@@ -44,8 +43,7 @@ public class PlayerAttackController : PlayerSubController
 
     public override void Update()
     {
-        if(movementEnabled)
-            characterController.velocity = playerController.movementInput * groundSpeed;
+        characterController.velocity = playerController.movementInput * groundSpeed;
 
         if (keyPressed) timer += Time.deltaTime;
     }

@@ -11,7 +11,8 @@ using WSoft.Combat;
 /// </summary>
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] GameObject startingWeaponPrefab;
+    [SerializeField] List<GameObject> equippedWeaponPrefabs;
+    private int _equippedWeaponIndex = 0;
     public GameObject currentWeaponObj 
     { 
         get{ return _currentWeaponObj; }
@@ -20,6 +21,8 @@ public class PlayerGun : MonoBehaviour
             Destroy(_currentWeaponObj);
             _currentWeaponObj = GameObject.Instantiate(value, transform, false);
             _currentWeaponObj.transform.localPosition = Vector3.zero;
+            float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
+            currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
     private GameObject _currentWeaponObj;
@@ -28,7 +31,7 @@ public class PlayerGun : MonoBehaviour
         get 
         { 
             RangedWeaponBase weaponInfo = currentWeaponObj.GetComponent<RangedWeaponBase>(); 
-            if(weaponInfo == null) { Debug.LogError("Current weapon '" + startingWeaponPrefab.name + "' not a weapon"); }
+            if(weaponInfo == null) { Debug.LogError("Current weapon '" + currentWeaponObj.name + "' not a weapon"); }
             return weaponInfo; 
         }
         private set{} 
@@ -57,7 +60,7 @@ public class PlayerGun : MonoBehaviour
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        currentWeaponObj = startingWeaponPrefab;
+        currentWeaponObj = equippedWeaponPrefabs[0];
         currentAmmo = 1f;
         HideGun();
     }
@@ -93,6 +96,11 @@ public class PlayerGun : MonoBehaviour
     private void Update() {
         float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
         currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // if(Input.GetKeyDown(KeyCode.V))
+        // {
+        //     SwapWeapons();
+        // }
     }
 
     private void ShowGun()
@@ -121,9 +129,13 @@ public class PlayerGun : MonoBehaviour
         currentAmmo = currentAmmo + currentWeapon.BulletPercentage;
     }
 
-    public void SwapWeapons(GameObject newWeapon)
+    public void SwapWeapons()
     {
-        currentWeaponObj = newWeapon;
+        _equippedWeaponIndex++;
+        if(_equippedWeaponIndex >= equippedWeaponPrefabs.Count)
+            _equippedWeaponIndex = 0;
+
+        currentWeaponObj = equippedWeaponPrefabs[_equippedWeaponIndex];
         OnWeaponChanged.Invoke();
     }
 }

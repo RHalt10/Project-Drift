@@ -57,6 +57,9 @@ public class PlayerGroundController : PlayerSubController
                 playerGun.Shoot(playerController.aimInput);
                 playerController.mono.StartCoroutine(DisableMovement(playerGun.currentWeapon.cdTime));
                 return;
+            case PlayerInputType.SwapRanged:
+                playerGun.SwapWeapons();
+                return;
         }
     }
 
