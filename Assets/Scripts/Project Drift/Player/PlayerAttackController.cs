@@ -74,20 +74,5 @@ public class PlayerAttackController : PlayerSubController
             timer = 0f;
             playerController.SetController(playerController.groundController);
         }
-
-        if (type == PlayerInputType.Shoot)
-        {
-            playerGun.Shoot(playerController.aimInput);
-            playerController.mono.StartCoroutine(DisableMovement(playerGun.currentWeapon.cdTime));
-        }
-    }
-
-    private IEnumerator DisableMovement(float seconds)
-    {
-        movementEnabled = false;
-        characterController.velocity = Vector2.zero;
-        yield return new WaitForSeconds(seconds);
-        movementEnabled = true;
-        playerController.SetController(playerController.groundController);
     }
 }

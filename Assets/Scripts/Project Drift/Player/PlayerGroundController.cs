@@ -13,6 +13,7 @@ public class PlayerGroundController : PlayerSubController
 
     GroundCharacterController characterController;
     PlayerGun playerGun;
+    bool movementEnabled = true;
 
     public override void Initialize()
     {
@@ -32,7 +33,11 @@ public class PlayerGroundController : PlayerSubController
 
     public override void Update()
     {
-        characterController.velocity = playerController.movementInput * groundSpeed;
+        if(movementEnabled) {
+            characterController.velocity = playerController.movementInput * groundSpeed;
+        } else {
+            characterController.velocity = Vector2.zero;
+        }
     }
 
     public override void RecieveInput(PlayerInputType type)
@@ -49,8 +54,16 @@ public class PlayerGroundController : PlayerSubController
                 playerController.SetController(playerController.aimController);
                 return;
             case PlayerInputType.Shoot:
-                playerController.SetController(playerController.attackController);
+                playerGun.Shoot(playerController.aimInput);
+                playerController.mono.StartCoroutine(DisableMovement(playerGun.currentWeapon.cdTime));
                 return;
         }
+    }
+
+    private IEnumerator DisableMovement(float seconds)
+    {
+        movementEnabled = false;
+        yield return new WaitForSeconds(seconds);
+        movementEnabled = true;
     }
 }

@@ -12,7 +12,15 @@ using WSoft.Combat;
 public class PlayerGun : MonoBehaviour
 {
     [SerializeField] GameObject startingWeaponObj;
-    public GameObject currentWeaponObj { get; private set; }
+    public GameObject currentWeaponObj 
+    { 
+        get{ return _currentWeaponObj; }
+        private set
+        {
+            _currentWeaponObj = Instantiate(value, transform, false);
+        }
+    }
+    private GameObject _currentWeaponObj;
     public RangedWeaponBase currentWeapon 
     { 
         get 
@@ -74,24 +82,34 @@ public class PlayerGun : MonoBehaviour
         GroundCharacterController playerGround = GetComponent<GroundCharacterController>();
         
         _isFiring = true;
+        ShowGun();
 
         yield return new WaitForSeconds(currentWeapon.cdTime);
 
         _isFiring = false;
+        HideGun();
     }
 
     private void Update() {
-            
+        Vector3 test = GetComponent<PlayerController>().aimInput;
+        float angle = Vector2.SignedAngle(Vector2.up, test);
+        currentWeaponObj.transform.localRotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void ShowGun()
     {
-
+        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
+        Color tmp = sr.color;
+        tmp.a = 1;
+        sr.color = tmp;
     }
 
     private void HideGun()
     {
-
+        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
+        Color tmp = sr.color;
+        tmp.a = 0;
+        sr.color = tmp;
     }
 
     public void RechargeAmmo(float percentage)
