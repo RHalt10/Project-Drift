@@ -53,7 +53,6 @@ public abstract class PlayerSubController
 
 public class PlayerController : MonoBehaviour
 {
-
     public PlayerGroundController groundController;
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
@@ -67,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController Instance { get; private set; }
 
+    public PlayerAbilitySO currentAbility;
+
     private void Awake()
     {
         Instance = this;
@@ -79,6 +80,8 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+
+        currentAbility.Initialize(this);
     }
 
     // Start is called before the first frame update
@@ -133,6 +136,15 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.started)
             currentController.RecieveInput(PlayerInputType.Shoot);
+    }
+
+    public void Special(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            if (currentAbility.CanBeActivated())
+                currentAbility.Activate();
+        }
     }
 
     void CalculateAimInput()

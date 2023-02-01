@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Achievements;
 
-[CreateAssetMenu(fileName = "Streak Without Shooting Achievement", menuName = "Project Drift/StreakWithoutShootingAchievement")]
+[CreateAssetMenu(fileName = "Streak Without Shooting Achievement", menuName = "Project Drift/Achievements/StreakWithoutShootingAchievement")]
 public class StreakWithoutShootingAchievement : BaseAchievement
 {
     public int EnemyKilledStreakRequired;

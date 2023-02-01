@@ -21,6 +21,11 @@ public class CanBeKnockbacked : MonoBehaviour
         StartCoroutine(KnockbackRoutine(e.KnockbackForce, e.Duration));
     }
 
+    public void Knockback(Vector3 knockbackForce, float duration)
+    {
+        StartCoroutine(KnockbackRoutine(knockbackForce, duration));
+    }
+
     IEnumerator KnockbackRoutine(Vector3 force, float duration)
     {
         controller.velocity = force;
