@@ -49,7 +49,7 @@ public class PlayerGroundController : PlayerSubController
                 playerController.SetController(playerController.aimController);
                 return;
             case PlayerInputType.Shoot:
-                playerGun.Shoot(playerController.aimInput);
+                playerController.SetController(playerController.attackController);
                 return;
         }
     }

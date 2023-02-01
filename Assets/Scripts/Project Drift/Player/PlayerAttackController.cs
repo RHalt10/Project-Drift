@@ -19,6 +19,7 @@ public class PlayerAttackController : PlayerSubController
     Animator animator;
     PlayerGun playerGun;
 
+    bool movementEnabled = true;
     bool keyPressed = false;
     float timer = 0f;
 
@@ -43,7 +44,8 @@ public class PlayerAttackController : PlayerSubController
 
     public override void Update()
     {
-        characterController.velocity = playerController.movementInput * groundSpeed;
+        if(movementEnabled)
+            characterController.velocity = playerController.movementInput * groundSpeed;
 
         if (keyPressed) timer += Time.deltaTime;
     }
@@ -72,6 +74,20 @@ public class PlayerAttackController : PlayerSubController
             timer = 0f;
             playerController.SetController(playerController.groundController);
         }
-            
+
+        if (type == PlayerInputType.Shoot)
+        {
+            playerGun.Shoot(playerController.aimInput);
+            playerController.mono.StartCoroutine(DisableMovement(playerGun.currentWeapon.cdTime));
+        }
+    }
+
+    private IEnumerator DisableMovement(float seconds)
+    {
+        movementEnabled = false;
+        characterController.velocity = Vector2.zero;
+        yield return new WaitForSeconds(seconds);
+        movementEnabled = true;
+        playerController.SetController(playerController.groundController);
     }
 }

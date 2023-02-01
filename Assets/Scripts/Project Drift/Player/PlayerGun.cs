@@ -53,7 +53,6 @@ public class PlayerGun : MonoBehaviour
 
     public void Shoot(Vector2 direction)
     {
-        Debug.Log("Firing");
         if(!_isFiring)
         {
             if(currentAmmo < currentWeapon.BulletPercentage)
@@ -75,12 +74,24 @@ public class PlayerGun : MonoBehaviour
         GroundCharacterController playerGround = GetComponent<GroundCharacterController>();
         
         _isFiring = true;
-        playerMovement.groundController.groundSpeed = 0;
 
         yield return new WaitForSeconds(currentWeapon.cdTime);
 
-        playerMovement.groundController.groundSpeed = _defaultGroundSpeed;
         _isFiring = false;
+    }
+
+    private void Update() {
+            
+    }
+
+    private void ShowGun()
+    {
+
+    }
+
+    private void HideGun()
+    {
+
     }
 
     public void RechargeAmmo(float percentage)
