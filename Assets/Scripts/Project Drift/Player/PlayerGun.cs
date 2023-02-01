@@ -11,13 +11,15 @@ using WSoft.Combat;
 /// </summary>
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] GameObject startingWeaponObj;
+    [SerializeField] GameObject startingWeaponPrefab;
     public GameObject currentWeaponObj 
     { 
         get{ return _currentWeaponObj; }
         private set
         {
-            _currentWeaponObj = Instantiate(value, transform, false);
+            Destroy(_currentWeaponObj);
+            _currentWeaponObj = GameObject.Instantiate(value, transform, false);
+            _currentWeaponObj.transform.localPosition = Vector3.zero;
         }
     }
     private GameObject _currentWeaponObj;
@@ -26,7 +28,7 @@ public class PlayerGun : MonoBehaviour
         get 
         { 
             RangedWeaponBase weaponInfo = currentWeaponObj.GetComponent<RangedWeaponBase>(); 
-            if(weaponInfo == null) { Debug.LogError("Current weapon '" + startingWeaponObj.name + "' not a weapon"); }
+            if(weaponInfo == null) { Debug.LogError("Current weapon '" + startingWeaponPrefab.name + "' not a weapon"); }
             return weaponInfo; 
         }
         private set{} 
@@ -44,7 +46,7 @@ public class PlayerGun : MonoBehaviour
     }
 
     private bool _isFiring = false;
-    private float _defaultGroundSpeed;
+    private PlayerController playerController;
 
     [SerializeField] Transform projectileSpawnPoint;
 
@@ -54,9 +56,10 @@ public class PlayerGun : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _defaultGroundSpeed = GetComponent<PlayerController>().groundController.groundSpeed;
-        currentWeaponObj = startingWeaponObj;
+        playerController = GetComponent<PlayerController>();
+        currentWeaponObj = startingWeaponPrefab;
         currentAmmo = 1f;
+        HideGun();
     }
 
     public void Shoot(Vector2 direction)
@@ -78,9 +81,6 @@ public class PlayerGun : MonoBehaviour
         currentWeapon.shootSfx.Post(gameObject);
         EventBus.Publish(new PlayerShootEvent(currentWeapon));
         
-        PlayerController playerMovement = GetComponent<PlayerController>();
-        GroundCharacterController playerGround = GetComponent<GroundCharacterController>();
-        
         _isFiring = true;
         ShowGun();
 
@@ -91,9 +91,8 @@ public class PlayerGun : MonoBehaviour
     }
 
     private void Update() {
-        Vector3 test = GetComponent<PlayerController>().aimInput;
-        float angle = Vector2.SignedAngle(Vector2.up, test);
-        currentWeaponObj.transform.localRotation = Quaternion.Euler(0, 0, angle);
+        float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
+        currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void ShowGun()
