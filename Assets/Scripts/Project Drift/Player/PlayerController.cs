@@ -58,8 +58,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
-
-    public MonoBehaviour mono;
+    public PlayerShootController shootController;
 
     public Vector2 movementInput { get; private set; }
     public Vector2 aimInput { get; private set; }
@@ -74,8 +73,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        mono = this;
-
+        
         groundController.playerController = this;
         groundController.Initialize();
         dashController.playerController = this;
@@ -84,6 +82,8 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+        shootController.playerController = this;
+        shootController.Initialize();
 
         currentAbility.Initialize(this);
     }

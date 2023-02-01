@@ -96,11 +96,6 @@ public class PlayerGun : MonoBehaviour
     private void Update() {
         float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
         currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        // if(Input.GetKeyDown(KeyCode.V))
-        // {
-        //     SwapWeapons();
-        // }
     }
 
     private void ShowGun()
