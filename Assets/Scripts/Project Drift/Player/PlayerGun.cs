@@ -23,8 +23,6 @@ public class PlayerGun : MonoBehaviour
         }
         private set{} 
     }
-    
-
     /* Always from 0 to 1*/
     float _currentAmmo = 0f;
     public float currentAmmo
@@ -37,6 +35,9 @@ public class PlayerGun : MonoBehaviour
         }
     }
 
+    private bool _isFiring = false;
+    private float _defaultGroundSpeed;
+
     [SerializeField] Transform projectileSpawnPoint;
 
     public UnityEvent OnAmmoAmountChanged;
@@ -45,24 +46,41 @@ public class PlayerGun : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _defaultGroundSpeed = GetComponent<PlayerController>().groundController.groundSpeed;
         currentWeaponObj = startingWeaponObj;
         currentAmmo = 1f;
     }
 
     public void Shoot(Vector2 direction)
     {
-        if(currentAmmo < currentWeapon.BulletPercentage)
-            return;
+        Debug.Log("Firing");
+        if(!_isFiring)
+        {
+            if(currentAmmo < currentWeapon.BulletPercentage)
+                return;
 
-        currentAmmo -= currentWeapon.BulletPercentage;
+            currentAmmo -= currentWeapon.BulletPercentage;
+            
+            currentWeapon.FireProjectile(direction, projectileSpawnPoint.position);
+            StartCoroutine(_ShootCR());
+        }
+    }
 
-        currentWeapon.FireProjectile(direction, projectileSpawnPoint.position);
-        // GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        // spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
-
+    private IEnumerator _ShootCR()
+    {
         currentWeapon.shootSfx.Post(gameObject);
-
         EventBus.Publish(new PlayerShootEvent(currentWeapon));
+        
+        PlayerController playerMovement = GetComponent<PlayerController>();
+        GroundCharacterController playerGround = GetComponent<GroundCharacterController>();
+        
+        _isFiring = true;
+        playerMovement.groundController.groundSpeed = 0;
+
+        yield return new WaitForSeconds(currentWeapon.cdTime);
+
+        playerMovement.groundController.groundSpeed = _defaultGroundSpeed;
+        _isFiring = false;
     }
 
     public void RechargeAmmo(float percentage)

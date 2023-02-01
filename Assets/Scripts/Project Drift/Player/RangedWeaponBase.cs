@@ -10,7 +10,6 @@ public abstract class RangedWeaponBase : MonoBehaviour
     public GameObject projectilePrefab;
     [Tooltip("Number of shots that can be fired given 100% ammo")] public int ammoSubdivisions; 
     public float BulletPercentage { get => 1f / ammoSubdivisions; }
-
     public float fireCooldown { get; private set; }
     public AK.Wwise.Event shootSfx;
 
