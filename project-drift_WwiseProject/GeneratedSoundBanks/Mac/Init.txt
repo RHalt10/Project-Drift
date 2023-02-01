@@ -14,6 +14,7 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 Effect plug-ins	ID	Name	Type				Notes
 	35523026	ParallelBus_Compressor	Wwise Compressor			
 	712068021	MasterBus_Compressor	Wwise Compressor			
+	3643814988	IndividualBusTransient_Compressor	Wwise Compressor			
 	3704104161	MasterTransient_Compressor	Wwise Compressor			
 
 Audio Devices	ID	Name	Type				Notes
