@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * A class that handles the basic operations of a switch
@@ -19,14 +20,34 @@ public class SwitchController : MonoBehaviour
 {
 
     [Tooltip("Place objects that you want the switch to link to here")]
-    public GameObject[] controlledObjects;
+    public GameObject[] controlledObjects; //put into the order you want them to switch states of, if onEndEncounterAlsoSwitch set true, dont put any items from onEncounterSwitchState in here
+    [Range(0, 2)]
+    public float timeBetweenEachSwitch; //time between each switch option for jUiCe - allie
 
     private bool state = false;
-   
+
+    //to let encounter system or any script with a listener know that coroutine for switching finished
+    //ex: incase want player movement or some enemies movement disabled until switched
+    public UnityEvent FinishedSwitching;
+
+    private void Awake()
+    {
+        FinishedSwitching = new UnityEvent();
+    }
+
     public void Flip()
     {
         state = !state;
-        SwapStates();
+        //no coroutine needed if 0
+        if (timeBetweenEachSwitch == 0)
+        {
+            SwapStates();
+        }
+        else
+        {
+            StartCoroutine(SwapStatesStaggered());
+        }
+
     }
 
     private void SwapStates()
@@ -35,5 +56,17 @@ public class SwitchController : MonoBehaviour
         {
             controlledObjects[i].gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
         }
+        FinishedSwitching.Invoke();
+    }
+
+    IEnumerator SwapStatesStaggered()
+    {
+        for (int i = 0; i < controlledObjects.Length; i++)
+        {
+            controlledObjects[i].gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
+            yield return new WaitForSeconds(timeBetweenEachSwitch);
+        }
+        FinishedSwitching.Invoke();
+        yield return null;
     }
 }

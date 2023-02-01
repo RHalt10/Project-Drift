@@ -342,6 +342,10 @@ MonoBehaviour:
   spacing: 10
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  midColor: {r: 0, g: 0, b: 0, a: 0}
+  lowColor: {r: 0, g: 0, b: 0, a: 0}
+  midThreshold: 0.6
+  lowThreshold: 0.4
 --- !u!114 &322790970
 MonoBehaviour:
   m_ObjectHideFlags: 0
