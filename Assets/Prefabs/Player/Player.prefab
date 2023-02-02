@@ -706,7 +706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668498751f19644d94bb76fd1279f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 11400000, guid: 01e6e1fe51119c741bd6bb8daefbcc55, type: 2}
+  GunSOList:
+  - {fileID: 11400000, guid: 01e6e1fe51119c741bd6bb8daefbcc55, type: 2}
+  ResetOnLoad: 0
   projectileSpawnPoint: {fileID: 5541513477159241636}
   OnAmmoAmountChanged:
     m_PersistentCalls:
