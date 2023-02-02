@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class GunPickup : MonoBehaviour
 {
-    public PlayerWeaponSO GunSO;
+    public GameObject weaponPrefab;
 
 }

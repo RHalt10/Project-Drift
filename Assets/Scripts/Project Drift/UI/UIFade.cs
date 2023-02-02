@@ -15,25 +15,29 @@ public class UIFade : MonoBehaviour
     void Start()
     {
         targetCanvas = GetComponent<CanvasGroup>();
+        targetCanvas.alpha = 0;
+        fade = false;
+
+        EventBus.Subscribe<EncounterStartEvent>(OnEncounterStart);
+        EventBus.Subscribe<EncounterEndEvent>(OnEncounterEnd);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEncounterStart(EncounterStartEvent e)
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            if (isFading)
-            {
-                return;
-            }
+        StartCoroutine(FadeUI());
+    }
 
-            isFading = true;
-            StartCoroutine(FadeUI());
-        }
+    void OnEncounterEnd(EncounterEndEvent e)
+    {
+        StartCoroutine(FadeUI());
     }
 
     IEnumerator FadeUI()
     {
+        if (isFading)
+            yield break;
+
+        isFading = true;
         float startAlpha = targetCanvas.alpha;
         float endAlpha = fade ? 0.0f : 1.0f;
 

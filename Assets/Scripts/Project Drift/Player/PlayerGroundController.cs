@@ -13,6 +13,7 @@ public class PlayerGroundController : PlayerSubController
 
     GroundCharacterController characterController;
     PlayerGun playerGun;
+    bool movementEnabled = true;
 
     public override void Initialize()
     {
@@ -49,7 +50,10 @@ public class PlayerGroundController : PlayerSubController
                 playerController.SetController(playerController.aimController);
                 return;
             case PlayerInputType.Shoot:
-                playerGun.Shoot(playerController.aimInput);
+                playerController.SetController(playerController.shootController);
+                return;
+            case PlayerInputType.SwapRanged:
+                playerGun.SwapWeapons();
                 return;
         }
     }
