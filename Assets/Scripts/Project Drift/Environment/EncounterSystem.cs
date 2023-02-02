@@ -12,6 +12,26 @@ enum EncounterStatus
     postEncounter
 }
 
+public class EncounterStartEvent
+{
+    public EncounterSystem encounter;
+    
+    public EncounterStartEvent (EncounterSystem _encounter)
+    {
+        encounter = _encounter;
+    }
+}
+
+public class EncounterEndEvent
+{
+    public EncounterSystem encounter;
+
+    public EncounterEndEvent(EncounterSystem _encounter)
+    {
+        encounter = _encounter;
+    }
+}
+
 /*
  * A class that handles the encounter switches
  * Written by Allie Lavacek
@@ -110,6 +130,7 @@ public class EncounterSystem : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
             OnStartEncounter.Invoke(); //for audio <3 
+            EventBus.Publish(new EncounterStartEvent(this));
 
             if (OnEncounterSwitch)
             {
@@ -163,6 +184,7 @@ public class EncounterSystem : MonoBehaviour
             }
 
             OnEndEncounter.Invoke(); //for audio <3 
+            EventBus.Publish(new EncounterEndEvent(this));
         }
     }
 
