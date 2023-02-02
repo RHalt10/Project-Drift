@@ -12,18 +12,69 @@ using WSoft.Core;
 /// </summary>
 public class PlayerGun : MonoBehaviour
 {
+    // Reference to Player Gun SOs *Note: When created a new gun, please add the prefab to this list.
+    [SerializeField] List<GameObject> AllGunPrefabList;
     [SerializeField] List<GameObject> equippedWeaponPrefabs;
-    private int _equippedWeaponIndex = 0;
-    public GameObject currentWeaponObj 
-    {
-        get;
-        private set;
+
+    private void OnDestroy() {
+        _saveEquippedWeapons();
     }
+
+    private void _saveEquippedWeapons()
+    {
+        List<string> equipped = new List<string>();
+        foreach (GameObject weapon in equippedWeaponPrefabs)
+        {
+            equipped.Add(weapon.name);
+        } 
+        SaveManager.Save<List<string>>("equippedWeaponList", equipped);
+        SaveManager.Save<int>("equippedWeaponIndex", _equippedWeaponIndex);
+    }
+
+    private void _loadEquippedWeapons()
+    {
+        equippedWeaponPrefabs.Clear();
+        List<string> equipped = SaveManager.Load<List<string>>("equippedWeaponList");
+        foreach (string weaponName in equipped)
+        {
+            equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
+        }
+        _equippedWeaponIndex = SaveManager.Load<int>("equippedWeaponIndex");
+        
+        if(equippedWeaponPrefabs.Count != 0) {
+            SetNewWeapon(equippedWeaponPrefabs[0]);
+        } else {
+            currentWeaponObj = null;
+        }
+    }
+
+    public bool ResetOnLoad; 
+    private int _equippedWeaponIndex = 0;
+
+    private GameObject _currentWeapon; 
+    public GameObject currentWeaponObj;
+    // {
+    //     get
+    //     {
+    //         // TODO: remove since we're storing ALL equipped weapons.
+    //         string name = SaveManager.Load<string>("currentWeapon");
+    //         _currentWeapon = name == "none" ? null : GunDictionary[name];
+    //         return _currentWeapon;
+    //     } 
+
+    //     private set
+    //     {
+    //         string name = value == null ? "none" : GunNameDictionary[value];
+    //         SaveManager.Save<string>("currentWeapon", name);
+    //         _currentWeapon = name == "none" ? null : GunDictionary[name];
+    //     } 
+    // }
 
     public RangedWeaponBase currentWeapon 
     { 
         get 
         { 
+            if( currentWeaponObj == null ) return null;
             RangedWeaponBase weaponInfo = currentWeaponObj.GetComponent<RangedWeaponBase>(); 
             if(weaponInfo == null) { Debug.LogError("Current weapon '" + currentWeaponObj.name + "' not a weapon"); }
             return weaponInfo; 
@@ -55,29 +106,40 @@ public class PlayerGun : MonoBehaviour
     public UnityEvent OnAmmoAmountChanged;
     public UnityEvent OnWeaponChanged;
 
+    public Dictionary<GameObject, string> GunNameDictionary = new Dictionary<GameObject, string>();
+    public Dictionary<string, GameObject> GunDictionary = new Dictionary<string, GameObject>();
+
     // Start is called before the first frame update
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
 
-        if(equippedWeaponPrefabs.Count != 0) {
-            currentWeaponObj = equippedWeaponPrefabs[0];
-            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
-        } else {
-            currentWeaponObj = null;
+        foreach (GameObject weapon in AllGunPrefabList)
+        {
+            GunDictionary.Add(weapon.name, weapon);
+            GunNameDictionary.Add(weapon, weapon.name);
         }
-        
+
+        if (ResetOnLoad)
+        {
+            currentWeaponObj = null;
+            currentAmmo = 0f;
+        } else {
+            _loadEquippedWeapons();
+        }
+
         currentAmmo = 1f;
+        
         HideGun();
     }
 
     public void Shoot(Vector2 direction)
     {
+        if (currentWeapon == null) return;
+        if (currentAmmo < currentWeapon.BulletPercentage) return;
+
         if(!_isFiring)
         {
-            if(currentAmmo < currentWeapon.BulletPercentage)
-                return;
-
             currentAmmo -= currentWeapon.BulletPercentage;
             
             currentWeapon.FireProjectile(direction, projectileSpawnPoint.position);
@@ -144,9 +206,14 @@ public class PlayerGun : MonoBehaviour
         OnWeaponChanged.Invoke();
     }
 
+    //<summary>
+    // asdf
+    //</summary>
     private void SetNewWeapon(GameObject weaponPrefab)
     {
-        currentWeaponObj = GameObject.Instantiate(weaponPrefab, transform, false);
+        GameObject newWeapon = GameObject.Instantiate(weaponPrefab, transform, false);
+        newWeapon.name = weaponPrefab.name;
+        currentWeaponObj = newWeapon;
         currentWeaponObj.transform.localPosition = Vector3.zero;
         float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
         currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
