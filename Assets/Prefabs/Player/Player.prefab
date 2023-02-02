@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 7863576250185103368}
   - component: {fileID: 4306721400260763824}
   - component: {fileID: 7235960855045089814}
+  - component: {fileID: 317745697377168209}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -822,6 +823,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   recharging: 0
+--- !u!114 &317745697377168209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541513476851453205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d908393c54e2de488427e4e6b3bb976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8003e584d3306e140965bf3f158c9a71, type: 2}
 --- !u!1 &5541513477126352670
 GameObject:
   m_ObjectHideFlags: 0
