@@ -14,17 +14,16 @@ public class PlayerGun : MonoBehaviour
 {
     // Reference to Player Gun SOs *Note: When created a new gun, please add the prefab to this list.
     [SerializeField] List<GameObject> AllGunPrefabList;
-    [SerializeField] List<GameObject> equippedWeaponPrefabs;
-    public bool ResetOnLoad; 
+    [Tooltip("Change during runtime and swap weapon (key: 1) to equip")] [SerializeField] 
+    List<GameObject> equippedWeaponPrefabs;
+    [Tooltip("Reset equipped weapons on load")] public bool ResetOnLoad; 
     private int _equippedWeaponIndex
     {
         get { return SaveManager.Load<int>("equippedWeaponIndex"); }
         set { SaveManager.Save<int>("equippedWeaponIndex", value); }
     }
 
-    private GameObject _currentWeapon; 
     public GameObject currentWeaponObj;
-
     public RangedWeaponBase currentWeapon 
     { 
         get 
@@ -55,13 +54,12 @@ public class PlayerGun : MonoBehaviour
 
     private bool _isFiring = false;
     private PlayerController playerController;
-
     [SerializeField] Transform projectileSpawnPoint;
-
+    [SerializeField] Transform attackRoot;
     public UnityEvent OnAmmoAmountChanged;
     public UnityEvent OnWeaponChanged;
 
-    public Dictionary<GameObject, string> GunNameDictionary = new Dictionary<GameObject, string>();
+    // public Dictionary<GameObject, string> GunNameDictionary = new Dictionary<GameObject, string>();
     public Dictionary<string, GameObject> GunDictionary = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
@@ -72,7 +70,7 @@ public class PlayerGun : MonoBehaviour
         foreach (GameObject weapon in AllGunPrefabList)
         {
             GunDictionary.Add(weapon.name, weapon);
-            GunNameDictionary.Add(weapon, weapon.name);
+            //GunNameDictionary.Add(weapon, weapon.name);
         }
 
         if (ResetOnLoad)
@@ -85,8 +83,6 @@ public class PlayerGun : MonoBehaviour
         }
 
         currentAmmo = 1f;
-        
-        HideGun();
     }
 
     public void Shoot(Vector2 direction)
@@ -107,16 +103,19 @@ public class PlayerGun : MonoBehaviour
         _saveEquippedWeapons();
     }
 
+    // Save list of currently equipped guns. Called in OnDestroy().
     private void _saveEquippedWeapons()
     {
         List<string> equipped = new List<string>();
         foreach (GameObject weapon in equippedWeaponPrefabs)
         {
-            equipped.Add(GunNameDictionary[weapon]);
+            equipped.Add(weapon.name);
         } 
         SaveManager.Save<List<string>>("equippedWeaponList", equipped);
     }
 
+    // Load list of currently equipped weapons from save data and set currently equipped gun.
+    // Called on Awake()
     private void _loadEquippedWeapons()
     {
         equippedWeaponPrefabs.Clear();
@@ -125,10 +124,9 @@ public class PlayerGun : MonoBehaviour
         {
             equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
         }
-        _equippedWeaponIndex = SaveManager.Load<int>("equippedWeaponIndex");
         
         if(equippedWeaponPrefabs.Count != 0) {
-            SetNewWeapon(equippedWeaponPrefabs[0]);
+            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
         } else {
             currentWeaponObj = null;
         }
@@ -140,37 +138,10 @@ public class PlayerGun : MonoBehaviour
         EventBus.Publish(new PlayerShootEvent(currentWeapon));
         
         _isFiring = true;
-        ShowGun();
 
         yield return new WaitForSeconds(currentWeapon.cdTime);
 
         _isFiring = false;
-        HideGun();
-    }
-
-    private void Update() {
-        // Control gun sprite direction
-        if (currentWeapon != null) {
-            float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
-            currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);         
-        };
-    }
-
-    private void ShowGun()
-    {
-        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
-        Color tmp = sr.color;
-        tmp.a = 1;
-        sr.color = tmp;
-    }
-
-    private void HideGun()
-    {
-        if (currentWeapon == null) return;
-        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
-        Color tmp = sr.color;
-        tmp.a = 0;
-        sr.color = tmp;
     }
 
     public void RechargeAmmo(float percentage)
@@ -193,19 +164,14 @@ public class PlayerGun : MonoBehaviour
             SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
     }
 
-    //<summary>
-    // Instantiate weapon instance from prefab.
-    //</summary>
+    // Instantiate weapon instance from prefab, sets currently equipped weapon.
     private void SetNewWeapon(GameObject weaponPrefab)
     {
         if (currentWeaponObj != null)
             Destroy(currentWeaponObj);
 
-        currentWeaponObj = GameObject.Instantiate(weaponPrefab, transform, false);
-        currentWeaponObj.transform.localPosition = Vector3.zero;
-        float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
-        currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
-
+        currentWeaponObj = GameObject.Instantiate(weaponPrefab, attackRoot, false);
+        HideGun();
         OnWeaponChanged.Invoke();
     }
 
@@ -221,5 +187,14 @@ public class PlayerGun : MonoBehaviour
             currentAmmo = 1;
             Destroy(collision.gameObject);
         }
+    }
+
+    private void HideGun()
+    {
+        if (currentWeaponObj == null) return;
+        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
+        Color tmp = sr.color;
+        tmp.a = 0;
+        sr.color = tmp;
     }
 }
