@@ -16,8 +16,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] List<GameObject> AllGunPrefabList;
     [Tooltip("Change during runtime and swap weapon (key: 1) to equip")] [SerializeField] 
     List<GameObject> equippedWeaponPrefabs;
-    [Tooltip("Reset equipped weapons on load")] public bool ResetOnLoad; 
-    [Tooltip("Use equipped weapons provided by inspector instead of saved weapons in memory")] 
+    [Tooltip("Clear equipped weapons saved on disk")] public bool ResetOnLoad; 
+    [Tooltip("Use equipped weapons provided by inspector instead of saved weapons on disk")] 
     public bool UseInspectorWeapons = false; 
     private int _equippedWeaponIndex
     {
@@ -73,7 +73,11 @@ public class PlayerGun : MonoBehaviour
         }
 
         if(UseInspectorWeapons) {
-            
+            if(equippedWeaponPrefabs.Count != 0) {
+                SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
+            } else {
+                currentWeaponObj = null;
+            }
         } else {
             _loadEquippedWeapons();
         }
@@ -81,8 +85,7 @@ public class PlayerGun : MonoBehaviour
         if (ResetOnLoad)
         {
             equippedWeaponPrefabs.Clear();
-            currentWeaponObj = null;
-            currentAmmo = 0f;
+            _saveEquippedWeapons();
         } 
 
         currentAmmo = 1f;
@@ -182,11 +185,17 @@ public class PlayerGun : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GunPickup manager = collision.gameObject.GetComponent<GunPickup>();
+
         if (manager != null)
         {
-            Debug.Log("(PlayerGun) Enable Gun!");
-            equippedWeaponPrefabs.Add(manager.weaponPrefab);
-            SetNewWeapon(manager.weaponPrefab);
+            if( !equippedWeaponPrefabs.Contains(manager.weaponPrefab) )
+            {
+                Debug.Log("(PlayerGun) Enable Gun!");
+                equippedWeaponPrefabs.Add(manager.weaponPrefab);
+                SetNewWeapon(manager.weaponPrefab);
+
+            }   
+            
             currentAmmo = 1;
             Destroy(collision.gameObject);
         }
