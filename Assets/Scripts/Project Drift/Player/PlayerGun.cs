@@ -17,6 +17,8 @@ public class PlayerGun : MonoBehaviour
     [Tooltip("Change during runtime and swap weapon (key: 1) to equip")] [SerializeField] 
     List<GameObject> equippedWeaponPrefabs;
     [Tooltip("Reset equipped weapons on load")] public bool ResetOnLoad; 
+    [Tooltip("Use equipped weapons provided by inspector instead of saved weapons in memory")] 
+    public bool UseInspectorWeapons = false; 
     private int _equippedWeaponIndex
     {
         get { return SaveManager.Load<int>("equippedWeaponIndex"); }
@@ -70,14 +72,18 @@ public class PlayerGun : MonoBehaviour
             GunDictionary.Add(weapon.name, weapon);
         }
 
+        if(UseInspectorWeapons) {
+            
+        } else {
+            _loadEquippedWeapons();
+        }
+
         if (ResetOnLoad)
         {
             equippedWeaponPrefabs.Clear();
             currentWeaponObj = null;
             currentAmmo = 0f;
-        } else {
-            _loadEquippedWeapons();
-        }
+        } 
 
         currentAmmo = 1f;
     }
