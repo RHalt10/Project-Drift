@@ -68,7 +68,7 @@ public class PlayerHealthBar : MonoBehaviour
             spawnedTransform.SetWidth(segmentWidth);
             spawnedTransform.anchoredPosition = new Vector2(i * (segmentWidth + spacing) + spacing, 0);
 
-            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.Current ? invalidColor : currentColor;
+            spawnedPrefab.GetComponent<Image>().color = i >= playerHealth.currentHealth ? invalidColor : currentColor;
         }
     }
 }
