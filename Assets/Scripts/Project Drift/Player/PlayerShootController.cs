@@ -28,7 +28,7 @@ public class PlayerShootController : PlayerSubController
     {
         playerGun.Shoot(playerController.aimInput);
         characterController.velocity = Vector2.zero;
-        equippedCdTime = playerGun.currentWeapon.cdTime;
+        if(playerGun.currentWeapon != null) equippedCdTime = playerGun.currentWeapon.cdTime;
         timer = 0;
     }
 
