@@ -94,6 +94,7 @@ public class PlayerGun : MonoBehaviour
     }
 
     private void Update() {
+        // Control gun sprite direction
         float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
         currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
     }

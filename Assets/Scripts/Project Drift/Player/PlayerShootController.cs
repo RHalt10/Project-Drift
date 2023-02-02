@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
+
+/// <summary>
+/// A player subcontroller that handles the shooting state of player. 
+/// Player cannot move during shooting state.
+/// </summary>
 public class PlayerShootController : PlayerSubController
 {
     GroundCharacterController characterController;
     PlayerGun playerGun;
     float timer = 0;
+    float equippedCdTime;
     public override void Initialize()
     {
         characterController = playerController.GetComponent<GroundCharacterController>();
@@ -22,20 +28,21 @@ public class PlayerShootController : PlayerSubController
     {
         playerGun.Shoot(playerController.aimInput);
         characterController.velocity = Vector2.zero;
+        equippedCdTime = playerGun.currentWeapon.cdTime;
         timer = 0;
     }
 
     public override void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= playerGun.currentWeapon.cdTime) { playerController.SetController(playerController.groundController); }
+        if(timer >= equippedCdTime) { playerController.SetController(playerController.groundController); }
     }
 
     public override void RecieveInput(PlayerInputType type)
     {
         if (type == PlayerInputType.Shoot)
         {
-            if(timer >= playerGun.currentWeapon.cdTime)
+            if(timer >= equippedCdTime)
                 playerGun.Shoot(playerController.aimInput);
         }
     }
