@@ -565,7 +565,19 @@ MonoBehaviour:
     m_ActionId: 5463b554-665d-4be6-84c5-454a956af4ac
     m_ActionName: Player/Interact[/XInputControllerWindows/buttonNorth,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5541513476851453208}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SwapWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e8016410-c65d-4f9e-9e88-56275b3472c0
     m_ActionName: Player/Swap Weapon[/XInputControllerWindows/buttonEast,/Keyboard/1]
   - m_PersistentCalls:
@@ -655,6 +667,7 @@ MonoBehaviour:
       idInternal: 0
       valueGuidInternal: 
       WwiseObjectReference: {fileID: 0}
+  mono: {fileID: 0}
   debugCurrCtrlr: 
   currentAbility: {fileID: 11400000, guid: 757adbb8fd5f6784796a68a9c246927e, type: 2}
 --- !u!114 &5541513476851453213
@@ -706,7 +719,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668498751f19644d94bb76fd1279f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 11400000, guid: 01e6e1fe51119c741bd6bb8daefbcc55, type: 2}
+  equippedWeaponPrefabs:
+  - {fileID: 900856742772545702, guid: 48b48ffc6f442db478a85288e325db49, type: 3}
+  - {fileID: 900856742772545702, guid: 982927d88b31a544296d769ee89b6f91, type: 3}
   projectileSpawnPoint: {fileID: 5541513477159241636}
   OnAmmoAmountChanged:
     m_PersistentCalls:
