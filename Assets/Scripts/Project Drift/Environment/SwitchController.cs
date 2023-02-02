@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 /*
  * A class that handles the basic operations of a switch
- * Written by Brandon Fox 
+ * Written by Brandon Fox
  * 
  * User Guide:
         1. Place switch prefab in desired location in scene 
         2. Place GameObjects you want to appear/disappear (bridges, etc.) in scene at desired locations
-        3. From the hierarchy, drag GameObjects into public controlledObjects array 
+        3. From the hierarchy, drag GameObjects into public controlledObjects array (If you want all the child of a gameobject to swap states, just drag the parent gameobject in)
             3a. This can be found by selecting the switch prefab and looking at the inspector
         4. Be sure to set active states of objects to desired states on start (active or inactive)
         5. Each time switch is hit, all controlled objects will have their active states reversed
@@ -54,6 +54,11 @@ public class SwitchController : MonoBehaviour
     {
         for (int i = 0; i < controlledObjects.Length; i++)
         {
+            //incase wanna group by parenting
+            foreach (Transform child in controlledObjects[i].transform)
+            {
+                child.gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
+            }
             controlledObjects[i].gameObject.SetActive(!controlledObjects[i].gameObject.activeSelf);
         }
         FinishedSwitching.Invoke();
