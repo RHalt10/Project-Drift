@@ -15,60 +15,15 @@ public class PlayerGun : MonoBehaviour
     // Reference to Player Gun SOs *Note: When created a new gun, please add the prefab to this list.
     [SerializeField] List<GameObject> AllGunPrefabList;
     [SerializeField] List<GameObject> equippedWeaponPrefabs;
-
-    private void OnDestroy() {
-        _saveEquippedWeapons();
-    }
-
-    private void _saveEquippedWeapons()
-    {
-        List<string> equipped = new List<string>();
-        foreach (GameObject weapon in equippedWeaponPrefabs)
-        {
-            equipped.Add(weapon.name);
-        } 
-        SaveManager.Save<List<string>>("equippedWeaponList", equipped);
-        SaveManager.Save<int>("equippedWeaponIndex", _equippedWeaponIndex);
-    }
-
-    private void _loadEquippedWeapons()
-    {
-        equippedWeaponPrefabs.Clear();
-        List<string> equipped = SaveManager.Load<List<string>>("equippedWeaponList");
-        foreach (string weaponName in equipped)
-        {
-            equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
-        }
-        _equippedWeaponIndex = SaveManager.Load<int>("equippedWeaponIndex");
-        
-        if(equippedWeaponPrefabs.Count != 0) {
-            SetNewWeapon(equippedWeaponPrefabs[0]);
-        } else {
-            currentWeaponObj = null;
-        }
-    }
-
     public bool ResetOnLoad; 
-    private int _equippedWeaponIndex = 0;
+    private int _equippedWeaponIndex
+    {
+        get { return SaveManager.Load<int>("equippedWeaponIndex"); }
+        set { SaveManager.Save<int>("equippedWeaponIndex", value); }
+    }
 
     private GameObject _currentWeapon; 
     public GameObject currentWeaponObj;
-    // {
-    //     get
-    //     {
-    //         // TODO: remove since we're storing ALL equipped weapons.
-    //         string name = SaveManager.Load<string>("currentWeapon");
-    //         _currentWeapon = name == "none" ? null : GunDictionary[name];
-    //         return _currentWeapon;
-    //     } 
-
-    //     private set
-    //     {
-    //         string name = value == null ? "none" : GunNameDictionary[value];
-    //         SaveManager.Save<string>("currentWeapon", name);
-    //         _currentWeapon = name == "none" ? null : GunDictionary[name];
-    //     } 
-    // }
 
     public RangedWeaponBase currentWeapon 
     { 
@@ -122,6 +77,7 @@ public class PlayerGun : MonoBehaviour
 
         if (ResetOnLoad)
         {
+            equippedWeaponPrefabs.Clear();
             currentWeaponObj = null;
             currentAmmo = 0f;
         } else {
@@ -147,6 +103,37 @@ public class PlayerGun : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        _saveEquippedWeapons();
+    }
+
+    private void _saveEquippedWeapons()
+    {
+        List<string> equipped = new List<string>();
+        foreach (GameObject weapon in equippedWeaponPrefabs)
+        {
+            equipped.Add(GunNameDictionary[weapon]);
+        } 
+        SaveManager.Save<List<string>>("equippedWeaponList", equipped);
+    }
+
+    private void _loadEquippedWeapons()
+    {
+        equippedWeaponPrefabs.Clear();
+        List<string> equipped = SaveManager.Load<List<string>>("equippedWeaponList");
+        foreach (string weaponName in equipped)
+        {
+            equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
+        }
+        _equippedWeaponIndex = SaveManager.Load<int>("equippedWeaponIndex");
+        
+        if(equippedWeaponPrefabs.Count != 0) {
+            SetNewWeapon(equippedWeaponPrefabs[0]);
+        } else {
+            currentWeaponObj = null;
+        }
+    }
+
     private IEnumerator _ShootCR()
     {
         currentWeapon.shootSfx.Post(gameObject);
@@ -163,8 +150,10 @@ public class PlayerGun : MonoBehaviour
 
     private void Update() {
         // Control gun sprite direction
-        float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
-        currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (currentWeapon != null) {
+            float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
+            currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);         
+        };
     }
 
     private void ShowGun()
@@ -177,6 +166,7 @@ public class PlayerGun : MonoBehaviour
 
     private void HideGun()
     {
+        if (currentWeapon == null) return;
         SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
         Color tmp = sr.color;
         tmp.a = 0;
@@ -198,25 +188,25 @@ public class PlayerGun : MonoBehaviour
         _equippedWeaponIndex++;
         if(_equippedWeaponIndex >= equippedWeaponPrefabs.Count)
             _equippedWeaponIndex = 0;
-
-        if (currentWeaponObj != null)
-            Destroy(currentWeaponObj);
         
-        SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
-        OnWeaponChanged.Invoke();
+        if( equippedWeaponPrefabs.Count > 0 )
+            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
     }
 
     //<summary>
-    // asdf
+    // Instantiate weapon instance from prefab.
     //</summary>
     private void SetNewWeapon(GameObject weaponPrefab)
     {
-        GameObject newWeapon = GameObject.Instantiate(weaponPrefab, transform, false);
-        newWeapon.name = weaponPrefab.name;
-        currentWeaponObj = newWeapon;
+        if (currentWeaponObj != null)
+            Destroy(currentWeaponObj);
+
+        currentWeaponObj = GameObject.Instantiate(weaponPrefab, transform, false);
         currentWeaponObj.transform.localPosition = Vector3.zero;
         float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
         currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        OnWeaponChanged.Invoke();
     }
 
     // Enable Gun when player touches a gun pickup
@@ -227,6 +217,7 @@ public class PlayerGun : MonoBehaviour
         {
             Debug.Log("(PlayerGun) Enable Gun!");
             equippedWeaponPrefabs.Add(manager.weaponPrefab);
+            SetNewWeapon(manager.weaponPrefab);
             currentAmmo = 1;
             Destroy(collision.gameObject);
         }
