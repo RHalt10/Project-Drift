@@ -521,6 +521,7 @@ Transform:
   - {fileID: 5541513477159241636}
   - {fileID: 5541513476487848105}
   - {fileID: 5466668088381474323}
+  - {fileID: 5375754443167829127}
   - {fileID: 5932748945526579330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -744,7 +745,19 @@ MonoBehaviour:
     m_ActionId: 5463b554-665d-4be6-84c5-454a956af4ac
     m_ActionName: Player/Interact[/XInputControllerWindows/buttonNorth,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5541513476851453208}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SwapWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e8016410-c65d-4f9e-9e88-56275b3472c0
     m_ActionName: Player/Swap Weapon[/XInputControllerWindows/buttonEast,/Keyboard/1]
   - m_PersistentCalls:
@@ -834,6 +847,9 @@ MonoBehaviour:
       idInternal: 0
       valueGuidInternal: 
       WwiseObjectReference: {fileID: 0}
+  shootController:
+    playerController: {fileID: 0}
+    attackRoot: {fileID: 7612302176610501718}
   debugCurrCtrlr: 
   currentAbility: {fileID: 11400000, guid: 757adbb8fd5f6784796a68a9c246927e, type: 2}
 --- !u!114 &5541513476851453213
@@ -885,10 +901,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668498751f19644d94bb76fd1279f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunSOList:
-  - {fileID: 11400000, guid: 01e6e1fe51119c741bd6bb8daefbcc55, type: 2}
+  AllGunPrefabList:
+  - {fileID: 900856742772545702, guid: 48b48ffc6f442db478a85288e325db49, type: 3}
+  - {fileID: 900856742772545702, guid: 982927d88b31a544296d769ee89b6f91, type: 3}
+  equippedWeaponPrefabs: []
   ResetOnLoad: 0
+  currentWeaponObj: {fileID: 0}
   projectileSpawnPoint: {fileID: 5541513477159241636}
+  attackRoot: {fileID: 5375754443167829127}
   OnAmmoAmountChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1299,7 +1319,37 @@ Transform:
   m_Father: {fileID: 5541513476851453209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6903256711528825031
+--- !u!1 &7612302176610501718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+    - component: {fileID: 5375754443167829127}
+  m_Layer: 0
+  m_Name: Ranged Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5375754443167829127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612302176610501718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5541513476851453209}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

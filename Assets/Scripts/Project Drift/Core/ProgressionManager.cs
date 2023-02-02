@@ -26,7 +26,7 @@ public class ProgressionManager : MonoBehaviour
 
         totalEnemiesKilled++;
 
-        PlayerWeaponSO weapon = PlayerController.Instance.GetComponent<PlayerGun>().currentWeapon;
+        RangedWeaponBase weapon = PlayerController.Instance.GetComponent<PlayerGun>().currentWeapon;
 
         if (!weaponsKilledWith.ContainsKey(weapon.weaponName))
             weaponsKilledWith.Add(weapon.weaponName, 1);

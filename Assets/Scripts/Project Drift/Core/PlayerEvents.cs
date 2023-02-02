@@ -24,9 +24,9 @@ public class PlayerDamagedEvent
 /// </summary>
 public class PlayerShootEvent
 {
-    public PlayerWeaponSO weapon;
+    public RangedWeaponBase weapon;
 
-    public PlayerShootEvent(PlayerWeaponSO _weapon)
+    public PlayerShootEvent(RangedWeaponBase _weapon)
     {
         weapon = _weapon;
     }
