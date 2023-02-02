@@ -16,19 +16,10 @@ public class PlayerGun : MonoBehaviour
     private int _equippedWeaponIndex = 0;
     public GameObject currentWeaponObj 
     {
-        get { return _currentWeaponObj; }
-        private set
-        {
-            if (_currentWeaponObj != null)
-                Destroy(_currentWeaponObj);
-            _currentWeaponObj = GameObject.Instantiate(value, transform, false);
-            _currentWeaponObj.transform.localPosition = Vector3.zero;
-            float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
-            currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
+        get;
+        private set;
     }
 
-    private GameObject _currentWeaponObj;
     public RangedWeaponBase currentWeapon 
     { 
         get 
@@ -68,7 +59,14 @@ public class PlayerGun : MonoBehaviour
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        currentWeaponObj = equippedWeaponPrefabs[0];
+
+        if(equippedWeaponPrefabs.Count != 0) {
+            currentWeaponObj = equippedWeaponPrefabs[0];
+            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
+        } else {
+            currentWeaponObj = null;
+        }
+        
         currentAmmo = 1f;
         HideGun();
     }
@@ -139,8 +137,19 @@ public class PlayerGun : MonoBehaviour
         if(_equippedWeaponIndex >= equippedWeaponPrefabs.Count)
             _equippedWeaponIndex = 0;
 
-        currentWeaponObj = equippedWeaponPrefabs[_equippedWeaponIndex];
+        if (currentWeaponObj != null)
+            Destroy(currentWeaponObj);
+        
+        SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
         OnWeaponChanged.Invoke();
+    }
+
+    private void SetNewWeapon(GameObject weaponPrefab)
+    {
+        currentWeaponObj = GameObject.Instantiate(weaponPrefab, transform, false);
+        currentWeaponObj.transform.localPosition = Vector3.zero;
+        float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
+        currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     // Enable Gun when player touches a gun pickup
