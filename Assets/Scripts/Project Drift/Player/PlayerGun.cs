@@ -58,8 +58,6 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] Transform attackRoot;
     public UnityEvent OnAmmoAmountChanged;
     public UnityEvent OnWeaponChanged;
-
-    // public Dictionary<GameObject, string> GunNameDictionary = new Dictionary<GameObject, string>();
     public Dictionary<string, GameObject> GunDictionary = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
@@ -70,7 +68,6 @@ public class PlayerGun : MonoBehaviour
         foreach (GameObject weapon in AllGunPrefabList)
         {
             GunDictionary.Add(weapon.name, weapon);
-            //GunNameDictionary.Add(weapon, weapon.name);
         }
 
         if (ResetOnLoad)
