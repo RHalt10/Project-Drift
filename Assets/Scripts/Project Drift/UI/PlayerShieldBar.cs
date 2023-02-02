@@ -25,7 +25,7 @@ public class PlayerShieldBar : MonoBehaviour
 
         playerHealth.events.OnHealthChange.AddListener(GenerateShieldBar);
         // TODO - call GenerateShieldBar for a ShieldRegen event, once implemented
-        playerHealth.OnHealthUpgrade.AddListener(GenerateShieldBar);
+        playerHealth.OnShieldRegen.AddListener(GenerateShieldBar);
 
         GenerateShieldBar();
     }
