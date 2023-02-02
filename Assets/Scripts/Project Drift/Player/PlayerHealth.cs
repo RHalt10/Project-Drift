@@ -140,10 +140,12 @@ public class PlayerHealth : HealthSystem
     IEnumerator ShieldRegen(float regenTime) {
         while(currentShield < maxShield) {
             currentShield += 1;
-            OnShieldRegen.Invoke();
             if(currentShield > maxShield) {
                 currentShield = maxShield;
             }
+
+            OnShieldRegen.Invoke();
+
             yield return new WaitForSeconds(regenTime);
         }
     }
