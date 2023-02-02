@@ -518,27 +518,13 @@
 										<ActiveSource Name="enemyDamage" ID="{0DEED4F4-7A19-4AEA-A5EE-4383CE4F1216}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<SwitchContainer Name="LungingEnemyGrunts" ID="{CED404A8-9FA7-4527-AE52-6FA7B6312559}" ShortID="468987896">
+								<Folder Name="LungingEnemy" ID="{ACE27772-D50D-4FB6-8EAC-B5B4BAC7BA2D}" ShortID="497802766">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="DefaultSwitchOrState">
-											<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-										<Reference Name="SwitchGroupOrStateGroup">
-											<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
-										</Reference>
-									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}" ShortID="822637338">
+										<SwitchContainer Name="LungingEnemyGrunts" ID="{CED404A8-9FA7-4527-AE52-6FA7B6312559}" ShortID="468987896">
 											<PropertyList>
 												<Property Name="Color" Type="int16" Value="17"/>
 												<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -547,91 +533,244 @@
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
 												</Reference>
+												<Reference Name="DefaultSwitchOrState">
+													<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+													<ObjectRef Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<SourcePlugin Name="Silence" ID="{138820F3-E4FE-45D9-8AAA-A216D08C54A8}" ShortID="870989810" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
-													<Language>SFX</Language>
-												</SourcePlugin>
+												<Sound Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}" ShortID="822637338">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{138820F3-E4FE-45D9-8AAA-A216D08C54A8}" ShortID="870989810" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+														<SourcePlugin Name="Sine" ID="{2BFE17DF-AA42-4798-9987-9F0A5A450314}" ShortID="313516555" PluginName="Wwise Sine" CompanyID="0" PluginID="100">
+															<PropertyList>
+																<Property Name="SineDuration" Type="Real32" Value="0.5"/>
+																<Property Name="SineFrequency" Type="Real32" Value="200"/>
+																<Property Name="SineGain" Type="Real32" Value="0"/>
+															</PropertyList>
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Sine" ID="{2BFE17DF-AA42-4798-9987-9F0A5A450314}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}" ShortID="477116985">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{545FAEF1-93C7-4E9D-8B99-BA2F1EBE91E4}" ShortID="850347419" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+														<SourcePlugin Name="Sine" ID="{C5A9F034-AF16-48F1-AEB0-B205C474CB96}" ShortID="319700922" PluginName="Wwise Sine" CompanyID="0" PluginID="100">
+															<PropertyList>
+																<Property Name="SineDuration" Type="Real32" Value="0.5"/>
+																<Property Name="SineFrequency" Type="Real32" Value="300"/>
+																<Property Name="SineGain" Type="Real32" Value="0"/>
+															</PropertyList>
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Sine" ID="{C5A9F034-AF16-48F1-AEB0-B205C474CB96}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Silence" ID="{138820F3-E4FE-45D9-8AAA-A216D08C54A8}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}" ShortID="477116985">
-											<PropertyList>
-												<Property Name="Color" Type="int16" Value="17"/>
-												<Property Name="OverrideColor" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<SourcePlugin Name="Silence" ID="{545FAEF1-93C7-4E9D-8B99-BA2F1EBE91E4}" ShortID="850347419" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
-													<Language>SFX</Language>
-												</SourcePlugin>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="Silence" ID="{545FAEF1-93C7-4E9D-8B99-BA2F1EBE91E4}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+														<ItemList>
+															<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+														<ItemList>
+															<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
 									</ChildrenList>
-									<GroupingInfo>
-										<GroupingBehaviorList>
-											<GroupingBehavior>
-												<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
-											</GroupingBehavior>
-											<GroupingBehavior>
-												<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
-											</GroupingBehavior>
-										</GroupingBehaviorList>
-										<GroupingList>
-											<Grouping>
-												<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
-												<ItemList>
-													<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
-												</ItemList>
-											</Grouping>
-											<Grouping>
-												<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
-												<ItemList>
-													<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
-												</ItemList>
-											</Grouping>
-										</GroupingList>
-									</GroupingInfo>
-								</SwitchContainer>
-								<SwitchContainer Name="ThrustingEnemyGrunts" ID="{F2203B5A-D706-42FB-960C-6ADED691AD3D}" ShortID="191558997">
+								</Folder>
+								<Folder Name="ThrustingEnemy" ID="{A508D5E5-1DC0-4975-BD81-835E0EB59045}" ShortID="1034608237">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="DefaultSwitchOrState">
-											<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-										<Reference Name="SwitchGroupOrStateGroup">
-											<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
-										</Reference>
-									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}" ShortID="730528131">
+										<SwitchContainer Name="ThrustingEnemyGrunts" ID="{F2203B5A-D706-42FB-960C-6ADED691AD3D}" ShortID="191558997">
 											<PropertyList>
 												<Property Name="Color" Type="int16" Value="17"/>
 												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="DefaultSwitchOrState">
+													<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Enemies" ID="{0DD3A411-9DE9-45AB-86F7-FE4044764997}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}" ShortID="730528131">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{021D4EA9-F629-41AB-8398-69F8F06ED937}" ShortID="1005430086" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{021D4EA9-F629-41AB-8398-69F8F06ED937}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}" ShortID="329521786">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{E9E31D3E-925D-43F6-8156-5374B1D2DFDA}" ShortID="803589665" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{E9E31D3E-925D-43F6-8156-5374B1D2DFDA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+														<ItemList>
+															<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+														<ItemList>
+															<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="RangedEnemy" ID="{30AAA997-4E9E-4460-874A-716C18F7931B}" ShortID="500459404">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Folder>
+								<Folder Name="4thEnemy" ID="{FC8BF547-319A-4E06-8E44-45F1C6C5AABC}" ShortID="185944063">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Folder>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Level" ID="{60CCB0BB-99CA-4270-A804-21118CDD52D9}" ShortID="368477705">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Folder Name="Collectables" ID="{C408DB49-4DC2-4D40-9DDA-133870A7222B}" ShortID="933208958">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Sound Name="healthPack" ID="{944535D6-BBAA-4675-8B3B-997EAAD986D7}" ShortID="542496690">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -642,15 +781,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<SourcePlugin Name="Silence" ID="{021D4EA9-F629-41AB-8398-69F8F06ED937}" ShortID="1005430086" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+												<AudioFileSource Name="healthPack" ID="{44542F4F-99DD-4036-9D1F-DECB9C55E639}">
 													<Language>SFX</Language>
-												</SourcePlugin>
+													<AudioFile>healthPack.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="529074357"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Silence" ID="{021D4EA9-F629-41AB-8398-69F8F06ED937}" Platform="Linked"/>
+												<ActiveSource Name="healthPack" ID="{44542F4F-99DD-4036-9D1F-DECB9C55E639}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}" ShortID="329521786">
+										<Sound Name="key" ID="{74A27301-8764-4D30-8BE6-7D1DA8CC416A}" ShortID="11633783">
 											<PropertyList>
 												<Property Name="Color" Type="int16" Value="17"/>
 												<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -664,40 +807,16 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<SourcePlugin Name="Silence" ID="{E9E31D3E-925D-43F6-8156-5374B1D2DFDA}" ShortID="803589665" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+												<SourcePlugin Name="Silence" ID="{6138C4ED-9339-4C58-84DD-3503A86A85CB}" ShortID="671966616" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 													<Language>SFX</Language>
 												</SourcePlugin>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="Silence" ID="{E9E31D3E-925D-43F6-8156-5374B1D2DFDA}" Platform="Linked"/>
+												<ActiveSource Name="Silence" ID="{6138C4ED-9339-4C58-84DD-3503A86A85CB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<GroupingInfo>
-										<GroupingBehaviorList>
-											<GroupingBehavior>
-												<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
-											</GroupingBehavior>
-											<GroupingBehavior>
-												<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
-											</GroupingBehavior>
-										</GroupingBehaviorList>
-										<GroupingList>
-											<Grouping>
-												<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
-												<ItemList>
-													<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
-												</ItemList>
-											</Grouping>
-											<Grouping>
-												<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
-												<ItemList>
-													<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
-												</ItemList>
-											</Grouping>
-										</GroupingList>
-									</GroupingInfo>
-								</SwitchContainer>
+								</Folder>
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>

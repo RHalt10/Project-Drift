@@ -16,16 +16,4 @@ public abstract class RangedWeaponBase : MonoBehaviour
     /// Spawn player bullet projectiles based on FacingDirection. No need to implement costs 
     /// </summary>
     public abstract void FireProjectile(Vector2 direction, Vector2 spawnPoint);
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

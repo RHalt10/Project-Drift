@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using WSoft.Combat;
+using WSoft.Core; 
 
 /// <summary>
 /// A script that controls the player shooting and ammo amounts
@@ -14,17 +15,19 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] List<GameObject> equippedWeaponPrefabs;
     private int _equippedWeaponIndex = 0;
     public GameObject currentWeaponObj 
-    { 
-        get{ return _currentWeaponObj; }
+    {
+        get { return _currentWeaponObj; }
         private set
         {
-            Destroy(_currentWeaponObj);
+            if (_currentWeaponObj != null)
+                Destroy(_currentWeaponObj);
             _currentWeaponObj = GameObject.Instantiate(value, transform, false);
             _currentWeaponObj.transform.localPosition = Vector3.zero;
             float angle = Vector2.SignedAngle(Vector2.up, playerController.aimInput);
             currentWeaponObj.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+
     private GameObject _currentWeaponObj;
     public RangedWeaponBase currentWeapon 
     { 
@@ -34,16 +37,21 @@ public class PlayerGun : MonoBehaviour
             if(weaponInfo == null) { Debug.LogError("Current weapon '" + currentWeaponObj.name + "' not a weapon"); }
             return weaponInfo; 
         }
-        private set{} 
     }
+    
     /* Always from 0 to 1*/
     float _currentAmmo = 0f;
     public float currentAmmo
     {
-        get { return _currentAmmo; }
+        get {
+            _currentAmmo = SaveManager.Load<float>("currentAmmo");
+            return _currentAmmo; 
+        }
+
         set
         {
             _currentAmmo = Mathf.Clamp(value, 0, 1);
+            SaveManager.Save<float>("currentAmmo", _currentAmmo);
             OnAmmoAmountChanged.Invoke();
         }
     }
@@ -133,5 +141,18 @@ public class PlayerGun : MonoBehaviour
 
         currentWeaponObj = equippedWeaponPrefabs[_equippedWeaponIndex];
         OnWeaponChanged.Invoke();
+    }
+
+    // Enable Gun when player touches a gun pickup
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GunPickup manager = collision.gameObject.GetComponent<GunPickup>();
+        if (manager != null)
+        {
+            Debug.Log("(PlayerGun) Enable Gun!");
+            equippedWeaponPrefabs.Add(manager.weaponPrefab);
+            currentAmmo = 1;
+            Destroy(collision.gameObject);
+        }
     }
 }

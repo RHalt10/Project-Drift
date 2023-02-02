@@ -24,8 +24,8 @@ public class GameCheckpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player")
         {
-            PlayerRespawnManager.current_checkpoint =
-            new PlayerRespawnManager.CheckpointInfo(checkPointName, checkpointLocation);
+            PlayerCheckpointManager.current_checkpoint =
+                new PlayerCheckpointManager.CheckpointInfo(checkPointName, checkpointLocation);
         }
     }
 
