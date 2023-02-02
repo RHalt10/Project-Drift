@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Pistol
-  cdTime: 1
+  cdTime: 0.3
   projectilePrefab: {fileID: 4576122382636938949, guid: 7be99c4bb0e0f734c922b76fbd3f0e53, type: 3}
   ammoSubdivisions: 5
   shootSfx:
