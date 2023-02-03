@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
-  m_Name: 40BB5215-D2D8-432C-A6C4-2FAF6A6C7955
+  m_Name: 11EB38B5-ED0C-4E7E-ADA0-B243AA70B8B3
   m_EditorClassIdentifier: 
-  objectName: enemyDeath_Play
-  id: 1304566144
-  guid: 40BB5215-D2D8-432C-A6C4-2FAF6A6C7955
+  objectName: PlayerWalk_sand_Play
+  id: 2738346799
+  guid: 11EB38B5-ED0C-4E7E-ADA0-B243AA70B8B3
