@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
   m_Name: 40BB5215-D2D8-432C-A6C4-2FAF6A6C7955
   m_EditorClassIdentifier: 
-  objectName: enemyDeathSound_Play
-  id: 3951654333
+  objectName: enemyDeath_Play
+  id: 1304566144
   guid: 40BB5215-D2D8-432C-A6C4-2FAF6A6C7955

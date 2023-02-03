@@ -839,7 +839,7 @@
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-25</Value>
+														<Value>-31</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -1034,7 +1034,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-30</Value>
+														<Value>-33</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
