@@ -175,41 +175,7 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Event Name="trainingDummyIdle_Stop" ID="{1DA3F06D-0432-497D-AD27-F0B0BC337CEE}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<Action Name="" ID="{D22A7AE8-E3C1-410F-A0B4-7916C408C706}" ShortID="683470852">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="FadeTime" Type="Real64" Value="1"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="trainingDummyIdle_Play" ID="{85138BB5-1C08-48C9-AFCA-4DC9358B1EF3}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<Action Name="" ID="{436F7051-8896-41D7-95CD-83DBB31D4F16}" ShortID="197202979">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="enemyDeathSound_Play" ID="{40BB5215-D2D8-432C-A6C4-2FAF6A6C7955}">
+								<Event Name="enemyDeath_Play" ID="{40BB5215-D2D8-432C-A6C4-2FAF6A6C7955}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -218,7 +184,7 @@
 										<Action Name="" ID="{7B15FAD2-B082-4BF9-AD24-BE88B8FA0962}" ShortID="522335501">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="enemyDeathSound" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+													<ObjectRef Name="enemyDeath" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -334,7 +300,7 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="Approaching_Switch" ID="{DDC8B18D-C269-4851-9C79-4360C2E77C40}">
+								<Event Name="Attack_Switch" ID="{DDC8B18D-C269-4851-9C79-4360C2E77C40}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -346,7 +312,7 @@
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+													<ObjectRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

@@ -222,100 +222,6 @@
 										<ActiveSource Name="sine-tone-300hz" ID="{3D587DA9-63E1-4051-A4F6-3A102C3607C0}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="playerMelee" ID="{02ECAFC7-643D-4192-A37B-0C6ABA7666F3}" ShortID="272116093">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{EAF8200E-E36E-46B4-8FFF-7354959EB54C}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="5"/>
-															<Property Name="Min" Type="Real64" Value="-5"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{AFE0EBCE-A618-4835-AE45-6A95BB7D4904}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="2"/>
-															<Property Name="Min" Type="Real64" Value="-2"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="sine-tone-400hz" ID="{160F0D54-2570-4B89-8A19-1BE160038BCF}">
-											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>sine-tone-400hz.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="758589057"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="sine-tone-400hz" ID="{160F0D54-2570-4B89-8A19-1BE160038BCF}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="playerRanged" ID="{B42CC057-B70C-43CE-8507-5C9E63EB11A6}" ShortID="53765832">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="playerRanged" ID="{66109FB8-3456-4923-BC13-F8A72BBC9CC5}">
-											<Language>SFX</Language>
-											<AudioFile>playerRanged.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="262681893"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="playerRanged" ID="{66109FB8-3456-4923-BC13-F8A72BBC9CC5}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<Sound Name="playerDamage" ID="{B67693A5-197C-4A52-80F4-6C3CCD8512BF}" ShortID="749659074">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
@@ -374,44 +280,186 @@
 										<ActiveSource Name="playerDamage" ID="{0AAEC57D-446C-4E05-A65D-B7F4F3FB543C}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Folder Name="playerWalk" ID="{32F2CEE8-1AF3-48E7-9295-4CCE8B8F917D}" ShortID="561240770">
+								<ActorMixer Name="Weapons&amp;Abilities" ID="{96E067F4-FB65-47CF-9687-968B4761D0B4}" ShortID="563016443">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
 									<ChildrenList>
-										<RandomSequenceContainer Name="playerWalk_sand" ID="{6A62064F-A48E-4091-B342-FE7B58822FF9}" ShortID="562932794">
+										<Folder Name="MeleeWeapons" ID="{281D794F-A77C-420D-A9F7-7DF9C261FC8B}" ShortID="194532528">
 											<PropertyList>
-												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
-												<Property Name="MaxSoundPerInstance" Type="int16">
-													<ValueList>
-														<Value>3</Value>
-													</ValueList>
-												</Property>
-												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
-												<Property Name="UseMaxSoundPerInstance" Type="bool">
-													<ValueList>
-														<Value>True</Value>
-													</ValueList>
-												</Property>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-24</Value>
-													</ValueList>
-												</Property>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-												</Reference>
-											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="playerWalk_sand_01" ID="{5A7C8C2E-6182-435C-8160-0C6AC084D9F0}" ShortID="824275394">
+												<Sound Name="playerMelee" ID="{02ECAFC7-643D-4192-A37B-0C6ABA7666F3}" ShortID="272116093">
 													<PropertyList>
-														<Property Name="Inclusion" Type="bool">
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="MaxSoundPerInstance" Type="int16">
 															<ValueList>
-																<Value>False</Value>
+																<Value>1</Value>
 															</ValueList>
 														</Property>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EAF8200E-E36E-46B4-8FFF-7354959EB54C}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="5"/>
+																			<Property Name="Min" Type="Real64" Value="-5"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="UseMaxSoundPerInstance" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{AFE0EBCE-A618-4835-AE45-6A95BB7D4904}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="2"/>
+																			<Property Name="Min" Type="Real64" Value="-2"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="sine-tone-400hz" ID="{160F0D54-2570-4B89-8A19-1BE160038BCF}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>sine-tone-400hz.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758589057"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="sine-tone-400hz" ID="{160F0D54-2570-4B89-8A19-1BE160038BCF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerHammer" ID="{C6D5EC01-0750-4A0E-880C-AA5101B4C0C6}" ShortID="170018023">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{A4E2C507-8E94-4F59-AECA-BB6DC28F0DD4}" ShortID="232672388" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{A4E2C507-8E94-4F59-AECA-BB6DC28F0DD4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerMeleeSwap" ID="{DD5A4B8C-B59E-4C58-88F5-C2494C424D13}" ShortID="765119732">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{6AB83FE8-B847-415E-BAB0-76C16651E0F7}" ShortID="77042421" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{6AB83FE8-B847-415E-BAB0-76C16651E0F7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerSword" ID="{3FDBD0B3-E132-45EA-9812-56BA00638864}" ShortID="10203517">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" ShortID="89333170" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerSpear" ID="{779F40F2-9841-40EA-891B-33D092274FD3}" ShortID="583749259">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{82E97E0D-7AD8-4C26-AC50-B2EB1A8BD559}" ShortID="108961771" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{82E97E0D-7AD8-4C26-AC50-B2EB1A8BD559}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerHammerCollide" ID="{BD413747-EB89-4B11-88B8-C02E8CAF4A3F}" ShortID="979699502">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -422,47 +470,18 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_01" ID="{49F1E118-7F60-4603-BA51-C6C3ED579C77}">
+														<SourcePlugin Name="Silence" ID="{959EE552-6A44-4EEB-9C48-94ED44E9F25C}" ShortID="122656368" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_01.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="806237029"/>
-															</MediaIDList>
-														</AudioFileSource>
+														</SourcePlugin>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_01" ID="{49F1E118-7F60-4603-BA51-C6C3ED579C77}" Platform="Linked"/>
+														<ActiveSource Name="Silence" ID="{959EE552-6A44-4EEB-9C48-94ED44E9F25C}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="playerWalk_sand_02" ID="{19836231-19D4-473B-8D5C-5DEC31A91022}" ShortID="497343267">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_02" ID="{B211B3CB-9B35-4C0F-812A-0888DEF0C0AB}">
-															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_02.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="925143746"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_02" ID="{B211B3CB-9B35-4C0F-812A-0888DEF0C0AB}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="playerWalk_sand_03" ID="{B5DA8345-5586-4578-9909-3D5BFD449D73}" ShortID="1009573294">
+												<Sound Name="playerSwordCollide" ID="{F2DC0D9C-3EA7-4A1E-B844-A8BAB5A00E20}" ShortID="288078610">
 													<PropertyList>
-														<Property Name="Inclusion" Type="bool">
-															<ValueList>
-																<Value>False</Value>
-															</ValueList>
-														</Property>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -473,91 +492,18 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_03" ID="{30AA392A-385D-441E-954E-70493D6CEBCB}">
+														<SourcePlugin Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" ShortID="289159130" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_03.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="336390873"/>
-															</MediaIDList>
-														</AudioFileSource>
+														</SourcePlugin>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_03" ID="{30AA392A-385D-441E-954E-70493D6CEBCB}" Platform="Linked"/>
+														<ActiveSource Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="playerWalk_sand_04" ID="{2C0CBF95-4AB8-4E5F-891D-463F0FE97770}" ShortID="983599133">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_04" ID="{9DA5D02E-EB56-451E-8EBA-61B217961736}">
-															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_04.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="158894712"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_04" ID="{9DA5D02E-EB56-451E-8EBA-61B217961736}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="playerWalk_sand_05" ID="{6E12496B-25A1-4BA3-80C7-BBE939479C7F}" ShortID="436314862">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_05" ID="{9D02B813-8AE5-4A41-A8EE-4BD3885FA662}">
-															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_05.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="385381532"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_05" ID="{9D02B813-8AE5-4A41-A8EE-4BD3885FA662}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="playerWalk_sand_06" ID="{75D2C6FE-3FA3-463C-BC59-DE1E93808C85}" ShortID="323223474">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_06" ID="{539AD661-23C3-410B-8A34-AE0D2655DAE1}">
-															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_06.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="325556533"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_06" ID="{539AD661-23C3-410B-8A34-AE0D2655DAE1}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="playerWalk_sand_07" ID="{E13C0966-994E-4AFF-8B93-AA3A3835808A}" ShortID="194253319">
+												<Sound Name="playerSpearCollide" ID="{6B388808-9449-4FA8-86F5-886231D0FDC7}" ShortID="39253062">
 													<PropertyList>
-														<Property Name="Inclusion" Type="bool">
-															<ValueList>
-																<Value>False</Value>
-															</ValueList>
-														</Property>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -568,152 +514,302 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_07" ID="{119B6636-D8DB-474E-B2D1-E2E07AE8A1DD}">
+														<SourcePlugin Name="Silence" ID="{C751980D-6E14-4C53-B918-1CAEE76DCEF3}" ShortID="776280742" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_07.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="238713835"/>
-															</MediaIDList>
-														</AudioFileSource>
+														</SourcePlugin>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_07" ID="{119B6636-D8DB-474E-B2D1-E2E07AE8A1DD}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="playerWalk_sand_08" ID="{6416C06F-6A91-45C8-992E-9608C9AF597F}" ShortID="550064523">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_08" ID="{59777923-FF26-482C-97A3-E2F7AFF72DAD}">
-															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_08.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="499635219"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_08" ID="{59777923-FF26-482C-97A3-E2F7AFF72DAD}" Platform="Linked"/>
+														<ActiveSource Name="Silence" ID="{C751980D-6E14-4C53-B918-1CAEE76DCEF3}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-										</RandomSequenceContainer>
-										<RandomSequenceContainer Name="playerWalk_sand_grains" ID="{7148A28C-7BEB-48C4-871C-4BA7AC8CEB3A}" ShortID="838444002">
+										</Folder>
+										<Folder Name="RangedWeapons" ID="{ABCA119C-8DF2-4618-96CA-C24CC35FCCF2}" ShortID="912743923">
 											<PropertyList>
-												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
-												<Property Name="InitialDelay" Type="Real64">
-													<ModifierList>
-														<ModifierInfo>
-															<Modifier Name="" ID="{3DF583A6-0493-482F-A3B9-0082E118F1C3}">
-																<PropertyList>
-																	<Property Name="Max" Type="Real64" Value="5"/>
-																</PropertyList>
-															</Modifier>
-														</ModifierInfo>
-													</ModifierList>
-												</Property>
-												<Property Name="MaxSoundPerInstance" Type="int16">
-													<ValueList>
-														<Value>3</Value>
-													</ValueList>
-												</Property>
-												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
-												<Property Name="UseMaxSoundPerInstance" Type="bool">
-													<ValueList>
-														<Value>True</Value>
-													</ValueList>
-												</Property>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-35</Value>
-													</ValueList>
-												</Property>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-												</Reference>
-											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="playerWalk_sand_grains_01" ID="{95BCBB9F-892B-45FE-AFC0-323DBFA9A37A}" ShortID="168262082">
+												<Sound Name="playerBolas" ID="{F00728D1-935F-44E0-8529-906F5E67A5F6}" ShortID="966993608">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_grains_01" ID="{5818F2DF-3F01-4E8E-AB7B-8248FFA40A1F}">
+														<SourcePlugin Name="Silence" ID="{75590EA2-C439-475D-8649-EBEF08932B6E}" ShortID="488554661" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_grains_01.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="217485878"/>
-															</MediaIDList>
-														</AudioFileSource>
+														</SourcePlugin>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_grains_01" ID="{5818F2DF-3F01-4E8E-AB7B-8248FFA40A1F}" Platform="Linked"/>
+														<ActiveSource Name="Silence" ID="{75590EA2-C439-475D-8649-EBEF08932B6E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="playerWalk_sand_grains_02" ID="{53D34025-5B12-42D9-9749-2E6900EF2772}" ShortID="678397492">
+												<Sound Name="playerBlunderbus" ID="{AB0F3B4D-2F11-47DE-BAB3-4DC1C46B6CE6}" ShortID="272432593">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_grains_02" ID="{8096C6DF-2B11-40EC-8B4A-3121DA663E4E}">
+														<SourcePlugin Name="Silence" ID="{DB43A3FA-D4D0-4A3C-9935-D0B76AD0EA82}" ShortID="711046869" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_grains_02.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="789133204"/>
-															</MediaIDList>
-														</AudioFileSource>
+														</SourcePlugin>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_grains_02" ID="{8096C6DF-2B11-40EC-8B4A-3121DA663E4E}" Platform="Linked"/>
+														<ActiveSource Name="Silence" ID="{DB43A3FA-D4D0-4A3C-9935-D0B76AD0EA82}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="playerWalk_sand_grains_03" ID="{8FA7E8E3-3DAF-4362-80D7-EF01B77D27E3}" ShortID="525638360">
+												<Sound Name="playerRanged" ID="{B42CC057-B70C-43CE-8507-5C9E63EB11A6}" ShortID="53765832">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="playerWalk_sand_grains_03" ID="{3762E590-5591-4350-86CB-7A51CD9DC073}">
+														<AudioFileSource Name="playerRanged" ID="{66109FB8-3456-4923-BC13-F8A72BBC9CC5}">
 															<Language>SFX</Language>
-															<AudioFile>playerWalk_sand_grains_03.wav</AudioFile>
+															<AudioFile>playerRanged.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="868040894"/>
+																<MediaID ID="262681893"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="playerWalk_sand_grains_03" ID="{3762E590-5591-4350-86CB-7A51CD9DC073}" Platform="Linked"/>
+														<ActiveSource Name="playerRanged" ID="{66109FB8-3456-4923-BC13-F8A72BBC9CC5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerRangedBlank" ID="{4CD4349F-CC12-456A-8176-6D50DB868BCC}" ShortID="314960015">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{D61BEC43-FCFB-49A0-8916-DBBA6C869D19}" ShortID="251256883" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{D61BEC43-FCFB-49A0-8916-DBBA6C869D19}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerPistol" ID="{2BB811ED-8273-40DE-8A5F-DC5B9173A7A0}" ShortID="410949594">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{5F05210A-B90A-4B08-BD84-BF33CC39B8D0}" ShortID="217434353" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{5F05210A-B90A-4B08-BD84-BF33CC39B8D0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerRangedSwap" ID="{3CA2097E-1DA3-485E-89EC-D277FF4BF0BE}" ShortID="246202193">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{B3269E8E-BCEF-4D20-805F-9946DDDD7F7A}" ShortID="377004030" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{B3269E8E-BCEF-4D20-805F-9946DDDD7F7A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-										</RandomSequenceContainer>
+										</Folder>
+										<Folder Name="Abilities" ID="{70A207C7-5C7B-4C0E-9A1F-B4723CCD5D07}" ShortID="557831642">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<Sound Name="playerEnergyBurst" ID="{EF8573F5-F22F-4ED8-9D87-C1F6359C2F11}" ShortID="86807553">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{D194E747-5F8A-439F-9C52-2C78670A2269}" ShortID="929800533" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{D194E747-5F8A-439F-9C52-2C78670A2269}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerSlowTime" ID="{C7543F24-923F-4958-82CC-B705A458258A}" ShortID="708401049">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{7581295D-227D-4A44-A150-8AD24ECB168C}" ShortID="170833312" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{7581295D-227D-4A44-A150-8AD24ECB168C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
-								</Folder>
+								</ActorMixer>
+								<Sound Name="playerDeath" ID="{887408F1-FECE-430B-A0FF-7D2702E61B6B}" ShortID="618322003">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{6688D904-F791-418D-8113-5B0A462CBC1D}" ShortID="742636413" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{6688D904-F791-418D-8113-5B0A462CBC1D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="playerRespawn" ID="{0BD2D1EF-AAC1-4770-9A61-C6D1EBEE7B64}" ShortID="795662754">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{76842AEF-C6F0-4D4B-97C0-9315BDD09837}" ShortID="1046614327" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{76842AEF-C6F0-4D4B-97C0-9315BDD09837}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="playerHealthRegen" ID="{0EF06FDD-2B12-47AE-B45C-8BF5D176F213}" ShortID="906518640">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" ShortID="163176354" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="playerLowHealth" ID="{4E869F52-129A-45C6-A64B-10F675117EBE}" ShortID="1047206415">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{3821F359-691B-48E5-B624-CBBA967CB43D}" ShortID="632016737" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{3821F359-691B-48E5-B624-CBBA967CB43D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="Enemies" ID="{C2AEC986-5F20-4F02-9E66-4383B5906D81}" ShortID="415996191">
@@ -732,50 +828,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="trainingDummyIdle" ID="{4E2177C5-0C7C-4237-AF8D-BB20C27337BC}" ShortID="446798029">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="testAttenuation" ID="{00954507-2167-49E0-AD86-3D022E46A724}" WorkUnitID="{53019987-F172-4FD4-B485-CAF8BC432E2B}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="sine-tone-200hz" ID="{B4B6B268-4122-4089-A1CE-E1CB1A1C864A}">
-											<PropertyList>
-												<Property Name="CrossfadeDuration" Type="Real64" Value="1"/>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.1"/>
-												<Property Name="FadeInShape" Type="int16" Value="2"/>
-												<Property Name="LoopBegin" Type="Real64" Value="1"/>
-												<Property Name="LoopEnd" Type="Real64" Value="9"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>sine-tone-200hz.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="177677362"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<PositioningInfo>
-										<Position Name="" ID="{8D391FFE-1922-43B5-8A9F-4F2B86DFA74F}"/>
-									</PositioningInfo>
-									<ActiveSourceList>
-										<ActiveSource Name="sine-tone-200hz" ID="{B4B6B268-4122-4089-A1CE-E1CB1A1C864A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="enemyDeathSound" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" ShortID="535329935">
+								<Sound Name="enemyDeath" ID="{26CCC740-C5D5-4739-86DB-66632C0C22FF}" ShortID="535329935">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -884,7 +937,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}" ShortID="822637338">
+												<Sound Name="lungingEnemyIdleGrunt" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}" ShortID="822637338">
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="16"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -914,7 +967,7 @@
 														<ActiveSource Name="Sine" ID="{2BFE17DF-AA42-4798-9987-9F0A5A450314}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}" ShortID="477116985">
+												<Sound Name="lungingEnemyAttackGrunt" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}" ShortID="477116985">
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="16"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -948,28 +1001,72 @@
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
-														<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
+														<ItemRef Name="lungingEnemyIdleGrunt" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
 													</GroupingBehavior>
 													<GroupingBehavior>
-														<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
+														<ItemRef Name="lungingEnemyAttackGrunt" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
 													</GroupingBehavior>
 												</GroupingBehaviorList>
 												<GroupingList>
 													<Grouping>
 														<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
 														<ItemList>
-															<ItemRef Name="lungingEnemyIdle" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
+															<ItemRef Name="lungingEnemyIdleGrunt" ID="{E6AF3700-472C-4D47-8D2C-A26324FBF849}"/>
 														</ItemList>
 													</Grouping>
 													<Grouping>
-														<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+														<SwitchRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
 														<ItemList>
-															<ItemRef Name="lungingEnemyApproach" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
+															<ItemRef Name="lungingEnemyAttackGrunt" ID="{14139B41-BC74-40C0-9065-BBFD3706270E}"/>
 														</ItemList>
 													</Grouping>
 												</GroupingList>
 											</GroupingInfo>
 										</SwitchContainer>
+										<Sound Name="lungingEnemyAttack" ID="{FAF537AB-84BD-4B52-9019-49AF5329CB16}" ShortID="174863470">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{5F314CC6-48CF-40E2-9094-DDD02B470E2C}" ShortID="439651847" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{5F314CC6-48CF-40E2-9094-DDD02B470E2C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="lungingEnemyDeath" ID="{DF5ED128-9E8B-4B04-8EE1-B9CEA0BFCEF4}" ShortID="426718727">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{79B9AADC-4F63-4AA8-8454-EA6BCA75D007}" ShortID="806364819" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{79B9AADC-4F63-4AA8-8454-EA6BCA75D007}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="ThrustingEnemy" ID="{A508D5E5-1DC0-4975-BD81-835E0EB59045}" ShortID="1034608237">
@@ -998,7 +1095,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}" ShortID="730528131">
+												<Sound Name="thrustingEnemyIdleGrunt" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}" ShortID="730528131">
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="16"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -1020,7 +1117,7 @@
 														<ActiveSource Name="Silence" ID="{021D4EA9-F629-41AB-8398-69F8F06ED937}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}" ShortID="329521786">
+												<Sound Name="thrustingEnemyAttackGrunt" ID="{2C26EE91-E343-496C-8196-72849A493639}" ShortID="329521786">
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="16"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -1046,28 +1143,72 @@
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
-														<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
+														<ItemRef Name="thrustingEnemyAttackGrunt" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
 													</GroupingBehavior>
 													<GroupingBehavior>
-														<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
+														<ItemRef Name="thrustingEnemyIdleGrunt" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
 													</GroupingBehavior>
 												</GroupingBehaviorList>
 												<GroupingList>
 													<Grouping>
 														<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
 														<ItemList>
-															<ItemRef Name="thrustingEnemyIdle" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
+															<ItemRef Name="thrustingEnemyIdleGrunt" ID="{1D3926C8-740A-4EAD-9FCB-97D0FCCF072C}"/>
 														</ItemList>
 													</Grouping>
 													<Grouping>
-														<SwitchRef Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+														<SwitchRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
 														<ItemList>
-															<ItemRef Name="thrustingEnemyApproach" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
+															<ItemRef Name="thrustingEnemyAttackGrunt" ID="{2C26EE91-E343-496C-8196-72849A493639}"/>
 														</ItemList>
 													</Grouping>
 												</GroupingList>
 											</GroupingInfo>
 										</SwitchContainer>
+										<Sound Name="ThrustingEnemyAttack" ID="{3B4B1720-8CC2-49AA-B53F-8109A0ECC1B4}" ShortID="3164640">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{98AE2521-04E0-4738-B802-E219FFC88426}" ShortID="1036693854" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{98AE2521-04E0-4738-B802-E219FFC88426}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ThrustingEnemyDeath" ID="{BF933B26-BB33-4365-B65D-CEF1BB217E1E}" ShortID="296410747">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{2D15321A-AFCF-4EB0-8E79-B1E670ACD599}" ShortID="253990175" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{2D15321A-AFCF-4EB0-8E79-B1E670ACD599}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="RangedEnemy" ID="{30AAA997-4E9E-4460-874A-716C18F7931B}" ShortID="500459404">
@@ -1075,6 +1216,142 @@
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
+									<ChildrenList>
+										<SwitchContainer Name="RangedEnemyGrunts" ID="{6444268D-2911-49B1-A514-294FA0F81F9D}" ShortID="84607526">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="DefaultSwitchOrState">
+													<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="rangedEnemyAttackGrunt" ID="{ADFE6B92-02DA-4346-A924-B304DAF80901}" ShortID="538863426">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{05265763-37D5-4927-83A4-3FCD8D4CA63F}" ShortID="71318570" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{05265763-37D5-4927-83A4-3FCD8D4CA63F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="rangedEnemyIdleGrunt" ID="{B4776AB8-3EFC-4954-BEF7-90133BC655DB}" ShortID="433409105">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="16"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{F94B7AB3-213E-42B4-8431-AB9ED76E144C}" ShortID="83796912" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{F94B7AB3-213E-42B4-8431-AB9ED76E144C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="rangedEnemyAttackGrunt" ID="{ADFE6B92-02DA-4346-A924-B304DAF80901}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="rangedEnemyIdleGrunt" ID="{B4776AB8-3EFC-4954-BEF7-90133BC655DB}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+														<ItemList>
+															<ItemRef Name="rangedEnemyIdleGrunt" ID="{B4776AB8-3EFC-4954-BEF7-90133BC655DB}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+														<ItemList>
+															<ItemRef Name="rangedEnemyAttackGrunt" ID="{ADFE6B92-02DA-4346-A924-B304DAF80901}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+										<Sound Name="rangedEnemyDeath" ID="{08C6E80D-D3DB-493B-8CAC-1548ACF06A81}" ShortID="945776094">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{55E71C36-C6A3-45D1-BAAE-72EF0209F91F}" ShortID="204875209" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{55E71C36-C6A3-45D1-BAAE-72EF0209F91F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="rangedEnemyAttack" ID="{50A53D1A-1D56-402C-B8FF-5481A9309EB0}" ShortID="940860200">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{49FBE89B-006E-4541-AEFF-BE92BC0A25DA}" ShortID="1071041093" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{49FBE89B-006E-4541-AEFF-BE92BC0A25DA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</Folder>
 								<Folder Name="4thEnemy" ID="{FC8BF547-319A-4E06-8E44-45F1C6C5AABC}" ShortID="185944063">
 									<PropertyList>
@@ -1155,8 +1432,760 @@
 												<ActiveSource Name="Silence" ID="{6138C4ED-9339-4C58-84DD-3503A86A85CB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="XP" ID="{4DAD1E3A-8319-4AC8-9B10-90F250AE9E24}" ShortID="269204404">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{51DBA51C-7117-4DF4-97FE-5BE864F7E008}" ShortID="698190348" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{51DBA51C-7117-4DF4-97FE-5BE864F7E008}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="newWeapon" ID="{90502221-51CE-4D70-ADDA-78C36005737E}" ShortID="618198703">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{BCDC5374-3257-4601-8E79-3C30C2E2EF16}" ShortID="427194913" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{BCDC5374-3257-4601-8E79-3C30C2E2EF16}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
+								<Sound Name="switch" ID="{F7F344D8-3922-4601-B2EC-634D0824670F}" ShortID="422837182">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" ShortID="201613981" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="checkpoint" ID="{82839FEB-B5CE-4416-9F9A-2A6CF11E8652}" ShortID="1067748031">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{B5C5779F-0B0D-41CE-92D1-D22A930E42D5}" ShortID="976605019" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{B5C5779F-0B0D-41CE-92D1-D22A930E42D5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="doorLocked" ID="{2618C4B9-DE72-4FC9-BDB5-BA05453F3A2E}" ShortID="660295852">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{5B11870C-956F-4804-B6BC-8C3B21A49D43}" ShortID="35107810" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{5B11870C-956F-4804-B6BC-8C3B21A49D43}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="doorUnlock" ID="{643174F2-C762-413E-8D9B-62C6A0F30436}" ShortID="501640642">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{A8DDCCBB-C6ED-478A-B532-4870EB21331A}" ShortID="814923705" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{A8DDCCBB-C6ED-478A-B532-4870EB21331A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="destructables" ID="{4FEF93FE-DCB4-4A95-B0D7-4CEFDBCB0F4D}" ShortID="705261297">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{23A0A68E-95FB-4747-8CA1-3F37B5A6FB9F}" ShortID="728220399" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{23A0A68E-95FB-4747-8CA1-3F37B5A6FB9F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Boss1" ID="{F41794FF-E2FB-4C00-A69D-37AD8A21A208}" ShortID="470082874">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="PrioritySFX" ID="{9878DB1F-5131-448D-84E3-89782758D393}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Boss1Attacks" ID="{0B61CC4C-7A47-4499-87D8-02333C673937}" ShortID="497422159">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="boss1Leap" ID="{BCD28535-DEB1-4D88-B726-F1DEBC48BA40}" ShortID="1046946910">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{FF46A949-25A9-433E-B588-267C59808DC2}" ShortID="385699032" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{FF46A949-25A9-433E-B588-267C59808DC2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1Spin" ID="{01E278CF-9237-4678-B485-366807106430}" ShortID="597877479">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{7E4F7E7F-C8C5-4ABF-89DD-ACFB00AD9D80}" ShortID="340220105" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{7E4F7E7F-C8C5-4ABF-89DD-ACFB00AD9D80}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1Rush" ID="{06E97B92-4E26-4702-B1D8-E1200EF327EC}" ShortID="450964327">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{EAF123A4-AD9D-4E90-A777-89332E7A0141}" ShortID="1022998209" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{EAF123A4-AD9D-4E90-A777-89332E7A0141}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1BombDeploy" ID="{227D46F6-3B50-4094-9F67-032077AE1E0B}" ShortID="703126016">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{F7289349-806F-4C2E-A39D-B1333C38504B}" ShortID="617868273" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{F7289349-806F-4C2E-A39D-B1333C38504B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1Homing" ID="{854A30CF-14DC-4E2A-AB21-21AA2640C697}" ShortID="170207246">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{1C62154C-01F1-4D14-91A0-BBCC5161E8D9}" ShortID="333118503" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{1C62154C-01F1-4D14-91A0-BBCC5161E8D9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1Land" ID="{2F6DE347-71B6-4C53-A220-986ED8DD4B3B}" ShortID="915579771">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{2AA02651-84D5-4F88-9E3F-EEB627A14EB6}" ShortID="14245257" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{2AA02651-84D5-4F88-9E3F-EEB627A14EB6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1BombDetonate" ID="{9D4DC73E-5174-4978-8798-755DA76509B1}" ShortID="292008230">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{D873544F-FA92-4458-9E26-815F836CC2C8}" ShortID="929102601" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{D873544F-FA92-4458-9E26-815F836CC2C8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
+								<SwitchContainer Name="Boss1Grunts" ID="{914EA0DF-8A91-448B-B16E-38A0ED830726}" ShortID="499958737">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="boss1AttackGrunt" ID="{A6AEA9D8-6B2C-4C27-9E83-794B86DAB627}" ShortID="741336756">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{5FB95B15-596F-4A3A-AB80-82592E989830}" ShortID="214096155" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{5FB95B15-596F-4A3A-AB80-82592E989830}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss1IdleGrunt" ID="{EAA56B03-BEB2-49B4-B240-68F9FB946F0D}" ShortID="945624922">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{76521C76-9818-4507-B0BE-F7F4F7EB98BB}" ShortID="892637382" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{76521C76-9818-4507-B0BE-F7F4F7EB98BB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="boss1IdleGrunt" ID="{EAA56B03-BEB2-49B4-B240-68F9FB946F0D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="boss1AttackGrunt" ID="{A6AEA9D8-6B2C-4C27-9E83-794B86DAB627}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+												<ItemList>
+													<ItemRef Name="boss1IdleGrunt" ID="{EAA56B03-BEB2-49B4-B240-68F9FB946F0D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+												<ItemList>
+													<ItemRef Name="boss1AttackGrunt" ID="{A6AEA9D8-6B2C-4C27-9E83-794B86DAB627}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<Sound Name="boss1Damage" ID="{A65B32D0-7A77-4E5C-A047-EAF492C3499A}" ShortID="595472356">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{50AEAB52-9574-4425-AD23-9C8EC70F0A05}" ShortID="249877422" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{50AEAB52-9574-4425-AD23-9C8EC70F0A05}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="boss1Death" ID="{036A54A8-C640-4E7F-B43B-1622077D723C}" ShortID="915211747">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFXBus" ID="{CDB02373-80B1-434A-B41B-95C4A3C66ABE}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{3CC5BD8B-3EE4-4426-A06D-F1C5AEA84488}" ShortID="376643257" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{3CC5BD8B-3EE4-4426-A06D-F1C5AEA84488}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Boss2" ID="{BFA0005E-2B7C-4DA0-9B79-0B24FA44515C}" ShortID="337120790">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="PrioritySFX" ID="{9878DB1F-5131-448D-84E3-89782758D393}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Boss2Attacks" ID="{C079C9C2-3254-4D6C-9BCB-F6A4699054A4}" ShortID="925992411">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="boss2Leap" ID="{DFCDDA81-A67A-4018-BD0D-B8B4E17BFD1F}" ShortID="43350229">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{B846130A-EB04-408C-864E-2DCE2F3C57D6}" ShortID="378210459" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{B846130A-EB04-408C-864E-2DCE2F3C57D6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss2Land" ID="{E371966D-F499-4BA7-821C-25BE9493E5B9}" ShortID="388396263">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{9F6ACCD1-3EB9-4A7D-811A-728CDAAF881D}" ShortID="760233023" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{9F6ACCD1-3EB9-4A7D-811A-728CDAAF881D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss2Shock" ID="{E859AE79-D591-46CB-946C-FE5DC53EA6A7}" ShortID="146454890">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{CBB50FAC-E220-44AB-8032-380B9202FE49}" ShortID="450259271" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{CBB50FAC-E220-44AB-8032-380B9202FE49}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss2Summon" ID="{A649D255-22C9-4D7B-BDCF-1E08FEE79A12}" ShortID="160551516">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{A783D835-8548-4DE6-AEE2-803A97CCC2B7}" ShortID="1047557574" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{A783D835-8548-4DE6-AEE2-803A97CCC2B7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss2Snipe" ID="{FB9856F8-DF64-45D7-ADEA-E64ED549B0B1}" ShortID="591991350">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{B0BDECA7-BA26-4179-B9EC-22718CA37C19}" ShortID="894842673" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{B0BDECA7-BA26-4179-B9EC-22718CA37C19}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
+								<SwitchContainer Name="Boss2Grunts" ID="{0DB8B154-6A94-4DE5-94A0-597285702597}" ShortID="682075709">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}" WorkUnitID="{B45DCACB-6C11-4B31-931A-62F02158C54F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="boss2AttackGrunt" ID="{4D5D6E7C-F8C5-4E60-9FC0-7CF17E0BFFB9}" ShortID="42130821">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{31BF6AC6-7F40-4176-8447-32B2647C44D4}" ShortID="1005981783" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{31BF6AC6-7F40-4176-8447-32B2647C44D4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="boss2IdleGrunt" ID="{D9B41CA1-296F-4F64-BDC4-D11D8E8FA641}" ShortID="360181853">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<SourcePlugin Name="Silence" ID="{427321A2-D6C9-476D-89A4-16BF31F6BF52}" ShortID="115957477" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+													<Language>SFX</Language>
+												</SourcePlugin>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Silence" ID="{427321A2-D6C9-476D-89A4-16BF31F6BF52}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="boss2AttackGrunt" ID="{4D5D6E7C-F8C5-4E60-9FC0-7CF17E0BFFB9}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="boss2IdleGrunt" ID="{D9B41CA1-296F-4F64-BDC4-D11D8E8FA641}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+												<ItemList>
+													<ItemRef Name="boss2IdleGrunt" ID="{D9B41CA1-296F-4F64-BDC4-D11D8E8FA641}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+												<ItemList>
+													<ItemRef Name="boss2AttackGrunt" ID="{4D5D6E7C-F8C5-4E60-9FC0-7CF17E0BFFB9}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<Sound Name="boss2Death" ID="{4F41C00E-C4E2-4532-8AAB-B332D9B2E66F}" ShortID="585584887">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{7DBA7251-9FDB-473E-86B9-5C32A26C7B39}" ShortID="1010360247" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{7DBA7251-9FDB-473E-86B9-5C32A26C7B39}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="boss2Damage" ID="{5831A755-FDFF-4CF6-8C0E-A81595FE7A9A}" ShortID="813836295">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Silence" ID="{0F12A8CF-8DAD-41D2-B854-36AC308350CA}" ShortID="902557620" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Silence" ID="{0F12A8CF-8DAD-41D2-B854-36AC308350CA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>
