@@ -35,6 +35,24 @@ public class PlayerStamina : MonoBehaviour
         }
     }
 
+    public void UseStaminaOverTime(float duration, float rate) { // Duration stamina drain lasts (seconds), and rate of stamina drain (% in decimal/s)
+        StartCoroutine(StaminaOverTime(duration, rate));
+    }
+
+    IEnumerator StaminaOverTime(float duration, float rate) {
+        float total = duration * rate;
+        float v0 = currentStamina;
+        float v1 = currentStamina - total;
+        for (float t = 0f; t < duration; t += Time.deltaTime) {
+            currentStamina = Mathf.Lerp(v0, v1, t / duration);
+            if(currentStamina <= 0) {
+                currentStamina = 0;
+            }
+            yield return null;
+        }
+        currentStamina = Mathf.Max(v1, 0);
+    }
+
     IEnumerator RechargeDelay(float delay) {
         yield return new WaitForSeconds(delay);
         recharging = true;
