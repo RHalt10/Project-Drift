@@ -72,6 +72,5 @@ public class PlayerAttackController : PlayerSubController
             timer = 0f;
             playerController.SetController(playerController.groundController);
         }
-            
     }
 }

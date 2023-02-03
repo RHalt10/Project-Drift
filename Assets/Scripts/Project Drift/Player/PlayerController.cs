@@ -13,7 +13,8 @@ public enum PlayerInputType
     MeleeReleased,
     StartAim,
     StopAim,
-    Shoot
+    Shoot,
+    SwapRanged,
 }
 
 /// <summary>
@@ -54,12 +55,15 @@ public abstract class PlayerSubController
 
 public class PlayerController : MonoBehaviour
 {
-
     public PlayerGroundController groundController;
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
+<<<<<<< HEAD
     public PlayerInteractController interactController;
+=======
+    public PlayerShootController shootController;
+>>>>>>> bbb049e718342db7965580b448edbfaf28c0a323
 
     public Vector2 movementInput { get; private set; }
     public Vector2 aimInput { get; private set; }
@@ -69,10 +73,12 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController Instance { get; private set; }
 
+    public PlayerAbilitySO currentAbility;
+
     private void Awake()
     {
         Instance = this;
-
+        
         groundController.playerController = this;
         groundController.Initialize();
         dashController.playerController = this;
@@ -81,8 +87,15 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+<<<<<<< HEAD
         interactController.playerController = this;
         interactController.Initialize();
+=======
+        shootController.playerController = this;
+        shootController.Initialize();
+
+        currentAbility.Initialize(this);
+>>>>>>> bbb049e718342db7965580b448edbfaf28c0a323
     }
 
     // Start is called before the first frame update
@@ -142,6 +155,21 @@ public class PlayerController : MonoBehaviour
     public void Interact(InputAction.CallbackContext ctx)
     {
         currentController.RecieveInput(PlayerInputType.Interact);
+    }
+    
+    public void SwapWeapon(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+            currentController.RecieveInput(PlayerInputType.SwapRanged);
+    }
+
+    public void Special(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            if (currentAbility.CanBeActivated())
+                currentAbility.Activate();
+        }
     }
 
     void CalculateAimInput()

@@ -1,53 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WSoft.Core;
+using UnityEngine.SceneManagement;
+using System;
 
 /// <summary>
-/// Handles the Player's ability to respawn when they fall
-/// Written by Nikhil Ghosh '24
-/// </summary>
+/// Attach to player character. Reloads scene on death 
+/// and teleports player to last checkpoint location.
+/// Written by Kevin Han
+/// </summary>  
 public class PlayerCheckpointManager : MonoBehaviour
 {
-    PlayerController playerController;
-    GroundCharacterController characterController;
-    Vector2 lastGroundPosition;
-
-    [SerializeField] float timeUntilFall;
-    [SerializeField] AK.Wwise.Event resetPositionSfx;
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Class for checkpoint information (name and location)
+    /// </summary>    
+    [Serializable]
+    public class CheckpointInfo
     {
-        characterController = GetComponent<GroundCharacterController>();
-        characterController.OnFall.AddListener(OnFall);
-        playerController = GetComponent<PlayerController>();
-    }
-
-    void Update()
-    {
-        if (playerController.currentController is PlayerGroundController && characterController.isOnGround)
+        public string name = "";
+        private float _xLocation = 0;
+        private float _yLocation = 0;
+        public CheckpointInfo(string name_, Vector2 location)
         {
-            if (characterController.velocity.magnitude < 0.01f)
-                lastGroundPosition = transform.position;
-            else
-            {
-                Vector2 nextPoint = (Vector2)transform.position + characterController.velocity * 0.08f;
-                if (characterController.IsPointOnGround(nextPoint))
-                    lastGroundPosition = transform.position;
-            }
+            name = name_;
+            _xLocation = location.x;
+            _yLocation = location.y;
+        }
+
+        public Vector2 Getlocation()
+        {
+            return new Vector2(_xLocation, _yLocation);
         }
     }
-
-    void OnFall()
+    
+    // Checkpoint to respawn player at
+    public static CheckpointInfo current_checkpoint
     {
-        StartCoroutine(HandleFalling());
+        get { return SaveManager.Load<CheckpointInfo>("current_checkpoint"); }
+        set { SaveManager.Save<CheckpointInfo>("current_checkpoint", value); }
+    }
+    PlayerHealth playerHealth;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth.events.OnDeath.AddListener(SceneReload);
+        
+        // Avoid nullref in GroundCharacterController script.
+        StartCoroutine(LateStart());
+    }
+    
+    private IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        RespawnPlayer();
     }
 
-    IEnumerator HandleFalling()
+    private void SceneReload()
     {
-        yield return new WaitForSeconds(timeUntilFall);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-        characterController.Teleport(lastGroundPosition);
-        resetPositionSfx.Post(gameObject);
+    // Teleport player to last checkpoint location and restore health/stamina.
+    private void RespawnPlayer()
+    {
+        if(current_checkpoint != null) 
+        {
+            GetComponent<GroundCharacterController>().Teleport(current_checkpoint.Getlocation());
+        }
+        
+        playerHealth.Heal(100);
+        // TODO: restore stamina to full (already complete if scene starts with full stamina)
     }
 }

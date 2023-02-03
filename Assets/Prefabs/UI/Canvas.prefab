@@ -132,6 +132,10 @@ MonoBehaviour:
   spacing: 10
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  midColor: {r: 0, g: 0, b: 0, a: 0}
+  lowColor: {r: 0, g: 0, b: 0, a: 0}
+  midThreshold: 0.6
+  lowThreshold: 0.4
 --- !u!1 &6587916509747423084
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +148,8 @@ GameObject:
   - component: {fileID: 6587916509747423091}
   - component: {fileID: 6587916509747423090}
   - component: {fileID: 6587916509747423085}
+  - component: {fileID: 4290981231011192527}
+  - component: {fileID: 7209881782275815952}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -233,6 +239,31 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4290981231011192527
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587916509747423084}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7209881782275815952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587916509747423084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243d06f8f0488c94cafeb8752a969a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 3
 --- !u!1 &6587916509783876298
 GameObject:
   m_ObjectHideFlags: 0

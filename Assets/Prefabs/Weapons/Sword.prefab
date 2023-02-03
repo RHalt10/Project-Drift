@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5739086006493595766}
   - component: {fileID: 222089465612065385}
   - component: {fileID: 1681686882609869653}
+  - component: {fileID: 9218497679177964601}
   m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
@@ -132,6 +133,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9218497679177964601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312820011630673847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &900856742772545702
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +159,7 @@ GameObject:
   - component: {fileID: 8906879010032179963}
   - component: {fileID: 8778418291835733537}
   - component: {fileID: 6093142329597303028}
+  - component: {fileID: 5498040176509425214}
   m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
@@ -178,19 +195,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ef7be605e3e184a9cf03757bb7af18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeWeaponType: 2
+  MaxComboCount: 3
   ChargeTime: 1
-  NormalAttackCooldown: 0
-  ChargedAttackCooldown: 0
-  normalRechargePercentage: 0.2
-  destructibleRechargePercentage: 0.05
+  NormalAttackCooldown: 5
+  ChargedAttackCooldown: 5
   Hitboxes:
   - {fileID: 312820011630673847}
-  MeleeWeaponType: 2
-  owningInventoryManager: {fileID: 0}
   spriteRenderer: {fileID: 1681686882609869653}
+  normalRechargePercentage: 0.2
+  destructibleRechargePercentage: 0.05
+  owningInventoryManager: {fileID: 0}
+  NormalAttackDone: 1
+  ComboCounter: 0
+  NormalAttackQueue: 0
   attackTime: 0.425
-  comboCooldown: 0.3
-  comboAmount: 3
 --- !u!95 &6093142329597303028
 Animator:
   serializedVersion: 5
@@ -211,3 +230,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5498040176509425214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900856742772545702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89a4667dd031458fbf68d8722cae152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fbf12bc8451f1d947aaa3c8e9dbccf5f, type: 2}

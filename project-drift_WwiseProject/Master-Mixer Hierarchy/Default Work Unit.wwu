@@ -38,6 +38,9 @@
 										<Property Name="RecoveryTime" Type="Real64" Value="0.3"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+											<ObjectRef Name="IndividualBusTransient_Compressor" ID="{56F16810-2C8E-4AF2-BF0A-2437275A2E53}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 										</Reference>
@@ -62,6 +65,9 @@
 										<Property Name="RecoveryTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+											<ObjectRef Name="IndividualBusTransient_Compressor" ID="{56F16810-2C8E-4AF2-BF0A-2437275A2E53}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 										</Reference>
@@ -107,6 +113,9 @@
 										<Property Name="RecoveryTime" Type="Real64" Value="0.3"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+											<ObjectRef Name="IndividualBusTransient_Compressor" ID="{56F16810-2C8E-4AF2-BF0A-2437275A2E53}" WorkUnitID="{14EAF78D-4B0B-4440-8EBF-0161B5C7ABC3}"/>
+										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="ParallelCompressionBus" ID="{BB2D1C65-D2C8-42ED-91A9-024CE9E81811}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
 										</Reference>

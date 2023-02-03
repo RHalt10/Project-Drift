@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B45DCACB-6C11-4B31-931A-62F02158C54F}" SchemaVersion="110">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{B45DCACB-6C11-4B31-931A-62F02158C54F}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B45DCACB-6C11-4B31-931A-62F02158C54F}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Enemy_AI" ID="{0656012A-7A48-485F-A56A-5C19062E7AFD}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="23"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+						<Switch Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

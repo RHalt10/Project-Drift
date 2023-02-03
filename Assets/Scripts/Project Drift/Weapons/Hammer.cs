@@ -13,24 +13,16 @@ public class Hammer : MeleeWeaponBase
     [SerializeField] DamageOnTrigger2D AOETrigger;
     [SerializeField] float HammerKnockbackForce;
     [SerializeField] float AOEKnockbackForce;
+    [SerializeField] float KnockbackDuration; 
 
     [Header("Hammer Stun Configuraiton")]
     [SerializeField] float StunSeconds;
-
-    float cooldownTimer = 0f;
-    bool taskdone = true;
-
     protected override void Awake()
     {
         base.Awake(); // Call the parent's awake function first
         HammerTrigger.OnDamageCaused.AddListener(HammerKnockback);
         HammerTrigger.OnDamageCaused.AddListener(Stun);
         AOETrigger.OnDamageCaused.AddListener(AOEKnockback);
-    }
-
-    private void Update()
-    {
-       if(taskdone) cooldownTimer += Time.unscaledDeltaTime;
     }
 
     public override void ApplyCost(bool isNormalAttack)
@@ -60,7 +52,7 @@ public class Hammer : MeleeWeaponBase
         {
             Vector3 Force = HammerKnockbackForce * Vector3.Normalize(target.transform.position - transform.position); 
             Debug.Log("Hammer Knockback on " + target);
-            EventBus.Publish(new KnockbackEvent(Force, target));
+            EventBus.Publish(new KnockbackEvent(Force, KnockbackDuration, target));
         }
     }
 
@@ -70,7 +62,7 @@ public class Hammer : MeleeWeaponBase
         {
             Vector3 Force = AOEKnockbackForce * Vector3.Normalize(target.transform.position - transform.position);
             Debug.Log("Hammer Knockback on " + target);
-            EventBus.Publish(new KnockbackEvent(Force, target));
+            EventBus.Publish(new KnockbackEvent(Force, KnockbackDuration, target));
         }
     }
 
@@ -83,25 +75,14 @@ public class Hammer : MeleeWeaponBase
 
     protected override IEnumerator ChargedAttackRoutine()
     {
-        if (!taskdone || cooldownTimer < ChargedAttackCooldown) yield break;
-        cooldownTimer = 0;
-        taskdone = false;
-
         Debug.Log("Hammer ChargedAttack()");
         yield return new WaitForSecondsRealtime(0.5f);  
-
-        taskdone = true;
     }
 
-    protected override IEnumerator NormalAttackRoutine()
+    protected override IEnumerator NormalAttackRoutine(int ComboCount)
     {
-        if (!taskdone || cooldownTimer < NormalAttackCooldown) yield break;
-        cooldownTimer = 0;
-        taskdone = false;
-
-        Debug.Log("Hammer NormalAttack()");
-        yield return new WaitForSecondsRealtime(0.5f);
-
-        taskdone = true;
+        Debug.Log("[START] Hammer NormalAttack(), Combo: " + ComboCount);
+        yield return new WaitForSecondsRealtime(0.8f);
+        Debug.Log("[END] Hammer NormalAttack(), Combo: " + ComboCount);
     }
 }

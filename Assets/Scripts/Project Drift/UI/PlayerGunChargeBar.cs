@@ -18,7 +18,7 @@ public class PlayerGunChargeBar : MonoBehaviour
     RectTransform rectTransform;
 
     float width => rectTransform.GetWidth();
-    int maxAmmo => playerGun.currentWeapon.ammoSubdivisions;
+    int maxAmmo => playerGun.currentWeapon != null ? playerGun.currentWeapon.ammoSubdivisions : 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class PlayerGunChargeBar : MonoBehaviour
         playerGun.OnAmmoAmountChanged.AddListener(GenerateChargeBar);
         playerGun.OnWeaponChanged.AddListener(GenerateChargeBar);
 
-        GenerateChargeBar();
+        if (playerGun.currentWeapon != null) GenerateChargeBar();
     }
 
     void GenerateChargeBar()

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591668911856286636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: 0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,23 +100,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1abc380433424397cb7d14faba63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MeleeWeaponType: 1
+  MaxComboCount: 3
   ChargeTime: 1
-  NormalAttackCooldown: 0.3
+  NormalAttackCooldown: 2
   ChargedAttackCooldown: 0.3
-  normalRechargePercentage: 0
-  destructibleRechargePercentage: 0
   Hitboxes:
   - {fileID: 2891304189211986301}
   - {fileID: 952192274329815634}
   - {fileID: 1857756445986412389}
-  MeleeWeaponType: 0
-  owningInventoryManager: {fileID: 0}
   spriteRenderer: {fileID: 591668911856286637}
+  normalRechargePercentage: 0
+  destructibleRechargePercentage: 0
+  owningInventoryManager: {fileID: 0}
+  NormalAttackDone: 1
+  ComboCounter: 0
+  NormalAttackQueue: 0
   StaminaCost: 0
   HammerTrigger: {fileID: 8174403725883231035}
   AOETrigger: {fileID: 4658616003847279907}
   HammerKnockbackForce: 2
   AOEKnockbackForce: 1
+  KnockbackDuration: 0.5
   StunSeconds: 0
 --- !u!1001 &676908105044888276
 PrefabInstance:
