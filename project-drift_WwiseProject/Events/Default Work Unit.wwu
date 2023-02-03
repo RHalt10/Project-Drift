@@ -149,6 +149,24 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="PlayerWalk_sand_Play" ID="{11EB38B5-ED0C-4E7E-ADA0-B243AA70B8B3}">
+									<ChildrenList>
+										<Action Name="" ID="{3A85868F-EAFD-4660-8A90-12FBFA410A3B}" ShortID="277163274">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerWalk_sand" ID="{96171B27-5E2D-4B71-8398-20EAF4911385}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{DEAA9CF8-6D02-4B0A-8D4C-02F654B13789}" ShortID="710570830">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerWalk_sand_grains" ID="{82B0601B-06D6-4D0B-B788-9759DF34F517}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Enemies" ID="{9B7916A3-A16B-4057-84E2-E9BD0F1BF9F1}" ShortID="860723331">
