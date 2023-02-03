@@ -34,6 +34,10 @@ public class PlayerInteractController : PlayerSubController
         }
     }
 
+    public override void Update() {
+
+    }
+
     void Interact()
     {
         // Must be colliding with target?

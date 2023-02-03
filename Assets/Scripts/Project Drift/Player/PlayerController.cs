@@ -84,15 +84,12 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
-<<<<<<< HEAD
         interactController.playerController = this;
         interactController.Initialize();
-=======
         shootController.playerController = this;
         shootController.Initialize();
 
         currentAbility.Initialize(this);
->>>>>>> bbb049e718342db7965580b448edbfaf28c0a323
     }
 
     // Start is called before the first frame update
