@@ -780,7 +780,7 @@ MonoBehaviour:
         m_MethodName: ToggleOverlay
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 529161070}
+          m_ObjectArgument: {fileID: 1077001026}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1269,7 +1269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &529161071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1915,7 +1915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1077001027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2509,7 +2509,7 @@ MonoBehaviour:
         m_MethodName: ToggleOverlay
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 529161070}
+          m_ObjectArgument: {fileID: 1077001026}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
