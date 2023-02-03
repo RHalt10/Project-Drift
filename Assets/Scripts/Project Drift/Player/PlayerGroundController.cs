@@ -51,6 +51,9 @@ public class PlayerGroundController : PlayerSubController
             case PlayerInputType.Shoot:
                 playerGun.Shoot(playerController.aimInput);
                 return;
+            case PlayerInputType.Interact:
+                playerController.SetController(playerController.interactController);
+                return;
         }
     }
 }

@@ -8,6 +8,7 @@ public enum PlayerInputType
 {
     Dash,
     Heal,
+    Interact,
     MeleePressed,
     MeleeReleased,
     StartAim,
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
+    public PlayerInteractController interactController;
 
     public Vector2 movementInput { get; private set; }
     public Vector2 aimInput { get; private set; }
@@ -79,6 +81,8 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+        interactController.playerController = this;
+        interactController.Initialize();
     }
 
     // Start is called before the first frame update
@@ -133,6 +137,11 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.started)
             currentController.RecieveInput(PlayerInputType.Shoot);
+    }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        currentController.RecieveInput(PlayerInputType.Interact);
     }
 
     void CalculateAimInput()
