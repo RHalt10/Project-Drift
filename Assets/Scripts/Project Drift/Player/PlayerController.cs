@@ -59,11 +59,8 @@ public class PlayerController : MonoBehaviour
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
-<<<<<<< HEAD
     public PlayerInteractController interactController;
-=======
     public PlayerShootController shootController;
->>>>>>> bbb049e718342db7965580b448edbfaf28c0a323
 
     public Vector2 movementInput { get; private set; }
     public Vector2 aimInput { get; private set; }
