@@ -25,6 +25,8 @@ public class PlayerStamina : MonoBehaviour
             currentStamina = 0;
         }
 
+        OnStaminaAmountChanged.Invoke();
+
         recharging = false;
         rechargeDelayCoroutines.Add(StartCoroutine(RechargeDelay(10f)));
         if(rechargeDelayCoroutines.Count > 1) {
@@ -47,6 +49,9 @@ public class PlayerStamina : MonoBehaviour
                 currentStamina = 1f;
                 recharging = false;
             }
+
+            OnStaminaAmountChanged.Invoke();
+
             yield return new WaitForSeconds(3f);
         }
     }

@@ -12,33 +12,31 @@ using WSoft.Core;
 /// </summary>
 public class PlayerGun : MonoBehaviour
 {
-    // Reference to Player Gun SOs *Note: When created a new gun, please add the SO to this list.
-    [SerializeField] List<PlayerWeaponSO> GunSOList;
-
-    [Header("Developer Settings")]
-    [SerializeField] bool ResetOnLoad;
-
-    private PlayerWeaponSO _currentWeapon; 
-    public PlayerWeaponSO currentWeapon 
+    // Reference to Player Gun SOs *Note: When created a new gun, please add the prefab to this list.
+    [SerializeField] List<GameObject> AllGunPrefabList;
+    [Tooltip("Change during runtime and swap weapon (key: 1) to equip")] [SerializeField] 
+    List<GameObject> equippedWeaponPrefabs;
+    [Tooltip("Clear equipped weapons saved on disk")] public bool ResetOnLoad; 
+    [Tooltip("Use equipped weapons provided by inspector instead of saved weapons on disk")] 
+    public bool UseInspectorWeapons = false; 
+    private int _equippedWeaponIndex
     {
-        get
-        {
-            string name = SaveManager.Load<string>("currentWeapon");
-            _currentWeapon = name == "none" ? null : GunSODictionary[name];
-            return _currentWeapon;
-        } 
-
-        private set
-        {
-            string name = value == null ? "none" : GunSONameDictionary[value];
-            SaveManager.Save<string>("currentWeapon", name);
-            _currentWeapon = name == "none" ? null : GunSODictionary[name];
-        } 
+        get { return SaveManager.Load<int>("equippedWeaponIndex"); }
+        set { SaveManager.Save<int>("equippedWeaponIndex", value); }
     }
 
-    public Dictionary<PlayerWeaponSO, string> GunSONameDictionary = new Dictionary<PlayerWeaponSO, string>();
-    public Dictionary<string, PlayerWeaponSO> GunSODictionary = new Dictionary<string, PlayerWeaponSO>();
-
+    public GameObject currentWeaponObj;
+    public RangedWeaponBase currentWeapon 
+    { 
+        get 
+        { 
+            if( currentWeaponObj == null ) return null;
+            RangedWeaponBase weaponInfo = currentWeaponObj.GetComponent<RangedWeaponBase>(); 
+            if(weaponInfo == null) { Debug.LogError("Current weapon '" + currentWeaponObj.name + "' not a weapon"); }
+            return weaponInfo; 
+        }
+    }
+    
     /* Always from 0 to 1*/
     float _currentAmmo = 0f;
     public float currentAmmo
@@ -56,49 +54,100 @@ public class PlayerGun : MonoBehaviour
         }
     }
 
+    private bool _isFiring = false;
+    private PlayerController playerController;
     [SerializeField] Transform projectileSpawnPoint;
-
+    [SerializeField] Transform attackRoot;
     public UnityEvent OnAmmoAmountChanged;
     public UnityEvent OnWeaponChanged;
+    public Dictionary<string, GameObject> GunDictionary = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
     void Awake()
     {
+        playerController = GetComponent<PlayerController>();
+
+        foreach (GameObject weapon in AllGunPrefabList)
+        {
+            GunDictionary.Add(weapon.name, weapon);
+        }
+
+        if(UseInspectorWeapons) {
+            if(equippedWeaponPrefabs.Count != 0) {
+                SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
+            } else {
+                currentWeaponObj = null;
+            }
+        } else {
+            _loadEquippedWeapons();
+        }
+
         if (ResetOnLoad)
         {
-            currentWeapon = null;
-            currentAmmo = 0f;
-        }
+            equippedWeaponPrefabs.Clear();
+            _saveEquippedWeapons();
+        } 
 
-        if (SaveManager.Load<string>("currentWeapon") == null)
-        {
-            currentWeapon = null;
-        }
-
-        GunSONameDictionary.Clear();
-        GunSODictionary.Clear();
-
-        foreach (PlayerWeaponSO weapon in GunSOList)
-        {
-            GunSODictionary.Add(weapon.name, weapon);
-            GunSONameDictionary.Add(weapon, weapon.name);
-        }
+        currentAmmo = 1f;
     }
 
     public void Shoot(Vector2 direction)
     {
         if (currentWeapon == null) return;
+        if (currentAmmo < currentWeapon.BulletPercentage) return;
 
-        if(currentAmmo < currentWeapon.BulletPercentage) return;
+        if(!_isFiring)
+        {
+            currentAmmo -= currentWeapon.BulletPercentage;
+            
+            currentWeapon.FireProjectile(direction, projectileSpawnPoint.position);
+            StartCoroutine(_ShootCR());
+        }
+    }
 
-        currentAmmo -= currentWeapon.BulletPercentage;
+    private void OnDestroy() {
+        _saveEquippedWeapons();
+    }
 
-        GameObject spawnedProjectile = Instantiate(currentWeapon.projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        spawnedProjectile.GetComponent<ProjectileMovement2D>().direction = direction.normalized;
+    // Save list of currently equipped guns. Called in OnDestroy().
+    private void _saveEquippedWeapons()
+    {
+        List<string> equipped = new List<string>();
+        foreach (GameObject weapon in equippedWeaponPrefabs)
+        {
+            equipped.Add(weapon.name);
+        } 
+        SaveManager.Save<List<string>>("equippedWeaponList", equipped);
+    }
 
+    // Load list of currently equipped weapons from save data and set currently equipped gun.
+    // Called on Awake()
+    private void _loadEquippedWeapons()
+    {
+        equippedWeaponPrefabs.Clear();
+        List<string> equipped = SaveManager.Load<List<string>>("equippedWeaponList");
+        foreach (string weaponName in equipped)
+        {
+            equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
+        }
+        
+        if(equippedWeaponPrefabs.Count != 0) {
+            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
+        } else {
+            currentWeaponObj = null;
+        }
+    }
+
+    private IEnumerator _ShootCR()
+    {
         currentWeapon.shootSfx.Post(gameObject);
-
         EventBus.Publish(new PlayerShootEvent(currentWeapon));
+        
+        _isFiring = true;
+
+        yield return new WaitForSeconds(currentWeapon.cdTime);
+
+        _isFiring = false;
     }
 
     public void RechargeAmmo(float percentage)
@@ -111,9 +160,24 @@ public class PlayerGun : MonoBehaviour
         currentAmmo = currentAmmo + currentWeapon.BulletPercentage;
     }
 
-    public void SwapWeapons(PlayerWeaponSO newWeapon)
+    public void SwapWeapons()
     {
-        currentWeapon = newWeapon;
+        _equippedWeaponIndex++;
+        if(_equippedWeaponIndex >= equippedWeaponPrefabs.Count)
+            _equippedWeaponIndex = 0;
+        
+        if( equippedWeaponPrefabs.Count > 0 )
+            SetNewWeapon(equippedWeaponPrefabs[_equippedWeaponIndex]);
+    }
+
+    // Instantiate weapon instance from prefab, sets currently equipped weapon.
+    private void SetNewWeapon(GameObject weaponPrefab)
+    {
+        if (currentWeaponObj != null)
+            Destroy(currentWeaponObj);
+
+        currentWeaponObj = GameObject.Instantiate(weaponPrefab, attackRoot, false);
+        HideGun();
         OnWeaponChanged.Invoke();
     }
 
@@ -121,12 +185,28 @@ public class PlayerGun : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GunPickup manager = collision.gameObject.GetComponent<GunPickup>();
+
         if (manager != null)
         {
-            Debug.Log("(PlayerGun) Enable Gun!");
-            SwapWeapons(manager.GunSO);
+            if( !equippedWeaponPrefabs.Contains(manager.weaponPrefab) )
+            {
+                Debug.Log("(PlayerGun) Enable Gun!");
+                equippedWeaponPrefabs.Add(manager.weaponPrefab);
+                SetNewWeapon(manager.weaponPrefab);
+
+            }   
+            
             currentAmmo = 1;
             Destroy(collision.gameObject);
         }
+    }
+
+    private void HideGun()
+    {
+        if (currentWeaponObj == null) return;
+        SpriteRenderer sr = currentWeaponObj.GetComponentInChildren<SpriteRenderer>();
+        Color tmp = sr.color;
+        tmp.a = 0;
+        sr.color = tmp;
     }
 }

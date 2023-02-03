@@ -9,7 +9,7 @@
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
-						<Switch Name="Approaching" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
+						<Switch Name="Attack" ID="{CE7DEA31-8BB0-4AED-9A16-4398645EAD12}"/>
 						<Switch Name="Idle" ID="{BC5AC112-7BBD-4DAE-9E64-75B5C9602EF1}"/>
 					</ChildrenList>
 				</SwitchGroup>

@@ -40,6 +40,9 @@ public class PlayerHealth : HealthSystem
     [Tooltip("Invoked when the player's health is upgraded")]
     public UnityEvent OnHealthUpgrade;
 
+    [Tooltip("Invoked when the player's shield is regenerated")]
+    public UnityEvent OnShieldRegen;
+
     private List<Coroutine> shieldDelayCoroutines = new List<Coroutine>();
     private bool shieldBroken;
 
@@ -140,6 +143,9 @@ public class PlayerHealth : HealthSystem
             if(currentShield > maxShield) {
                 currentShield = maxShield;
             }
+
+            OnShieldRegen.Invoke();
+
             yield return new WaitForSeconds(regenTime);
         }
     }
