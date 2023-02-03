@@ -154,14 +154,14 @@
 										<Action Name="" ID="{3A85868F-EAFD-4660-8A90-12FBFA410A3B}" ShortID="277163274">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="playerWalk_sand" ID="{6A62064F-A48E-4091-B342-FE7B58822FF9}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+													<ObjectRef Name="playerWalk_sand" ID="{96171B27-5E2D-4B71-8398-20EAF4911385}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{9C918E67-EC99-4877-AACB-125767425B2A}" ShortID="815924822">
+										<Action Name="" ID="{DEAA9CF8-6D02-4B0A-8D4C-02F654B13789}" ShortID="710570830">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="playerWalk_sand_grains" ID="{7148A28C-7BEB-48C4-871C-4BA7AC8CEB3A}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+													<ObjectRef Name="playerWalk_sand_grains" ID="{82B0601B-06D6-4D0B-B788-9759DF34F517}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
