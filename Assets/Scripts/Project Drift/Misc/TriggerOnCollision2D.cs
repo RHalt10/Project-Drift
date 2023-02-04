@@ -10,6 +10,8 @@ using WSoft.Math;
  */
 public class TriggerOnCollision2D : MonoBehaviour
 {
+    [SerializeField] AK.Wwise.Event collisionSFX;
+
     [Tooltip("Only triggers objects on these layers.")]
     public LayerMask triggerLayers;
 
@@ -31,6 +33,12 @@ public class TriggerOnCollision2D : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject gameObject = collision.gameObject;
+        
+        if (LayermaskFunctions.IsInLayerMask(triggerLayers, collision.gameObject.layer))
+        {
+            // post Wwise event
+            collisionSFX.Post(gameObject);
+        }
 
         // if switch is hit
         if (gameObject.GetComponent<SwitchController>()) { gameObject.GetComponent<SwitchController>().Flip(); }

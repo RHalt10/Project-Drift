@@ -99,6 +99,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledObjects: []
+  timeBetweenEachSwitch: 0
+  FinishedSwitching:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9111173db1ab047f9bdd50dec8168cf4, type: 2}
+        m_TargetAssemblyTypeName: WSoft.Audio.AudioEvent, WSoft
+        m_MethodName: PlayAudio
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4326791944692597744}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!58 &-1959733726587895498
 CircleCollider2D:
   m_ObjectHideFlags: 0
