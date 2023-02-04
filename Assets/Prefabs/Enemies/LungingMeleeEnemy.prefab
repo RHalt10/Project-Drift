@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 7670977992641997404}
   - component: {fileID: 7670977992641997405}
   - component: {fileID: 7670977992641997346}
+  - component: {fileID: 5459181270694550472}
+  - component: {fileID: 318047994394715561}
+  - component: {fileID: 8552928265617207224}
   m_Layer: 9
   m_Name: LungingMeleeEnemy
   m_TagString: Untagged
@@ -144,6 +147,7 @@ MonoBehaviour:
   canMoveOnAir: 0
   _willFallOnAir: 1
   velocity: {x: 0, y: 0}
+  velocityMultiplier: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -255,3 +259,66 @@ MonoBehaviour:
   lungeDuration: 1
   lungeTopSpeed: 5
   attackRange: 2
+--- !u!114 &5459181270694550472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977992641997397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d0470f1ecc344d5b5f01f03a00bd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &318047994394715561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977992641997397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf8b249992e644dfb12b7cef96e9d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 958ca0ea
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 26d7be6b75bae43988ed32e61ff6d64a, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+--- !u!114 &8552928265617207224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977992641997397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986fadef5c4c17e47bee6beaf3d46144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
