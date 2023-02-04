@@ -429,9 +429,22 @@
 														<SourcePlugin Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" ShortID="89333170" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
 														</SourcePlugin>
+														<AudioFileSource Name="sine-tone-400hz" ID="{DCF46C28-14F1-4B28-8EE7-6A84EDE5B36E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>sine-tone-400hz.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758589057"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" Platform="Linked"/>
+														<ActiveSource Name="sine-tone-400hz" ID="{DCF46C28-14F1-4B28-8EE7-6A84EDE5B36E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="playerSpear" ID="{779F40F2-9841-40EA-891B-33D092274FD3}" ShortID="583749259">
@@ -482,6 +495,11 @@
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="2"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>610</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -495,9 +513,22 @@
 														<SourcePlugin Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" ShortID="289159130" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
 														</SourcePlugin>
+														<AudioFileSource Name="sine-tone-400hz" ID="{0CB7258B-EFAB-468A-8AAA-6D8D3668195B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>sine-tone-400hz.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758589057"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" Platform="Linked"/>
+														<ActiveSource Name="sine-tone-400hz" ID="{0CB7258B-EFAB-468A-8AAA-6D8D3668195B}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="playerSpearCollide" ID="{6B388808-9449-4FA8-86F5-886231D0FDC7}" ShortID="39253062">
@@ -666,6 +697,28 @@
 														<ActiveSource Name="Silence" ID="{B3269E8E-BCEF-4D20-805F-9946DDDD7F7A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="playerRangedAim" ID="{6DF45212-2993-49E7-830C-48F06A9DD429}" ShortID="20674444">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{40FE8C0B-45AE-4290-B940-8EE160A0F2B8}" ShortID="24170973" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{40FE8C0B-45AE-4290-B940-8EE160A0F2B8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Abilities" ID="{70A207C7-5C7B-4C0E-9A1F-B4723CCD5D07}" ShortID="557831642">
@@ -780,12 +833,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" ShortID="163176354" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+										<AudioFileSource Name="playerHealthRegen" ID="{F6708CA0-A320-49B2-BB0C-E16ACCB7C008}">
 											<Language>SFX</Language>
-										</SourcePlugin>
+											<AudioFile>playerHealthRegen.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="92821925"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" Platform="Linked"/>
+										<ActiveSource Name="playerHealthRegen" ID="{F6708CA0-A320-49B2-BB0C-E16ACCB7C008}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="playerLowHealth" ID="{4E869F52-129A-45C6-A64B-10F675117EBE}" ShortID="1047206415">
@@ -810,6 +867,313 @@
 										<ActiveSource Name="Silence" ID="{3821F359-691B-48E5-B624-CBBA967CB43D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<ActorMixer Name="Footsteps" ID="{00E98FE8-49AB-497C-8757-939C797B924A}" ShortID="134469440">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="playerWalk_sand" ID="{96171B27-5E2D-4B71-8398-20EAF4911385}" ShortID="758846486">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-31</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="playerWalk_sand_01" ID="{35355FF0-8E99-4963-A17B-8C7AC5759FC1}" ShortID="1050211341">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_01" ID="{FBDC4CA6-794D-440C-9ED4-47CD85196668}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="144273132"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_01" ID="{FBDC4CA6-794D-440C-9ED4-47CD85196668}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_02" ID="{3F6623B4-8F9C-4B77-82F2-A1A8179F371F}" ShortID="63582621">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_02" ID="{3649DFA4-D85B-40DB-A893-5878C03C6640}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="998724530"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_02" ID="{3649DFA4-D85B-40DB-A893-5878C03C6640}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_03" ID="{38811E1F-8FFC-45A6-8F9D-C5FE2275ECE3}" ShortID="696896350">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_03" ID="{2CC45D58-38DB-4623-9803-5A2E77ECB055}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="57033645"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_03" ID="{2CC45D58-38DB-4623-9803-5A2E77ECB055}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_04" ID="{60DF508E-94DB-437A-A33E-8DA4B153EE60}" ShortID="637660401">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_04" ID="{7C7425A8-EDB3-4B66-913C-40E744F976BA}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_04.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="400358350"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_04" ID="{7C7425A8-EDB3-4B66-913C-40E744F976BA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_05" ID="{BF7AE819-F488-4F5E-AA59-4425F0CACF6B}" ShortID="463257090">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_05" ID="{A4B2278A-3201-44E8-9D8B-AFE1E39558D3}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="935802534"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_05" ID="{A4B2278A-3201-44E8-9D8B-AFE1E39558D3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_06" ID="{E4E00768-C7B9-423F-A29F-A8A134BF0E7F}" ShortID="1030900639">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_06" ID="{C47CC054-9059-44FD-9DC7-43953385A40F}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="374998845"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_06" ID="{C47CC054-9059-44FD-9DC7-43953385A40F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_07" ID="{30D15EFA-2D24-4042-85DA-C8303DD04D1B}" ShortID="340264916">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_07" ID="{8A015241-476B-40AE-AF5F-40A071A83539}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="807770396"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_07" ID="{8A015241-476B-40AE-AF5F-40A071A83539}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_08" ID="{077798B8-A7F6-4D00-99B9-EF50BB8605D1}" ShortID="249197166">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_08" ID="{EEF5878D-7EDD-4E7A-9989-CCC9E48EC3B8}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_08.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="275105179"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_08" ID="{EEF5878D-7EDD-4E7A-9989-CCC9E48EC3B8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="playerWalk_sand_grains" ID="{82B0601B-06D6-4D0B-B788-9759DF34F517}" ShortID="623638256">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-33</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Player" ID="{A4FB3F26-FB78-446D-88EB-B24555BC3B47}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="playerWalk_sand_grains_01" ID="{C871AE89-0F2A-46D5-9AE8-A34AAB76431F}" ShortID="54113827">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_grains_01" ID="{8C8FD041-0BED-4382-9C51-A4A367268EAF}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_grains_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="465909771"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_grains_01" ID="{8C8FD041-0BED-4382-9C51-A4A367268EAF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_grains_02" ID="{CA772564-02B0-43F3-979F-41BA42165075}" ShortID="164289399">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_grains_02" ID="{9947DFF8-2A42-40A0-9F70-CE03FCD5A99F}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_grains_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="535911190"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_grains_02" ID="{9947DFF8-2A42-40A0-9F70-CE03FCD5A99F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="playerWalk_sand_grains_03" ID="{6FE1E0A2-2F51-4940-94B4-EB5468CB1449}" ShortID="538485697">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="playerWalk_sand_grains_03" ID="{CDA99FCF-8BDC-42D4-AA4A-ED409841C6CE}">
+															<Language>SFX</Language>
+															<AudioFile>playerWalk_sand_grains_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="965055854"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="playerWalk_sand_grains_03" ID="{CDA99FCF-8BDC-42D4-AA4A-ED409841C6CE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</ActorMixer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="Enemies" ID="{C2AEC986-5F20-4F02-9E66-4383B5906D81}" ShortID="415996191">
@@ -864,7 +1228,7 @@
 													<Modifier Name="" ID="{2363E532-2FAC-4691-B3C9-29FC61D403B2}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-300"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -906,9 +1270,23 @@
 												<MediaID ID="160556910"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="enemyDamagedDefaultGrunt" ID="{044E442A-33EC-4655-BD08-2165A807D85F}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0139986824769433"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.058794466403162"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0349967061923584"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.530550065876153"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>enemyDamagedDefaultGrunt.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="570345665"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="enemyDamage" ID="{0DEED4F4-7A19-4AEA-A5EE-4383CE4F1216}" Platform="Linked"/>
+										<ActiveSource Name="enemyDamagedDefaultGrunt" ID="{044E442A-33EC-4655-BD08-2165A807D85F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Folder Name="LungingEnemy" ID="{ACE27772-D50D-4FB6-8EAC-B5B4BAC7BA2D}" ShortID="497802766">
@@ -1375,7 +1753,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Folder Name="Collectables" ID="{C408DB49-4DC2-4D40-9DDA-133870A7222B}" ShortID="933208958">
+								<Folder Name="Collectibles" ID="{C408DB49-4DC2-4D40-9DDA-133870A7222B}" ShortID="933208958">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -1492,12 +1870,22 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" ShortID="201613981" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+										<AudioFileSource Name="sine-tone-700hz" ID="{30349850-A0CE-46DF-9D5A-55492DD10CAD}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.05"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.218369723435225"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.218369723435225"/>
+											</PropertyList>
 											<Language>SFX</Language>
-										</SourcePlugin>
+											<AudioFile>sine-tone-700hz.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="92798426"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" Platform="Linked"/>
+										<ActiveSource Name="sine-tone-700hz" ID="{30349850-A0CE-46DF-9D5A-55492DD10CAD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="checkpoint" ID="{82839FEB-B5CE-4416-9F9A-2A6CF11E8652}" ShortID="1067748031">
@@ -1566,7 +1954,7 @@
 										<ActiveSource Name="Silence" ID="{A8DDCCBB-C6ED-478A-B532-4870EB21331A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="destructables" ID="{4FEF93FE-DCB4-4A95-B0D7-4CEFDBCB0F4D}" ShortID="705261297">
+								<Sound Name="destructibles" ID="{4FEF93FE-DCB4-4A95-B0D7-4CEFDBCB0F4D}" ShortID="705261297">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>

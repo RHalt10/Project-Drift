@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
-  m_Name: 85138BB5-1C08-48C9-AFCA-4DC9358B1EF3
+  m_Name: E8BB029D-29E7-4A74-92B2-F0F43F4D6CA7
   m_EditorClassIdentifier: 
-  objectName: trainingDummyIdle_Play
-  id: 3237919992
-  guid: 85138BB5-1C08-48C9-AFCA-4DC9358B1EF3
+  objectName: switch_Play
+  id: 3675063190
+  guid: E8BB029D-29E7-4A74-92B2-F0F43F4D6CA7
