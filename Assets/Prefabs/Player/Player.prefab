@@ -870,6 +870,7 @@ MonoBehaviour:
     chainDashAllowed: 1
     chainDashTimeWindow: 0.1
     chainDashStaminaCost: 0.06
+    useMovementInput: 0
   attackController:
     playerController: {fileID: 0}
     groundSpeed: 3
@@ -887,11 +888,15 @@ MonoBehaviour:
       idInternal: 0
       valueGuidInternal: 
       WwiseObjectReference: {fileID: 0}
+  interactController:
+    playerController: {fileID: 0}
+    interactTarget: {fileID: 0}
   shootController:
     playerController: {fileID: 0}
     attackRoot: {fileID: 7612302176610501718}
   debugCurrCtrlr: 
   currentAbility: {fileID: 11400000, guid: 757adbb8fd5f6784796a68a9c246927e, type: 2}
+  currentCollisions: []
 --- !u!114 &5541513476851453213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +976,19 @@ MonoBehaviour:
   events:
     OnHeal:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 077006c4952a24234bf8d91f703c9d65, type: 2}
+          m_TargetAssemblyTypeName: WSoft.Audio.AudioEvent, WSoft
+          m_MethodName: PlayAudio
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5541513476851453205}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     OnDamage:
       m_PersistentCalls:
         m_Calls: []
@@ -1226,6 +1243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
   triggerLayers:
     serializedVersion: 2
     m_Bits: 2048

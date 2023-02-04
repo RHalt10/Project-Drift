@@ -429,9 +429,22 @@
 														<SourcePlugin Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" ShortID="89333170" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
 														</SourcePlugin>
+														<AudioFileSource Name="sine-tone-400hz" ID="{DCF46C28-14F1-4B28-8EE7-6A84EDE5B36E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>sine-tone-400hz.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758589057"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="Silence" ID="{6FDC3A89-F066-4B77-99B0-895DA132E0BB}" Platform="Linked"/>
+														<ActiveSource Name="sine-tone-400hz" ID="{DCF46C28-14F1-4B28-8EE7-6A84EDE5B36E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="playerSpear" ID="{779F40F2-9841-40EA-891B-33D092274FD3}" ShortID="583749259">
@@ -482,6 +495,11 @@
 													<PropertyList>
 														<Property Name="Color" Type="int16" Value="2"/>
 														<Property Name="OverrideColor" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>610</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -495,9 +513,22 @@
 														<SourcePlugin Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" ShortID="289159130" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
 															<Language>SFX</Language>
 														</SourcePlugin>
+														<AudioFileSource Name="sine-tone-400hz" ID="{0CB7258B-EFAB-468A-8AAA-6D8D3668195B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0888973019279504"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128995595724138"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.23557353812774"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>sine-tone-400hz.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758589057"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="Silence" ID="{204E4003-5B56-4FBB-A77B-F36BD3379E5E}" Platform="Linked"/>
+														<ActiveSource Name="sine-tone-400hz" ID="{0CB7258B-EFAB-468A-8AAA-6D8D3668195B}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="playerSpearCollide" ID="{6B388808-9449-4FA8-86F5-886231D0FDC7}" ShortID="39253062">
@@ -666,6 +697,28 @@
 														<ActiveSource Name="Silence" ID="{B3269E8E-BCEF-4D20-805F-9946DDDD7F7A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="playerRangedAim" ID="{6DF45212-2993-49E7-830C-48F06A9DD429}" ShortID="20674444">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BDCE2468-4169-4B5F-85FE-6250575A708D}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MasterBus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E109C03B-6920-4318-9738-79EE1751D345}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{40FE8C0B-45AE-4290-B940-8EE160A0F2B8}" ShortID="24170973" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{40FE8C0B-45AE-4290-B940-8EE160A0F2B8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Abilities" ID="{70A207C7-5C7B-4C0E-9A1F-B4723CCD5D07}" ShortID="557831642">
@@ -780,12 +833,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" ShortID="163176354" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+										<AudioFileSource Name="playerHealthRegen" ID="{F6708CA0-A320-49B2-BB0C-E16ACCB7C008}">
 											<Language>SFX</Language>
-										</SourcePlugin>
+											<AudioFile>playerHealthRegen.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="92821925"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Silence" ID="{979731CF-261F-4F2F-A026-F2780F4DFC55}" Platform="Linked"/>
+										<ActiveSource Name="playerHealthRegen" ID="{F6708CA0-A320-49B2-BB0C-E16ACCB7C008}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="playerLowHealth" ID="{4E869F52-129A-45C6-A64B-10F675117EBE}" ShortID="1047206415">
@@ -1696,7 +1753,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Folder Name="Collectables" ID="{C408DB49-4DC2-4D40-9DDA-133870A7222B}" ShortID="933208958">
+								<Folder Name="Collectibles" ID="{C408DB49-4DC2-4D40-9DDA-133870A7222B}" ShortID="933208958">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -1813,12 +1870,22 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SourcePlugin Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" ShortID="201613981" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+										<AudioFileSource Name="sine-tone-700hz" ID="{30349850-A0CE-46DF-9D5A-55492DD10CAD}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.05"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.218369723435225"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.218369723435225"/>
+											</PropertyList>
 											<Language>SFX</Language>
-										</SourcePlugin>
+											<AudioFile>sine-tone-700hz.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="92798426"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Silence" ID="{B0719BE6-701E-4C94-8BA0-E4911CBC6EA1}" Platform="Linked"/>
+										<ActiveSource Name="sine-tone-700hz" ID="{30349850-A0CE-46DF-9D5A-55492DD10CAD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="checkpoint" ID="{82839FEB-B5CE-4416-9F9A-2A6CF11E8652}" ShortID="1067748031">
@@ -1887,7 +1954,7 @@
 										<ActiveSource Name="Silence" ID="{A8DDCCBB-C6ED-478A-B532-4870EB21331A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="destructables" ID="{4FEF93FE-DCB4-4A95-B0D7-4CEFDBCB0F4D}" ShortID="705261297">
+								<Sound Name="destructibles" ID="{4FEF93FE-DCB4-4A95-B0D7-4CEFDBCB0F4D}" ShortID="705261297">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
