@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// A component that stores the player's current inventory
@@ -72,6 +73,9 @@ public class PlayerInventoryManager : MonoBehaviour
         return;
     }
 
+    [Tooltip("Invoked when the player's melee weapon is changed")]
+    public UnityEvent OnMeleeWeaponChange;
+
     public void EquiptMeleeWeapon(GameObject WeaponPrefab)
     {
         if (MeleeWeaponParentObject.childCount > 1)
@@ -93,6 +97,8 @@ public class PlayerInventoryManager : MonoBehaviour
         clone.transform.position = MeleeWeaponParentObject.position;
         meleeWeapon = clone.GetComponent<MeleeWeaponBase>();
         meleeWeapon.owningInventoryManager = this;
+
+        OnMeleeWeaponChange.Invoke();
     }
 }
 
