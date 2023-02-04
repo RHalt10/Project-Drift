@@ -15,6 +15,7 @@ public class PlayerDashController : PlayerSubController
     public bool chainDashAllowed;
     public float chainDashTimeWindow;
     public float chainDashStaminaCost;
+    public bool useMovementInput = false;
 
     GroundCharacterController characterController;
     PlayerStamina playerStamina;
@@ -39,7 +40,7 @@ public class PlayerDashController : PlayerSubController
 
     public override void OnEnable()
     {
-        dashDirection = playerController.movementInput;
+        dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
         currentDashTime = 0;
         characterController.canMoveOnAir = true;
         characterController.willFallOnAir = false;
@@ -86,7 +87,7 @@ public class PlayerDashController : PlayerSubController
 
     void ChainDash()
     {
-        dashDirection = playerController.movementInput;
+        dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
         currentDashTime = 0;
         chainDashActivated = false;
         playerStamina.UseStamina(chainDashStaminaCost);

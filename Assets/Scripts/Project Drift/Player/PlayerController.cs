@@ -174,9 +174,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Pause(InputAction.CallbackContext ctx)
+    {
+        PauseMenuController.Instance.Open();
+    }
+
     void CalculateAimInput()
     {
-        
         if (Gamepad.current != null)
         {
             aimInput = Gamepad.current.rightStick.ReadValue();
@@ -186,7 +190,6 @@ public class PlayerController : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             aimInput = (mouseWorldPosition - (Vector2)transform.position).normalized;
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D other) {
