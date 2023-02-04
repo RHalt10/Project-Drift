@@ -1171,7 +1171,7 @@
 													<Modifier Name="" ID="{2363E532-2FAC-4691-B3C9-29FC61D403B2}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-300"/>
+															<Property Name="Max" Type="Real64" Value="300"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -1213,9 +1213,23 @@
 												<MediaID ID="160556910"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="enemyDamagedDefaultGrunt" ID="{044E442A-33EC-4655-BD08-2165A807D85F}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0139986824769433"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.058794466403162"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0349967061923584"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.530550065876153"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>enemyDamagedDefaultGrunt.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="570345665"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="enemyDamage" ID="{0DEED4F4-7A19-4AEA-A5EE-4383CE4F1216}" Platform="Linked"/>
+										<ActiveSource Name="enemyDamagedDefaultGrunt" ID="{044E442A-33EC-4655-BD08-2165A807D85F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Folder Name="LungingEnemy" ID="{ACE27772-D50D-4FB6-8EAC-B5B4BAC7BA2D}" ShortID="497802766">
