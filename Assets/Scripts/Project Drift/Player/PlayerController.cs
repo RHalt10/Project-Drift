@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         SetController(groundController);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         debugCurrCtrlr = currentController.ToString();
         CalculateAimInput();
@@ -169,6 +169,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.started)
         {
+            Debug.Log("(PlayerInput) Try to use ability...");
             if (currentAbility.CanBeActivated())
                 currentAbility.Activate();
         }

@@ -40,6 +40,8 @@ public class PlayerDashController : PlayerSubController
 
     public override void OnEnable()
     {
+        EventBus.Publish(new AbilityInterruptEvent());
+
         dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
         currentDashTime = 0;
         characterController.canMoveOnAir = true;
@@ -87,6 +89,8 @@ public class PlayerDashController : PlayerSubController
 
     void ChainDash()
     {
+        EventBus.Publish(new AbilityInterruptEvent());
+
         dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
         currentDashTime = 0;
         chainDashActivated = false;

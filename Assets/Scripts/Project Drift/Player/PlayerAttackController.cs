@@ -45,7 +45,7 @@ public class PlayerAttackController : PlayerSubController
     {
         characterController.velocity = playerController.movementInput * groundSpeed;
 
-        if (keyPressed) timer += Time.deltaTime;
+        if (keyPressed) timer += Time.unscaledDeltaTime;
     }
 
     public override void RecieveInput(PlayerInputType type)
@@ -57,6 +57,8 @@ public class PlayerAttackController : PlayerSubController
 
         if (type == PlayerInputType.MeleeReleased)
         {
+            EventBus.Publish(new AbilityInterruptEvent());
+
             attackRoot.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, playerController.aimInput));
 
             if (timer < PlayerInventoryManager.Instance.MeleeWeapon.ChargeTime)
