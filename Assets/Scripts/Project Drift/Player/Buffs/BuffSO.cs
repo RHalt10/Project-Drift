@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Buff Scriptable Object parent class.
+/// Defines methods for activating and deactivating buff.
+/// </summary>  
 public abstract class BuffSO : ScriptableObject
 {
     public float buffDuration;

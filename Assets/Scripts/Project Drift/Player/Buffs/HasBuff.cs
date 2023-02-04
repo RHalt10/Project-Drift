@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+/// <summary>
+/// Attach to give object ability to be buffed/debuffed for duration given by BuffSO.
+/// </summary> 
 public class HasBuff : MonoBehaviour
 {
     private readonly Dictionary<BuffSO, float> _buffs = new Dictionary<BuffSO, float>();
-    GroundCharacterController character;
+    private GroundCharacterController character;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,9 @@ public class HasBuff : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Public method for applying a buff to character this is attached to.
+    /// </summary> 
     public void ApplyBuff(BuffSO debuff)
     {
         debuff.ActivateBuff(gameObject);

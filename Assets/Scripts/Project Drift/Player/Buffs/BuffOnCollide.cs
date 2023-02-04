@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Math;
 
+/// <summary>
+/// Applies specified buffs/debuffs on collision. Useful for bullets.
+/// </summary> 
 public class BuffOnCollide : MonoBehaviour
 {
     public LayerMask layerMaskToBuff;
