@@ -17,6 +17,11 @@ public class SlowDebuffSO : BuffSO
     public override void ActivateBuff(GameObject charToBuff)
     {
         character = charToBuff.GetComponent<GroundCharacterController>();
+        if(character == null) {
+            Debug.LogError("Cannot apply slow to character without GroundCharacterController component.");
+            return;
+        }
+
         character.velocityMultiplier *= slowMultiplier;
         
         // Example slowed visual effect.
@@ -30,8 +35,12 @@ public class SlowDebuffSO : BuffSO
     public override void DeactivateBuff(GameObject charToBuff)
     { 
         character = charToBuff.GetComponent<GroundCharacterController>();
-        character.velocityMultiplier = _startMultiplier;
+        if(character == null) {
+            Debug.LogError("Cannot apply slow to character without GroundCharacterController component.");
+            return;
+        }
 
+        character.velocityMultiplier = _startMultiplier;
         // Example slowed visual effect. Deactivate on buff deactivate.
         charToBuff.GetComponent<SpriteRenderer>().color = _startColor;
     }
