@@ -9,6 +9,7 @@ public enum PlayerInputType
     Dash,
     Heal,
     Interact,
+    StopInteract,
     MeleePressed,
     MeleeReleased,
     StartAim,
@@ -71,6 +72,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     public PlayerAbilitySO currentAbility;
+
+    public List<GameObject> currentCollisions;
 
     private void Awake()
     {
@@ -148,7 +151,12 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext ctx)
     {
-        currentController.RecieveInput(PlayerInputType.Interact);
+        if(ctx.canceled) {
+            currentController.RecieveInput(PlayerInputType.StopInteract);
+        } else {
+            currentController.RecieveInput(PlayerInputType.Interact);
+        }
+        
     }
     
     public void SwapWeapon(InputAction.CallbackContext ctx)
@@ -179,5 +187,13 @@ public class PlayerController : MonoBehaviour
             aimInput = (mouseWorldPosition - (Vector2)transform.position).normalized;
         }
         
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        currentCollisions.Add(other.gameObject);
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        currentCollisions.Remove(other.gameObject);
     }
 }

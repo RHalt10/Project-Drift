@@ -56,7 +56,9 @@ public class PlayerGroundController : PlayerSubController
                 playerGun.SwapWeapons();
                 return;
             case PlayerInputType.Interact:
-                playerController.SetController(playerController.interactController);
+                if(playerController.currentController == playerController.groundController) {
+                    playerController.SetController(playerController.interactController);
+                }
                 return;
         }
     }
