@@ -69,7 +69,7 @@ MonoBehaviour:
   weaponName: Pistol
   cdTime: 0.1
   projectilePrefab: {fileID: 4576122382636938949, guid: 25ec6de9d56a98e4a8a31932ca31ca4c, type: 3}
-  ammoSubdivisions: 5
+  ammoSubdivisions: 3
   shootSfx:
     idInternal: 0
     valueGuidInternal: 

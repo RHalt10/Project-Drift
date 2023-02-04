@@ -5,13 +5,13 @@ using WSoft.Math;
 
 public class BuffOnCollide : MonoBehaviour
 {
-    public LayerMask layerMaskToDebuff;
+    public LayerMask layerMaskToBuff;
     [Tooltip("List of buffs to apply on contact. Drag BuffSO in.")]
     [SerializeField] public List<BuffSO> buffsToApply;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (LayermaskFunctions.IsInLayerMask(layerMaskToDebuff, collision.gameObject.layer))
+        if (LayermaskFunctions.IsInLayerMask(layerMaskToBuff, collision.gameObject.layer))
         {
             HasBuff charBuffs = collision.gameObject.GetComponent<HasBuff>();
             if(charBuffs == null) {

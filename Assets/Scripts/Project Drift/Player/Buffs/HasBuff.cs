@@ -32,11 +32,11 @@ public class HasBuff : MonoBehaviour
         debuff.ActivateBuff(gameObject);
         if(_buffs.ContainsKey(debuff))
         {
-            _buffs[debuff] = debuff.remainingDuration;
+            _buffs[debuff] = debuff.buffDuration;
         }
         else
         {
-            _buffs.Add(debuff, debuff.remainingDuration);
+            _buffs.Add(debuff, debuff.buffDuration);
         }
     }
 }
