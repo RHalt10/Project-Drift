@@ -32,8 +32,12 @@ public class WeaponUIMelee : MonoBehaviour
         if (currentType == MeleeWeaponTypes.None)
         {
             meleeImage.sprite = null;
+            meleeImage.color = Color.clear;
+            return;
         }
-        else if (currentType == MeleeWeaponTypes.Sword)
+
+        meleeImage.color = Color.white;
+        if (currentType == MeleeWeaponTypes.Sword)
         {
             meleeImage.sprite = swordSprite;
         }
