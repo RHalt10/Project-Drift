@@ -46,6 +46,11 @@ public class GroundCharacterController : MonoBehaviour
     /// </summary>
     //[HideInInspector]
     public Vector2 velocity;
+    
+    /// <summary>
+    /// Multiplier for current velocity. 1 by default.
+    /// </summary>
+    public float velocityMultiplier = 1;
 
     /// <summary> The ground layermask (for checking if the character is on ground) </summary>
     [SerializeField] LayerMask groundLayer;
@@ -148,6 +153,6 @@ public class GroundCharacterController : MonoBehaviour
             }
         }
 
-        rb.velocity = velocity;
+        rb.velocity = velocity * velocityMultiplier;
     }
 }
