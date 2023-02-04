@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using WSoft.Math;
 
-public class CanDebuff : MonoBehaviour
+public class BuffOnCollide : MonoBehaviour
 {
     public LayerMask layerMaskToDebuff;
-    [SerializeField] public List<DebuffInfo> debuffsToApply;
+    [SerializeField] public List<BuffSO> debuffsToApply;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +18,12 @@ public class CanDebuff : MonoBehaviour
     {
         if (LayermaskFunctions.IsInLayerMask(layerMaskToDebuff, collision.gameObject.layer))
         {
-            CharacterDebuff debuff = collision.gameObject.GetComponent<CharacterDebuff>();
-            if(debuff == null) return;
+            HasBuff charBuffs = collision.gameObject.GetComponent<HasBuff>();
+            if(charBuffs == null) return;
             
-            foreach (DebuffInfo dbf in debuffsToApply)
+            foreach (BuffSO dbf in debuffsToApply)
             {
-                debuff.ApplyDebuff(dbf.debufftype, dbf.remainingDuration);
+                charBuffs.ApplyBuff(dbf);
             }
         }
     }

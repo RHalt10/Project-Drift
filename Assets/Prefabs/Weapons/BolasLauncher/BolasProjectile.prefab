@@ -219,5 +219,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   debuffsToApply:
-  - remainingDuration: 0
-    debufftype: 0
+  - {fileID: 11400000, guid: 8310f6ff1ac2b8d459f5f7ee73be890c, type: 2}
