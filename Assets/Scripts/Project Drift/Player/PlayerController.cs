@@ -8,6 +8,8 @@ public enum PlayerInputType
 {
     Dash,
     Heal,
+    Interact,
+    StopInteract,
     MeleePressed,
     MeleeReleased,
     StartAim,
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDashController dashController;
     public PlayerAttackController attackController;
     public PlayerAimController aimController;
+    public PlayerInteractController interactController;
     public PlayerShootController shootController;
 
     public Vector2 movementInput { get; private set; }
@@ -69,6 +72,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     public PlayerAbilitySO currentAbility;
+
+    public List<GameObject> currentCollisions;
 
     private void Awake()
     {
@@ -82,6 +87,8 @@ public class PlayerController : MonoBehaviour
         attackController.Initialize();
         aimController.playerController = this;
         aimController.Initialize();
+        interactController.playerController = this;
+        interactController.Initialize();
         shootController.playerController = this;
         shootController.Initialize();
 
@@ -142,6 +149,16 @@ public class PlayerController : MonoBehaviour
             currentController.RecieveInput(PlayerInputType.Shoot);
     }
 
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if(ctx.canceled) {
+            currentController.RecieveInput(PlayerInputType.StopInteract);
+        } else {
+            currentController.RecieveInput(PlayerInputType.Interact);
+        }
+        
+    }
+    
     public void SwapWeapon(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
@@ -173,5 +190,13 @@ public class PlayerController : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             aimInput = (mouseWorldPosition - (Vector2)transform.position).normalized;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        currentCollisions.Add(other.gameObject);
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        currentCollisions.Remove(other.gameObject);
     }
 }
