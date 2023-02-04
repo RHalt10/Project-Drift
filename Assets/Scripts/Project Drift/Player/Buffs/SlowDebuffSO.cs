@@ -8,19 +8,15 @@ public class SlowDebuffSO : BuffSO
     private float startMultiplier = 1;
     private GroundCharacterController character;
 
-    public override void Initialize()
+    public override void ActivateBuff(GameObject charToBuff)
     {
-        
-    }
-
-    public override void ActivateBuff(GameObject buffed)
-    {
-        character = buffed.GetComponent<GroundCharacterController>();
+        character = charToBuff.GetComponent<GroundCharacterController>();
         character.velocityMultiplier *= 0.5f;
     }
 
-    public override void DeactivateBuff(GameObject buffed)
+    public override void DeactivateBuff(GameObject charToBuff)
     { 
+        character = charToBuff.GetComponent<GroundCharacterController>();
         character.velocityMultiplier = startMultiplier;
     }
 }

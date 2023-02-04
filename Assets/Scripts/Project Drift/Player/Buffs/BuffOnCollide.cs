@@ -6,22 +6,21 @@ using WSoft.Math;
 public class BuffOnCollide : MonoBehaviour
 {
     public LayerMask layerMaskToDebuff;
-    [SerializeField] public List<BuffSO> debuffsToApply;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("List of buffs to apply on contact. Drag BuffSO in.")]
+    [SerializeField] public List<BuffSO> buffsToApply;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (LayermaskFunctions.IsInLayerMask(layerMaskToDebuff, collision.gameObject.layer))
         {
             HasBuff charBuffs = collision.gameObject.GetComponent<HasBuff>();
-            if(charBuffs == null) return;
-            
-            foreach (BuffSO dbf in debuffsToApply)
+            if(charBuffs == null) {
+                Debug.LogWarning("Hit object " + collision.gameObject.name + 
+                                 " that cannot recieve buffs/debuffs");
+                return;
+            }
+
+            foreach (BuffSO dbf in buffsToApply)
             {
                 charBuffs.ApplyBuff(dbf);
             }
