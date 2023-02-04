@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7670977992641997346}
   - component: {fileID: 5459181270694550472}
   - component: {fileID: 318047994394715561}
+  - component: {fileID: 8552928265617207224}
   m_Layer: 9
   m_Name: LungingMeleeEnemy
   m_TagString: Untagged
@@ -146,6 +147,7 @@ MonoBehaviour:
   canMoveOnAir: 0
   _willFallOnAir: 1
   velocity: {x: 0, y: 0}
+  velocityMultiplier: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -284,3 +286,15 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!114 &8552928265617207224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670977992641997397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986fadef5c4c17e47bee6beaf3d46144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
