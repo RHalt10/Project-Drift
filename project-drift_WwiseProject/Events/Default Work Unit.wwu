@@ -79,16 +79,29 @@
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<Event Name="PlayerDash_Play" ID="{4E372EA3-7FE2-4ED9-9344-4147F9DAC7E9}">
+								<Event Name="PlayerDash_first_Play" ID="{4E372EA3-7FE2-4ED9-9344-4147F9DAC7E9}">
 									<PropertyList>
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 									<ChildrenList>
-										<Action Name="" ID="{4EFF9B3B-6642-4214-846D-F0C456FFC7E8}" ShortID="887148130">
+										<Action Name="" ID="{3E026547-8C42-48EE-AD03-A199B42806B1}" ShortID="37076006">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="42"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+													<ObjectRef Name="playerDash_whoosh" ID="{8E4B74CB-8778-4A68-824D-A8910715D795}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{E35B6A74-805E-4E5D-943E-E763E26D65F0}" ShortID="413032151">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="41"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PlayerDash_Play" ID="{A5E9BBF6-D9DB-41D0-BB21-00898DA3691B}" WorkUnitID="{60106E39-B533-46EF-9C0A-1487533055DB}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -232,6 +245,50 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="playerHealthRegen" ID="{0EF06FDD-2B12-47AE-B45C-8BF5D176F213}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PlayerDash_Play" ID="{A5E9BBF6-D9DB-41D0-BB21-00898DA3691B}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{6395D183-B4AC-4C89-98E9-81E685098464}" ShortID="688924763">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{CBD519DD-5046-427A-9E7D-3F41F6DBFB2A}" ShortID="779377016">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDash_whoosh" ID="{8E4B74CB-8778-4A68-824D-A8910715D795}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PlayerDash_last_Play" ID="{1E2C9773-3C91-4F74-AEF7-FBE8625D2227}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{131FD171-9748-4865-B0BD-3F775184535B}" ShortID="21382112">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDash" ID="{1793C913-D99E-41DA-8F9F-A43B077FC9C1}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{C9E9E406-28A6-4E51-9AA3-D7D78EF01082}" ShortID="1012898344">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerDash_whoosh_05" ID="{E64E1D8F-3660-47B6-983E-49998DACD79E}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

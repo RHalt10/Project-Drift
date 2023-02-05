@@ -22,6 +22,7 @@ public class PlayerDashController : PlayerSubController
     Vector2 dashDirection;
     float currentDashTime = 0;
     bool chainDashActivated;
+    int chainDashCounter = 0;
 
     bool CanChainDash => characterController.isOnGround;
 
@@ -50,7 +51,8 @@ public class PlayerDashController : PlayerSubController
         playerStamina.UseStamina(dashStaminaCost);
 
         if (dashDirection != Vector2.zero)
-            AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
+            chainDashCounter = 0;
+            AkSoundEngine.PostEvent("PlayerDash_first_Play", playerController.gameObject);
     }
 
     public override void Update()
@@ -95,6 +97,14 @@ public class PlayerDashController : PlayerSubController
         currentDashTime = 0;
         chainDashActivated = false;
         playerStamina.UseStamina(chainDashStaminaCost);
-        AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
+        ++chainDashCounter;
+        if (chainDashCounter < 5)
+        {
+            AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
+        }
+        else
+        {
+            AkSoundEngine.PostEvent("PlayerDash_last_Play", playerController.gameObject);
+        }
     }
 }
