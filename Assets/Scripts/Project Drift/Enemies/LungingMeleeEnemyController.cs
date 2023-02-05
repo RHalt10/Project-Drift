@@ -131,10 +131,13 @@ public class LungingMeleeEnemyController : MonoBehaviour
         //TODO: groundCharacterController seems to be a velocity-based system and has no space for forces?
         //current way of lunging is to use a decreasing timer and have speed fall linearly with it
         //Note: total distance traveled throughout this lunge is about 0.5 * lungeTopSpeed * lungeDuration
-        timer = lungeDuration;
-        while (timer > 0)
+        float lungeTimer = lungeDuration;
+        while (lungeTimer > 0)
         {
             controller.velocity = lungeDirection * (lungeTopSpeed * timer / lungeDuration);
+
+            lungeTimer -= Time.deltaTime;
+
             yield return null;
         }
         //TODO: designers want the damaging hitbox on top of the enemy when it throws itself; might want to wait until we see the assets/visual
