@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using Pathfinding;
+using TMPro;
+using System.IO;
 
 public class LungingMeleeEnemyController : MonoBehaviour
 {
@@ -60,8 +63,16 @@ public class LungingMeleeEnemyController : MonoBehaviour
     Coroutine coroutine;
     GroundCharacterController controller;
 
-    //tracks time
-    private float timer = 0;
+    //TODO: may need a timer variable to track cooldown
+    //private float timer = 0;
+
+    //TODO: possible variables needed for pathfinding; still testing out the pathfinding
+    Seeker seeker;
+    Pathfinding.Path pathToPlayer;
+    int currentWaypoint = 0;
+    float repathRate = 0.5f;
+    float repathTimer = 0;
+    public float nextWaypointDistance = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -69,8 +80,16 @@ public class LungingMeleeEnemyController : MonoBehaviour
         controller = this.GetComponent<GroundCharacterController>();
         //rigid = this.GetComponent<Rigidbody2D>();
 
+        //start looking for a path to the player
+        seeker = this.GetComponent<Seeker>();
+        seeker.pathCallback += OnPathComplete;
+        seeker.StartPath(this.transform.position, PlayerController.Instance.transform.position);
+
         //by default we'll have the lunging enemy start off moving towards the player
         State = EnemyState.MoveToPlayer;
+
+
+        
     }
 
     // Update is called once per frame
@@ -83,14 +102,29 @@ public class LungingMeleeEnemyController : MonoBehaviour
             timer -= Time.deltaTime;
         }
         */
+
+        
+        //update the path periodically when the seeker is already done finding a path
+        if (repathTimer <= 0 && seeker.IsDone())
+        {
+            repathTimer = repathRate;
+            seeker.StartPath(this.transform.position, PlayerController.Instance.transform.position);
+        }
+        if (repathTimer > 0)
+        {
+            repathTimer -= Time.deltaTime;
+        }
+        
+        
     }
 
     //move to player and decide how it wants to move
     IEnumerator MoveToPlayer()
     {
-        //move or avoid obstacle until player is in range
-        while (DistanceToPlayer() > attackRange)
+        //move until player is in range AND there's no obstacle blocking the way
+        while (DistanceToPlayer() > attackRange /* || ObstacleBetweenThisAndPlayer() */)
         {
+            
             Vector2 direction = directionToPlayer();
 
             //check if a nearby obstacle is blocking its attack range detection
@@ -105,28 +139,13 @@ public class LungingMeleeEnemyController : MonoBehaviour
                 controller.velocity = direction * movementSpeed;
             }
 
+            //TODO: below is taken out until some pathfinding questions have been resolved; comment the above when pathfinding is ready
+            //controller.velocity = NextStepToPlayer() * movementSpeed;
+
             yield return null;
         }
 
-        
-        //TODO: Note, could rework this so that this coroutine only does the below once instead of twice (already does it in the while loop); will wait after pathfinding is added
-        //within attacking range of player, but this enemy still needs to check for obstacles
-        Vector2 d = directionToPlayer();
-        //check if an obstacle between this enemy and the player
-        bool obstacleBetweenThisAndPlayer = Physics2D.Raycast(this.transform.position, d, attackRange, LayerMask.GetMask("Obstacle"));
-        //avoid obstacle if there is one
-        if (obstacleBetweenThisAndPlayer)
-        {
-            State = EnemyState.AvoidObstacle;
-        }
-        //otherwise, enemy is in range to start lunge attack
-        else
-        {
-            State = EnemyState.Attack;
-        }
-        
-
-        //by now, enemy is in range to start the lunge attack
+        //by now, the player is in range for this enemy to lunge attack
         State = EnemyState.Attack;
     }
 
@@ -236,5 +255,87 @@ public class LungingMeleeEnemyController : MonoBehaviour
         
         //at this point, none of the 4 suggested directions work, we'll just have the enemy back up for space
         return playerDirection * -1;
+    }
+
+    //TODO: implementation of functions for pathfinding astar below; functions have been left unused
+
+    bool ObstacleBetweenThisAndPlayer()
+    {
+        Vector2 d = directionToPlayer();
+        //check if an obstacle between this enemy and the player
+        bool result = Physics2D.Raycast(this.transform.position, d, attackRange, LayerMask.GetMask("Obstacle"));
+        return result;
+    }
+
+    //use pathfinding to find the next direction to get to player
+    Vector2 NextStepToPlayer()
+    {
+        if (pathToPlayer == null)
+        {
+            //no path found yet, just wait
+            return Vector2.zero;
+        }
+
+        bool reachedEndOfPath = false;
+        // The distance to the next waypoint in the path
+        float distanceToWaypoint;
+        
+        distanceToWaypoint = Vector3.Distance(this.transform.position, pathToPlayer.vectorPath[currentWaypoint]);
+        //you're close enough to current waypoint of the path and might wanna consider moving to the next waypoint
+        if (distanceToWaypoint < nextWaypointDistance)
+        {
+            // check if there is another waypoint
+            if (currentWaypoint + 1 < pathToPlayer.vectorPath.Count)
+            {
+                currentWaypoint++;
+            }
+            else
+            {
+                // you'ved reached the end of the path instead
+                reachedEndOfPath = true;
+            }
+        }
+
+        //if close enough to the target point (end of path), then just stop
+        if (reachedEndOfPath)
+        {
+            return Vector2.zero;
+        }
+
+        //the next step/direction is go is the waypoint in path we currently want to head to
+        Vector3 d = (pathToPlayer.vectorPath[currentWaypoint] - this.transform.position).normalized;
+        return d;
+    }
+
+    //helper function that gets called when the path to player is found
+    public void OnPathComplete(Pathfinding.Path p)
+    {
+        Debug.Log("Yay, this enemy got a path to the player back. Did it have an error? " + p.error);
+
+        // Path pooling. To avoid unnecessary allocations paths are reference counted.
+        p.Claim(this);
+        if (!p.error)
+        {
+            if (pathToPlayer != null) pathToPlayer.Release(this);
+            pathToPlayer = p;
+            // Reset the waypoint counter so that we start to move towards the first point in the path
+            currentWaypoint = 0;
+        }
+        else
+        {
+            p.Release(this);
+        }
+    }
+
+    //a precaution for removing callback references
+    public void OnDisable()
+    {
+        seeker.pathCallback -= OnPathComplete;
+    }
+
+    //a precaution for bringing back callback references after being disabled
+    public void OnEnable()
+    {
+        seeker.pathCallback += OnPathComplete;
     }
 }
