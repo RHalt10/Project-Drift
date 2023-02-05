@@ -105,10 +105,22 @@ public class LungingMeleeEnemyController : MonoBehaviour
             yield return null;
         }
 
-        //TODO: there is a flaw where enemy is in attack range but there could still be an obstacle blocking it; this wasn't addressed in behavior chart?
-
-        //by now, enemy is in range to start lunge attack
-        State = EnemyState.Attack;
+        //TODO: Note, could rework this so that this coroutine only does the below once instead of twice (already does it in the while loop); will wait after pathfinding is added
+        //within attacking range of player, but enemy still needs to check for obstacles
+        Vector2 d = directionToPlayer();
+        //check if an obstacle between this enemy and the player
+        bool obstacleBetweenThisAndPlayer = Physics2D.Raycast(this.transform.position, d, attackRange, LayerMask.GetMask("Obstacle"));
+        //avoid obstacle if there is one
+        if (obstacleBetweenThisAndPlayer)
+        {
+            State = EnemyState.AvoidObstacle;
+        }
+        //otherwise, enemy is in range to start lunge attack
+        else
+        {
+            State = EnemyState.Attack;
+        }
+        
     }
 
     //do the lunge attack
