@@ -18,12 +18,9 @@ public class PlayerGun : MonoBehaviour
     List<GameObject> equippedWeaponPrefabs;
     [Tooltip("Clear equipped weapons saved on disk")] public bool ResetOnLoad; 
     [Tooltip("Use equipped weapons provided by inspector instead of saved weapons on disk")] 
-    public bool UseInspectorWeapons = false; 
-    private int _equippedWeaponIndex
-    {
-        get { return SaveManager.Load<int>("equippedWeaponIndex"); }
-        set { SaveManager.Save<int>("equippedWeaponIndex", value); }
-    }
+    public bool UseInspectorWeapons = false;
+
+    public int _equippedWeaponIndex;
 
     public GameObject currentWeaponObj;
     public RangedWeaponBase currentWeapon 
@@ -41,15 +38,11 @@ public class PlayerGun : MonoBehaviour
     float _currentAmmo = 0f;
     public float currentAmmo
     {
-        get {
-            _currentAmmo = SaveManager.Load<float>("currentAmmo");
-            return _currentAmmo; 
-        }
+        get { return _currentAmmo; }
 
         set
         {
             _currentAmmo = Mathf.Clamp(value, 0, 1);
-            SaveManager.Save<float>("currentAmmo", _currentAmmo);
             OnAmmoAmountChanged.Invoke();
         }
     }
@@ -78,14 +71,12 @@ public class PlayerGun : MonoBehaviour
             } else {
                 currentWeaponObj = null;
             }
-        } else {
-            _loadEquippedWeapons();
         }
 
         if (ResetOnLoad)
         {
             equippedWeaponPrefabs.Clear();
-            _saveEquippedWeapons();
+            SaveEquippedWeapons();
         } 
 
         currentAmmo = 1f;
@@ -106,15 +97,17 @@ public class PlayerGun : MonoBehaviour
     }
 
     private void OnDestroy() {
-        _saveEquippedWeapons();
+        //_saveEquippedWeapons();
     }
 
     // Save list of currently equipped guns. Called in OnDestroy().
-    private void _saveEquippedWeapons()
+    public void SaveEquippedWeapons()
     {
+        Debug.Log("(PlayerGun) SaveEquippedWeapon() Called!");
         List<string> equipped = new List<string>();
         foreach (GameObject weapon in equippedWeaponPrefabs)
         {
+            Debug.Log("(PlayerGun) SaveEquippedWeapon() Saved: " + weapon);
             equipped.Add(weapon.name);
         } 
         SaveManager.Save<List<string>>("equippedWeaponList", equipped);
@@ -122,12 +115,14 @@ public class PlayerGun : MonoBehaviour
 
     // Load list of currently equipped weapons from save data and set currently equipped gun.
     // Called on Awake()
-    private void _loadEquippedWeapons()
+    public void LoadEquippedWeapons()
     {
+        Debug.Log("(PlayerGun) LoadEquippedWeapons() Called!");
         equippedWeaponPrefabs.Clear();
         List<string> equipped = SaveManager.Load<List<string>>("equippedWeaponList");
         foreach (string weaponName in equipped)
         {
+            Debug.Log("(PlayerGun) LoadEquippedWeapons() Got: " + weaponName);
             equippedWeaponPrefabs.Add(GunDictionary[weaponName]);
         }
         
@@ -193,7 +188,6 @@ public class PlayerGun : MonoBehaviour
                 Debug.Log("(PlayerGun) Enable Gun!");
                 equippedWeaponPrefabs.Add(manager.weaponPrefab);
                 SetNewWeapon(manager.weaponPrefab);
-
             }   
             
             currentAmmo = 1;

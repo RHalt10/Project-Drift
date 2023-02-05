@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
+  m_Name: 3427B3C1-BB5D-496F-AA83-94750B39C488
+  m_EditorClassIdentifier: 
+  objectName: enemyDamage_Play
+  id: 3488345345
+  guid: 3427B3C1-BB5D-496F-AA83-94750B39C488

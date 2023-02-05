@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using WSoft.UI;
 
+/// <summary>
+/// A component that displays the current player health
+/// </summary>
 public class PlayerHealthBar : MonoBehaviour
 {
     public PlayerHealth playerHealth;
@@ -12,10 +15,10 @@ public class PlayerHealthBar : MonoBehaviour
 
     public float spacing;
 
-    public Color validColor;
-    public Color invalidColor;
-    public Color midColor;
-    public Color lowColor;
+    public Color validColor = Color.green;
+    public Color invalidColor = Color.gray;
+    public Color midColor = Color.yellow;
+    public Color lowColor = Color.red;
     
     public float midThreshold = 0.6f;
     public float lowThreshold = 0.4f;
@@ -43,7 +46,6 @@ public class PlayerHealthBar : MonoBehaviour
         float segmentWidth = (width - spacing * (playerHealth.maxHealth + 1)) / playerHealth.maxHealth;
 
         // set color depending on player health
-        Debug.Log(playerHealth.Current + "/" + playerHealth.maxHealth);
         float playerHealthPercent = (float)playerHealth.Current / (float)playerHealth.maxHealth;
 
         Color currentColor;

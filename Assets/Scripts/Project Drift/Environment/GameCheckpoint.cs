@@ -24,8 +24,10 @@ public class GameCheckpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player")
         {
+            PlayerGun gunManager = other.gameObject.GetComponent<PlayerGun>();
+            gunManager.SaveEquippedWeapons();
             PlayerCheckpointManager.current_checkpoint =
-                new PlayerCheckpointManager.CheckpointInfo(checkPointName, checkpointLocation);
+                new PlayerCheckpointManager.CheckpointInfo(checkPointName, gunManager._equippedWeaponIndex, gunManager.currentAmmo, checkpointLocation);
         }
     }
 

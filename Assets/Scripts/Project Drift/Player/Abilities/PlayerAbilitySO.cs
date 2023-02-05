@@ -17,6 +17,7 @@ public abstract class PlayerAbilitySO : ScriptableObject
 
     public virtual bool CanBeActivated()
     {
+        Debug.Log("(ABILITY BASE) Player Stamina: " + playerStamina.currentStamina);
         return playerStamina.currentStamina >= staminaCost;
     }
 

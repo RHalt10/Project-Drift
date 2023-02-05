@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component that shakes the attached UI object using Hooke's Law
+/// Written by Henry Lin '23
+/// </summary>
 public class ShakeOnDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
