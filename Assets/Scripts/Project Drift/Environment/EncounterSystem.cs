@@ -156,6 +156,14 @@ public class EncounterSystem : MonoBehaviour
     {   
         if (status == EncounterStatus.startEncounter)
         {
+            //in the very rare rare event that they shoot a bullet right before OnEncounterSwitch and it kills an enemy during that coroutine
+            if (enemiesLeft == 0)
+            {
+                status = EncounterStatus.inEncounter;
+                EnemyDeath();
+                return;
+            }
+
             status = EncounterStatus.inEncounter;
             //give player movement again
             GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = true;
