@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using WSoft.Combat;
 
+/// <summary>
+/// A component that displays the current melee weapon
+/// Written by Henry Lin '23
+/// </summary>
 public class WeaponUIMelee : MonoBehaviour
 {
     public PlayerInventoryManager playerInventory;

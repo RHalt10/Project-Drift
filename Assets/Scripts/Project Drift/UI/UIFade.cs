@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component that allows the attached UI element to fade in and out
+/// Written by Henry Lin '23
+/// </summary>
 [RequireComponent(typeof(CanvasGroup))]
 public class UIFade : MonoBehaviour
 {
     public float fadeTime = 3.0f;
 
     private CanvasGroup targetCanvas;
-    private bool fade = true;
+    // 
+    private bool toFade;
     private bool isFading = false;
 
     // Start is called before the first frame update
@@ -16,7 +21,7 @@ public class UIFade : MonoBehaviour
     {
         targetCanvas = GetComponent<CanvasGroup>();
         targetCanvas.alpha = 0;
-        fade = false;
+        toFade = false;
 
         EventBus.Subscribe<EncounterStartEvent>(OnEncounterStart);
         EventBus.Subscribe<EncounterEndEvent>(OnEncounterEnd);
@@ -39,7 +44,7 @@ public class UIFade : MonoBehaviour
 
         isFading = true;
         float startAlpha = targetCanvas.alpha;
-        float endAlpha = fade ? 0.0f : 1.0f;
+        float endAlpha = toFade ? 0.0f : 1.0f;
 
         float startTime = Time.time;
         float progress = (Time.time - startTime) / fadeTime;
@@ -51,7 +56,7 @@ public class UIFade : MonoBehaviour
         }
         targetCanvas.alpha = endAlpha;
 
-        fade = !fade;
+        toFade = !toFade;
         isFading = false;
     }
 }

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component that updates the "stamina bar"
+/// Written by Henry Lin '23
+/// </summary>
 public class PlayerStaminaBar : MonoBehaviour
 {
     public PlayerStamina playerStamina;
@@ -18,12 +22,9 @@ public class PlayerStaminaBar : MonoBehaviour
         UpdateStamina();
     }
 
-    private void Update()
+    private void Debug()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            playerStamina.UseStamina(0.2f);
-        }
+        playerStamina.UseStamina(0.2f);
     }
 
     // callback function to update stamina UI
