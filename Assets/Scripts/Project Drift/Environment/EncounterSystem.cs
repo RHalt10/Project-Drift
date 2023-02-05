@@ -124,6 +124,15 @@ public class EncounterSystem : MonoBehaviour
     {
         if (status == EncounterStatus.preEncounter)
         {
+            //check if all enemies already died
+            if (enemiesLeft == 0)
+            {
+                status = EncounterStatus.postEncounter;
+                return;
+            }
+
+
+            //if enemies are still alive lets start encounter
             status = EncounterStatus.startEncounter;
             //freeze player until flip is done
             GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = false;
@@ -147,6 +156,14 @@ public class EncounterSystem : MonoBehaviour
     {   
         if (status == EncounterStatus.startEncounter)
         {
+            //in the very rare rare event that they shoot a bullet right before OnEncounterSwitch and it kills an enemy during that coroutine
+            if (enemiesLeft == 0)
+            {
+                status = EncounterStatus.inEncounter;
+                EnemyDeath();
+                return;
+            }
+
             status = EncounterStatus.inEncounter;
             //give player movement again
             GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = true;
