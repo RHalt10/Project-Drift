@@ -18,6 +18,11 @@
 						<Folder Name="Onboarding" ID="{567F0B28-9EC4-4331-8BFA-B6B52B8B1096}" ShortID="1021610075">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="21"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
@@ -150,6 +155,10 @@
 									</ChildrenList>
 								</Event>
 								<Event Name="PlayerWalk_sand_Play" ID="{11EB38B5-ED0C-4E7E-ADA0-B243AA70B8B3}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Action Name="" ID="{3A85868F-EAFD-4660-8A90-12FBFA410A3B}" ShortID="277163274">
 											<ReferenceList>
@@ -162,6 +171,67 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="playerWalk_sand_grains" ID="{82B0601B-06D6-4D0B-B788-9759DF34F517}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Weapons&amp;Abilities" ID="{B943AFF1-A8F5-4F88-8FFD-E619509FDB5A}" ShortID="302746554">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Folder Name="Melee" ID="{E611C2F7-0D58-4C7A-B918-07A2B35C8699}" ShortID="556720036">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="17"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<Event Name="playerSwordCollide_Play" ID="{F2A5923B-E257-4C51-821D-580B47038F0E}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<Action Name="" ID="{51FFF191-C1AF-4FEC-94FE-AD026E0FDC86}" ShortID="69564296">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="playerSwordCollide" ID="{F2DC0D9C-3EA7-4A1E-B844-A8BAB5A00E20}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="playerSword_Play" ID="{6E658FE7-44E8-4BA3-BD28-98844AB22C84}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="2"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<Action Name="" ID="{A1271CA4-480B-464D-9680-A30CE490CA33}" ShortID="600708470">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="playerSword" ID="{3FDBD0B3-E132-45EA-9812-56BA00638864}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+								<Event Name="playerHealthRegen_Play" ID="{8E37C3F3-1226-4311-A7B1-D626C00054BC}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{7F0BE243-D20C-4A14-BB17-A1AEEAAB480A}" ShortID="697050307">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="playerHealthRegen" ID="{0EF06FDD-2B12-47AE-B45C-8BF5D176F213}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -266,6 +336,21 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Event Name="switch_Play" ID="{E8BB029D-29E7-4A74-92B2-F0F43F4D6CA7}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{1540B1EF-1675-4EA4-A952-F6ABE50F0F56}" ShortID="453869369">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="switch" ID="{F7F344D8-3922-4601-B2EC-634D0824670F}" WorkUnitID="{E491D1BC-5D72-4F0F-B275-065C8B3AF5CA}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

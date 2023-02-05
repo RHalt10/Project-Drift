@@ -145,6 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8187673392dd904cafe4a76b188b345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 29a072939d1504ea79130edc6ec51ed7, type: 2}
   triggerLayers:
     serializedVersion: 2
     m_Bits: 2048
@@ -245,4 +249,4 @@ MonoBehaviour:
   audioEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: fbf12bc8451f1d947aaa3c8e9dbccf5f, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 339b94c9a83bc4cd59627f4cd11240a5, type: 2}

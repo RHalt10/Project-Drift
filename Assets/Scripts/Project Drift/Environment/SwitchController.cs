@@ -26,6 +26,8 @@ public class SwitchController : MonoBehaviour
 
     private bool state = false;
 
+    [SerializeField] AK.Wwise.Event switchSFX;
+
     //to let encounter system or any script with a listener know that coroutine for switching finished
     //ex: incase want player movement or some enemies movement disabled until switched
     public UnityEvent FinishedSwitching;
@@ -47,6 +49,8 @@ public class SwitchController : MonoBehaviour
         {
             StartCoroutine(SwapStatesStaggered());
         }
+
+        switchSFX.Post(gameObject);
 
     }
 
