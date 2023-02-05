@@ -123,27 +123,10 @@ public class LungingMeleeEnemyController : MonoBehaviour
     IEnumerator MoveToPlayer()
     {
         //move until player is in range AND there's no obstacle blocking the way
-        while (DistanceToPlayer() > attackRange /* || ObstacleBetweenThisAndPlayer() */)
+        while (DistanceToPlayer() > attackRange || ObstacleBetweenThisAndPlayer())
         {
-            //TODO: uncomment the above condition when pathfinding is ready
-
-
-            Vector2 direction = directionToPlayer();
-
-            //check if a nearby obstacle is blocking its attack range detection
-            bool obstacleInFront = Physics2D.Raycast(this.transform.position, direction, attackRange, LayerMask.GetMask("Obstacle"));
-            if (obstacleInFront)
-            {
-                State = EnemyState.AvoidObstacle;
-            }
-            else
-            {
-                //move towards player while there's no obstacle in front
-                controller.velocity = direction * movementSpeed;
-            }
-            
             //TODO: below is commented until some pathfinding questions have been resolved; comment the above when pathfinding is ready
-            //controller.velocity = NextStepToPlayer() * movementSpeed;
+            controller.velocity = NextStepToPlayer() * movementSpeed;
 
             yield return null;
         }
