@@ -32,9 +32,9 @@ public class LungingMeleeEnemyController : MonoBehaviour
 
         IEnumerator newCoroutine = newState switch
         {
-            EnemyState.MoveToPlayer => moveToPlayer(),
-            EnemyState.Attack => attack(),
-            EnemyState.AvoidObstacle => avoidObstacle(),
+            EnemyState.MoveToPlayer => MoveToPlayer(),
+            EnemyState.Attack => Attack(),
+            EnemyState.AvoidObstacle => AvoidObstacle(),
             _ => null
         };
 
@@ -83,10 +83,10 @@ public class LungingMeleeEnemyController : MonoBehaviour
     }
 
     //move to player and decide how it wants to move
-    IEnumerator moveToPlayer()
+    IEnumerator MoveToPlayer()
     {
         //move or avoid obstacle until player is in range
-        while (distanceToPlayer() > attackRange)
+        while (DistanceToPlayer() > attackRange)
         {
             Vector2 direction = directionToPlayer();
 
@@ -112,8 +112,14 @@ public class LungingMeleeEnemyController : MonoBehaviour
     }
 
     //do the lunge attack
-    IEnumerator attack()
+    IEnumerator Attack()
     {
+        //don't initiate attack if cooldown is still up
+        if (timer > 0)
+        {
+            State = EnemyState.MoveToPlayer;
+        }
+
         //pause for windup
         controller.velocity = Vector2.zero;
         yield return new WaitForSeconds(attackWindup);
@@ -133,17 +139,19 @@ public class LungingMeleeEnemyController : MonoBehaviour
         }
         //TODO: designers want the damaging hitbox on top of the enemy when it throws itself; might want to wait until we see the assets/visual
 
-        //TODO: is attack cooldown for being still before moving again or it can still move during then, just can't attack? going with former for now
-        //done attacking, now leave a cooldown of being still
+        //done attacking, now leave a short duration of being still as an opening for players
         controller.velocity = Vector2.zero;
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(0.5f);
+
+        //reset timer to the attack cooldown
+        timer = attackCooldown;
 
         //when done attacking, go move to player
         State = EnemyState.MoveToPlayer;
     }
 
     //move until an obstacle is avoided
-    IEnumerator avoidObstacle()
+    IEnumerator AvoidObstacle()
     {
         //check for obstacle
         Vector2 playerDirection = directionToPlayer();
@@ -152,7 +160,7 @@ public class LungingMeleeEnemyController : MonoBehaviour
         while (obstacleInFront)
         {
             //use a helper function to determine which direction to avoid obstacle based on the current direction to player
-            controller.velocity = directionToAvoidObstacle(playerDirection) * movementSpeed;
+            controller.velocity = DirectionToAvoidObstacle(playerDirection) * movementSpeed;
 
             //briefly move in that direction around the obstacle
             yield return new WaitForSeconds(0.5f);
@@ -167,7 +175,7 @@ public class LungingMeleeEnemyController : MonoBehaviour
     }
 
     //helper function to locate distance from player
-    double distanceToPlayer()
+    double DistanceToPlayer()
     {
         Vector2 playerPosition = PlayerController.Instance.transform.position;
         return Vector2.Distance(playerPosition, this.transform.position);
@@ -184,7 +192,7 @@ public class LungingMeleeEnemyController : MonoBehaviour
     //TODO: improve on the current method on finding a direction to avoid an obstacle; current method just tries 4 directions to see if any are clear
     //check 45 and 90 degrees clockwise/counterclockwise directions of playerDirection
     //helper function that gives a suggested direction to avoid an obstacle
-    Vector2 directionToAvoidObstacle(Vector2 playerDirection)
+    Vector2 DirectionToAvoidObstacle(Vector2 playerDirection)
     {
         int[] angles = { 45, -45, 90, -90 };
 
