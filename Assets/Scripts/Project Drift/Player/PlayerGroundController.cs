@@ -19,6 +19,9 @@ public class PlayerGroundController : PlayerSubController
     {
         characterController = playerController.GetComponent<GroundCharacterController>();
         playerGun = playerController.GetComponent<PlayerGun>();
+
+        characterController.isPlayer = true;
+
     }
 
     public override void OnDisable()
@@ -33,6 +36,7 @@ public class PlayerGroundController : PlayerSubController
 
     public override void Update()
     {
+        characterController.isPlayer = true;
         characterController.velocity = playerController.movementInput * groundSpeed;
     }
 
@@ -54,6 +58,11 @@ public class PlayerGroundController : PlayerSubController
                 return;
             case PlayerInputType.SwapRanged:
                 playerGun.SwapWeapons();
+                return;
+            case PlayerInputType.Interact:
+                if(playerController.currentController == playerController.groundController) {
+                    playerController.SetController(playerController.interactController);
+                }
                 return;
         }
     }

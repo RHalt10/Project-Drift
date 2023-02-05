@@ -43,7 +43,6 @@ public class PlayerHealthBar : MonoBehaviour
         float segmentWidth = (width - spacing * (playerHealth.maxHealth + 1)) / playerHealth.maxHealth;
 
         // set color depending on player health
-        Debug.Log(playerHealth.Current + "/" + playerHealth.maxHealth);
         float playerHealthPercent = (float)playerHealth.Current / (float)playerHealth.maxHealth;
 
         Color currentColor;

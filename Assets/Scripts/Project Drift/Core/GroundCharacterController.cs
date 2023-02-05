@@ -15,6 +15,11 @@ public class GroundCharacterController : MonoBehaviour
     Rigidbody2D rb;
 
     /// <summary>
+    /// Check if this crontroller belongs to a player, player will not be affected by Time Slow
+    /// </summary>
+    public bool isPlayer = false;
+
+    /// <summary>
     /// Is this controller enabled. If this is false, the script will stop calculating, saving performance
     /// </summary>
     public bool isEnabled = true;
@@ -46,6 +51,11 @@ public class GroundCharacterController : MonoBehaviour
     /// </summary>
     //[HideInInspector]
     public Vector2 velocity;
+    
+    /// <summary>
+    /// Multiplier for current velocity. 1 by default.
+    /// </summary>
+    public float velocityMultiplier = 1;
 
     /// <summary> The ground layermask (for checking if the character is on ground) </summary>
     [SerializeField] LayerMask groundLayer;
@@ -56,6 +66,13 @@ public class GroundCharacterController : MonoBehaviour
     public bool isOnGround => groundColliders.Count > 0;
 
     public UnityEvent OnFall;
+
+    Subscription<TimeSlowEvent> time_slow_event;
+
+    private void Awake()
+    {
+        time_slow_event = EventBus.Subscribe<TimeSlowEvent>(OnTimeSlow);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -148,6 +165,12 @@ public class GroundCharacterController : MonoBehaviour
             }
         }
 
-        rb.velocity = velocity;
+        rb.velocity = velocity * velocityMultiplier;
+    }
+
+    void OnTimeSlow(TimeSlowEvent e)
+    {
+        if (!isPlayer) return;
+        velocityMultiplier = e.status ? 5 : 1; 
     }
 }

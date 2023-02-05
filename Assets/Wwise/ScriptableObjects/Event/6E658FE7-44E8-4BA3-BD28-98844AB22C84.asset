@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 946e28aca8ee24c7eaf6141d64a20360, type: 3}
-  m_Name: 1DA3F06D-0432-497D-AD27-F0B0BC337CEE
+  m_Name: 6E658FE7-44E8-4BA3-BD28-98844AB22C84
   m_EditorClassIdentifier: 
-  objectName: trainingDummyIdle_Stop
-  id: 1315400010
-  guid: 1DA3F06D-0432-497D-AD27-F0B0BC337CEE
+  objectName: playerSword_Play
+  id: 324776818
+  guid: 6E658FE7-44E8-4BA3-BD28-98844AB22C84

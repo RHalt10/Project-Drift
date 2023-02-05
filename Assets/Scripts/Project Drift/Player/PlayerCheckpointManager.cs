@@ -19,11 +19,15 @@ public class PlayerCheckpointManager : MonoBehaviour
     public class CheckpointInfo
     {
         public string name = "";
+        public int WeaponID;
+        public float Ammo;
         private float _xLocation = 0;
         private float _yLocation = 0;
-        public CheckpointInfo(string name_, Vector2 location)
+        public CheckpointInfo(string name_, int _weaponID, float _ammo, Vector2 location)
         {
             name = name_;
+            WeaponID = _weaponID;
+            Ammo = _ammo;
             _xLocation = location.x;
             _yLocation = location.y;
         }
@@ -68,10 +72,24 @@ public class PlayerCheckpointManager : MonoBehaviour
     {
         if(current_checkpoint != null) 
         {
+            PlayerGun gunManager = GetComponent<PlayerGun>();
+            
+            gunManager._equippedWeaponIndex = current_checkpoint.WeaponID;
+            gunManager.LoadEquippedWeapons();
+
+            gunManager.currentAmmo = current_checkpoint.Ammo;
+            
             GetComponent<GroundCharacterController>().Teleport(current_checkpoint.Getlocation());
         }
         
         playerHealth.Heal(100);
         // TODO: restore stamina to full (already complete if scene starts with full stamina)
+    }
+
+    public CheckpointInfo DebugCP;
+
+    private void Update()
+    {
+        DebugCP = current_checkpoint;
     }
 }
