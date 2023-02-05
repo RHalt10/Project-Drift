@@ -76,10 +76,13 @@ public class LungingMeleeEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO: make use of a timer for the attack cooldown in the future
+        /*
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
+        */
     }
 
     //move to player and decide how it wants to move
@@ -105,8 +108,9 @@ public class LungingMeleeEnemyController : MonoBehaviour
             yield return null;
         }
 
+        
         //TODO: Note, could rework this so that this coroutine only does the below once instead of twice (already does it in the while loop); will wait after pathfinding is added
-        //within attacking range of player, but enemy still needs to check for obstacles
+        //within attacking range of player, but this enemy still needs to check for obstacles
         Vector2 d = directionToPlayer();
         //check if an obstacle between this enemy and the player
         bool obstacleBetweenThisAndPlayer = Physics2D.Raycast(this.transform.position, d, attackRange, LayerMask.GetMask("Obstacle"));
@@ -121,16 +125,22 @@ public class LungingMeleeEnemyController : MonoBehaviour
             State = EnemyState.Attack;
         }
         
+
+        //by now, enemy is in range to start the lunge attack
+        State = EnemyState.Attack;
     }
 
     //do the lunge attack
     IEnumerator Attack()
     {
+        //TODO: there's a weird bug when adding the below comments causes unity to crashe if players stays within attack range after the lunge attack
+        /*
         //don't initiate attack if cooldown is still up
         if (timer > 0)
         {
             State = EnemyState.MoveToPlayer;
         }
+        */
 
         //pause for windup
         controller.velocity = Vector2.zero;
@@ -146,20 +156,22 @@ public class LungingMeleeEnemyController : MonoBehaviour
         float lungeTimer = lungeDuration;
         while (lungeTimer > 0)
         {
-            controller.velocity = lungeDirection * (lungeTopSpeed * timer / lungeDuration);
-
+            controller.velocity = lungeDirection * (lungeTopSpeed * lungeTimer / lungeDuration);
             lungeTimer -= Time.deltaTime;
-
             yield return null;
         }
         //TODO: designers want the damaging hitbox on top of the enemy when it throws itself; might want to wait until we see the assets/visual
 
         //done attacking, now leave a short duration of being still as an opening for players
         controller.velocity = Vector2.zero;
-        yield return new WaitForSeconds(0.5f);
 
+        //TODO: temporary way of doing cooldown is being inactive while cooldown is up; need to change so that enemies move while attack cooldown is up
+        yield return new WaitForSeconds(attackCooldown);
+        /*
+        //yield return new WaitForSeconds(0.5f);
         //reset timer to the attack cooldown
         timer = attackCooldown;
+        */
 
         //when done attacking, go move to player
         State = EnemyState.MoveToPlayer;
