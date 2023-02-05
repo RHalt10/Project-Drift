@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A component that allows for movement of an UI component over time (lerp)
+/// Written by Henry Lin '23
+/// </summary>
 public class LerpOverTime : MonoBehaviour
 {
     // public variables to allow for changing the shake parameters for testing

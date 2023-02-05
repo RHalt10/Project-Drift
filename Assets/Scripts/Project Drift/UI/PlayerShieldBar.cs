@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using WSoft.UI;
 
+/// <summary>
+/// A component that displays the current shield status
+/// Written by Henry Lin '23
+/// </summary>
 public class PlayerShieldBar : MonoBehaviour
 {
     public PlayerHealth playerHealth;
