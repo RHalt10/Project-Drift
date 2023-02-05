@@ -70,9 +70,9 @@ public class LungingMeleeEnemyController : MonoBehaviour
     Seeker seeker;
     Pathfinding.Path pathToPlayer;
     int currentWaypoint = 0;
-    float repathRate = 0.5f;
+    public float repathRate = 0.5f;
     float repathTimer = 0;
-    public float nextWaypointDistance = 1.0f;
+    public float nextWaypointDistance = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +84,7 @@ public class LungingMeleeEnemyController : MonoBehaviour
         seeker = this.GetComponent<Seeker>();
         seeker.pathCallback += OnPathComplete;
         seeker.StartPath(this.transform.position, PlayerController.Instance.transform.position);
+        repathTimer = repathRate;
 
         //by default we'll have the lunging enemy start off moving towards the player
         State = EnemyState.MoveToPlayer;
@@ -124,7 +125,9 @@ public class LungingMeleeEnemyController : MonoBehaviour
         //move until player is in range AND there's no obstacle blocking the way
         while (DistanceToPlayer() > attackRange /* || ObstacleBetweenThisAndPlayer() */)
         {
-            
+            //TODO: uncomment the above condition when pathfinding is ready
+
+
             Vector2 direction = directionToPlayer();
 
             //check if a nearby obstacle is blocking its attack range detection
@@ -138,8 +141,8 @@ public class LungingMeleeEnemyController : MonoBehaviour
                 //move towards player while there's no obstacle in front
                 controller.velocity = direction * movementSpeed;
             }
-
-            //TODO: below is taken out until some pathfinding questions have been resolved; comment the above when pathfinding is ready
+            
+            //TODO: below is commented until some pathfinding questions have been resolved; comment the above when pathfinding is ready
             //controller.velocity = NextStepToPlayer() * movementSpeed;
 
             yield return null;

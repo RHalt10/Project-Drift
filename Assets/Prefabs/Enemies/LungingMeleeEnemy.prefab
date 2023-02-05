@@ -261,7 +261,8 @@ MonoBehaviour:
   lungeDuration: 1
   lungeTopSpeed: 5
   attackRange: 2
-  nextWaypointDistance: 1
+  repathRate: 0.5
+  nextWaypointDistance: 0.5
 --- !u!114 &5459181270694550472
 MonoBehaviour:
   m_ObjectHideFlags: 0
