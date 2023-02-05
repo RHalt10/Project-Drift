@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: ccdd1493a73bdab458d733e52c868dc4
   - enabled: 1
-    path: Assets/_Development/TempScenes/Combat Test.unity
-    guid: e06db3b5a61531c4fb7c26806e8433b6
+    path: Assets/Scenes/Tutorial.unity
+    guid: 01d27f6d241fa3d489d0fc9bc4e7cdca
   m_configObjects: {}

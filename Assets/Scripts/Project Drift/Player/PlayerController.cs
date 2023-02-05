@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         debugCurrCtrlr = currentController.ToString();
+        Debug.Log("Current Controller " + currentController.ToString());
         CalculateAimInput();
         currentController.Update();
     }
