@@ -124,6 +124,15 @@ public class EncounterSystem : MonoBehaviour
     {
         if (status == EncounterStatus.preEncounter)
         {
+            //check if all enemies already died
+            if (enemiesLeft == 0)
+            {
+                status = EncounterStatus.postEncounter;
+                return;
+            }
+
+
+            //if enemies are still alive lets start encounter
             status = EncounterStatus.startEncounter;
             //freeze player until flip is done
             GameObject.FindGameObjectWithTag("Player").GetComponent<GroundCharacterController>().enabled = false;
