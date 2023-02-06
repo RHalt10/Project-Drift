@@ -16,8 +16,7 @@ public class PlayerAttackController : PlayerSubController
     public GameObject DefaultWeapon;
 
     GroundCharacterController characterController;
-    Animator animator;
-    PlayerGun playerGun;
+    PlayerInventoryManager inventoryManager;
 
     bool keyPressed = false;
     float timer = 0f;
@@ -25,10 +24,9 @@ public class PlayerAttackController : PlayerSubController
     public override void Initialize()
     {
         characterController = playerController.GetComponent<GroundCharacterController>();
-        animator = playerController.GetComponent<Animator>();
-        playerGun = playerController.GetComponent<PlayerGun>();
+        inventoryManager = playerController.GetComponent<PlayerInventoryManager>();
 
-        PlayerInventoryManager.Instance.EquiptMeleeWeapon(DefaultWeapon);
+        inventoryManager.EquiptMeleeWeapon(DefaultWeapon);
     }
 
     public override void OnDisable()
@@ -63,11 +61,11 @@ public class PlayerAttackController : PlayerSubController
 
             if (timer < PlayerInventoryManager.Instance.MeleeWeapon.ChargeTime)
             {
-                PlayerInventoryManager.Instance.MeleeWeapon.NormalAttack();
+                inventoryManager.MeleeWeapon.NormalAttack();
             }
             else
             {
-                PlayerInventoryManager.Instance.MeleeWeapon.ChargedAttack();
+                inventoryManager.MeleeWeapon.ChargedAttack();
             }
 
             keyPressed = false;
