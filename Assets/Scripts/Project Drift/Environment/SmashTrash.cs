@@ -20,10 +20,12 @@ public class SmashTrash : MonoBehaviour
     [Header("Item Drop Settings")]
     [Tooltip("Place objects that you want the smash trash to drop here")]
     public GameObject[] droppedObjects;
+    [Tooltip("Bullets yielded by destroying smash trash, matches weapon type. Default is 1")]
+    public int bulletsDropped = 1;
 
     [Header("Smash Trash Respawn Settings")]
     [Tooltip("Do you want the smash trash to respawn? By defualt set to false")]
-    public bool respawn = false;
+    public bool respawn = true;
 
     [Header("Health Settings")]
     [Tooltip("How many hits to break? By defualt set to 1 hit")]
@@ -35,12 +37,14 @@ public class SmashTrash : MonoBehaviour
     public int healthMax = 5;
 
     private int currentHealth;
+    private PlayerGun gunManager;
 
     private void Start()
     {
         if (health < 1) { health = 1; }
         if (healthMin < 1) { healthMin = 1; }   
         if (randomHealth) { RandomizeHealth(); }
+        if (FindObjectOfType<PlayerGun>()) { gunManager = FindObjectOfType<PlayerGun>(); }
         currentHealth = health;
     }
 
@@ -60,6 +64,10 @@ public class SmashTrash : MonoBehaviour
         for (int i = 0; i < droppedObjects.Length; i++)
         {
             Instantiate(droppedObjects[i], transform.position, Quaternion.identity);
+        }
+        for (int i = 0; i < bulletsDropped; ++i)
+        {
+            gunManager.RechargeSingleAmmo();
         }
         if (respawn) { FindObjectOfType<EnvironmentManager>().InitiateRespawn(0);}
         gameObject.SetActive(false);
