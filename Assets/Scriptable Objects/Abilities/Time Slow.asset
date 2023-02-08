@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Time Slow
   m_EditorClassIdentifier: 
   staminaCost: 0
-  MaxDuration: 10
-  SlowedTime: 0.2
-  NormalTime: 1
+  drainRate: 0.2
+  slowedTimeScale: 0.2
