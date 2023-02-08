@@ -81,7 +81,7 @@ public class GroundCharacterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isEnabled)
         {

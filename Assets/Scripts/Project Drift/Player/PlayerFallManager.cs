@@ -23,7 +23,7 @@ public class PlayerFallManager : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (playerController.currentController is PlayerGroundController && characterController.isOnGround)
         {
