@@ -41,18 +41,29 @@ public class PlayerDashController : PlayerSubController
 
     public override void OnEnable()
     {
-        EventBus.Publish(new AbilityInterruptEvent());
+        //only perform if we have enough stamina
+        if (playerStamina.currentStamina >= dashStaminaCost)
+        {
+            EventBus.Publish(new AbilityInterruptEvent());
 
-        dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
-        currentDashTime = 0;
-        characterController.canMoveOnAir = true;
-        characterController.willFallOnAir = false;
-        chainDashActivated = false;
-        playerStamina.UseStamina(dashStaminaCost);
+            dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
+            currentDashTime = 0;
+            characterController.canMoveOnAir = true;
+            characterController.willFallOnAir = false;
+            chainDashActivated = false;
+            playerStamina.UseStamina(dashStaminaCost);
 
-        if (dashDirection != Vector2.zero)
-            chainDashCounter = 0;
+            if (dashDirection != Vector2.zero)
+                chainDashCounter = 0;
             AkSoundEngine.PostEvent("PlayerDash_first_Play", playerController.gameObject);
+        }
+        //otherwise, go back to ground controller and not allow to be enabled
+        else
+        {
+            playerController.SetController(playerController.groundController);
+        }
+
+
     }
 
     public override void Update()
@@ -91,20 +102,30 @@ public class PlayerDashController : PlayerSubController
 
     void ChainDash()
     {
-        EventBus.Publish(new AbilityInterruptEvent());
-
-        dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
-        currentDashTime = 0;
-        chainDashActivated = false;
-        playerStamina.UseStamina(chainDashStaminaCost);
-        ++chainDashCounter;
-        if (chainDashCounter < 5)
+        //only perform if we have enough stamina
+        if (playerStamina.currentStamina >= chainDashStaminaCost)
         {
-            AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
+            EventBus.Publish(new AbilityInterruptEvent());
+
+            dashDirection = useMovementInput ? playerController.movementInput : playerController.aimInput;
+            currentDashTime = 0;
+            chainDashActivated = false;
+            playerStamina.UseStamina(chainDashStaminaCost);
+            ++chainDashCounter;
+            if (chainDashCounter < 5)
+            {
+                AkSoundEngine.PostEvent("PlayerDash_Play", playerController.gameObject);
+            }
+            else
+            {
+                AkSoundEngine.PostEvent("PlayerDash_last_Play", playerController.gameObject);
+            }
         }
+        //otherwise, go back to ground controller
         else
         {
-            AkSoundEngine.PostEvent("PlayerDash_last_Play", playerController.gameObject);
+            playerController.SetController(playerController.groundController);
         }
+
     }
 }
