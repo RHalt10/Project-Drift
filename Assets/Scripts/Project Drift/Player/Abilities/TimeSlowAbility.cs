@@ -6,13 +6,13 @@ using WSoft.Combat;
 [CreateAssetMenu(fileName = "New Ability", menuName = "Project Drift/Abilities/TimeSlow")]
 public class TimeSlowAbility : PlayerAbilitySO
 {
-    public float MaxDuration; 
-    public float SlowedTime;
-    public float NormalTime;
+    public float drainRate;
+    public float slowedTimeScale;
 
     Subscription<AbilityInterruptEvent> interrupt_event;
 
     private bool interrupted = false;
+    private bool ongoing = false;
 
     public override void Initialize(PlayerController _controller)
     {
@@ -21,34 +21,48 @@ public class TimeSlowAbility : PlayerAbilitySO
         interrupted = false;
     }
 
+    public override bool CanBeActivated()
+    {
+        return playerStamina.currentStamina > 0.01f;
+    }
+
     public override void Activate()
     {
-        Debug.Log("(TIME SLOW ABILITY) Player Stamia: " + playerStamina.currentStamina);
-        interrupted = false;
-        playerStamina.UseStaminaOverTime(MaxDuration, staminaCost * 100);
-        controller.StartCoroutine(DoAbility());
+        if (ongoing)
+        {
+            interrupted = true;
+            playerStamina.StopStaminaDrain();
+        }
+        else
+        {
+            interrupted = false;
+            float duration = playerStamina.currentStamina / drainRate;
+            playerStamina.UseStaminaOverTime(duration, drainRate);
+            controller.StartCoroutine(DoAbility());
+        }
     }
 
     IEnumerator DoAbility()
     {
+        ongoing = true;
         EventBus.Publish(new TimeSlowEvent(true));
 
-        Time.timeScale = SlowedTime;
+        Time.timeScale = slowedTimeScale;
 
-        while(!interrupted && playerStamina.currentStamina > 0)
+        while (!interrupted && playerStamina.currentStamina > 0)
         {
             yield return null;
         }
 
-        Time.timeScale = NormalTime;
+        Time.timeScale = 1f;
         interrupted = false;
 
         EventBus.Publish(new TimeSlowEvent(false));
+        ongoing = false;
     }
 
     void OnInterrupted(AbilityInterruptEvent e)
     {
-        Debug.Log("(TIME SLOW ABILITY) Ability Interrupted!");
         interrupted = true;
     }
 }

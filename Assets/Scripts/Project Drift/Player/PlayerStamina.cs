@@ -12,6 +12,7 @@ public class PlayerStamina : MonoBehaviour
     public bool recharging;
 
     private List<Coroutine> rechargeDelayCoroutines = new List<Coroutine>();
+    Coroutine drainCoroutine = null;
 
     void Awake()
     {
@@ -19,7 +20,8 @@ public class PlayerStamina : MonoBehaviour
         recharging = false;
     }
 
-    public void UseStamina(float amount) {
+    public void UseStamina(float amount) 
+    {
         currentStamina -= amount;
         if(currentStamina < 0) {
             currentStamina = 0;
@@ -35,11 +37,23 @@ public class PlayerStamina : MonoBehaviour
         }
     }
 
-    public void UseStaminaOverTime(float duration, float rate) { // Duration stamina drain lasts (seconds), and rate of stamina drain (% in decimal/s)
-        StartCoroutine(StaminaOverTime(duration, rate));
+    // Duration stamina drain lasts (seconds), and rate of stamina drain (% in decimal/s)
+    public void UseStaminaOverTime(float duration, float rate) 
+    {
+        drainCoroutine = StartCoroutine(StaminaOverTime(duration, rate));
     }
 
-    IEnumerator StaminaOverTime(float duration, float rate) {
+    public void StopStaminaDrain()
+    {
+        if (drainCoroutine != null)
+        {
+            StopCoroutine(drainCoroutine);
+            drainCoroutine = null;
+        }    
+    }
+
+    IEnumerator StaminaOverTime(float duration, float rate) 
+    {
         float total = duration * rate;
         float v0 = currentStamina;
         float v1 = currentStamina - total;
@@ -48,22 +62,27 @@ public class PlayerStamina : MonoBehaviour
             if(currentStamina <= 0) {
                 currentStamina = 0;
             }
+            OnStaminaAmountChanged.Invoke();
             yield return null;
         }
         currentStamina = Mathf.Max(v1, 0);
     }
 
-    IEnumerator RechargeDelay(float delay) {
+    IEnumerator RechargeDelay(float delay) 
+    {
         yield return new WaitForSeconds(delay);
         recharging = true;
         // Start recharging stamina
         StartCoroutine(Recharge());
     }
 
-    IEnumerator Recharge() {
-        while(recharging) {
+    IEnumerator Recharge() 
+    {
+        while(recharging) 
+        {
             currentStamina += 0.1f;
-            if(currentStamina >= 1f) {
+            if(currentStamina >= 1f) 
+            {
                 currentStamina = 1f;
                 recharging = false;
             }
@@ -73,7 +92,4 @@ public class PlayerStamina : MonoBehaviour
             yield return new WaitForSeconds(3f);
         }
     }
-
-
-    
 }
