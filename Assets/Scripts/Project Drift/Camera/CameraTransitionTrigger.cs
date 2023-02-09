@@ -15,7 +15,9 @@ public class CameraTransitionTrigger : MonoBehaviour
     //black screen or image covering the screen while scene transition takes place
     [SerializeField] GameObject transitionScreen;
 
-    [SerializeField] Vector3 teleportPlayerTo;
+    public bool shouldTeleport;
+    
+    public Vector3 teleportPlayerTo;
 
     //make the cinamachine you want to transition to has its confiner 2d component set (if you want bounds on that section of the map's camera)
     //if you do have a bounding shape set, make sure the cinamachine is inside those bounds.
@@ -59,7 +61,8 @@ public class CameraTransitionTrigger : MonoBehaviour
         }
 
         //teleport player
-        player.GetComponent<Transform>().position = teleportPlayerTo;
+        if (shouldTeleport)
+            player.transform.position = teleportPlayerTo;
 
         //set new active camera 
         Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
