@@ -139,10 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8b6ff15978bb040b0f341bbf277593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   isEnabled: 1
   canMoveOnAir: 0
   _willFallOnAir: 1
   velocity: {x: 0, y: 0}
+  velocityMultiplier: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -238,4 +240,4 @@ MonoBehaviour:
   numProjectilesPerSpread: 3
   projectileSpeed: 2.5
   projectileAngleSpace: 30
-  projectilePrefab: {fileID: 1251218576602461872, guid: 7e1dd9ed601eb3c47810f8cf33f05893, type: 3}
+  projectilePrefab: {fileID: 5429452288708665552, guid: bdc8891ec28bd4c9e94cd005eef44833, type: 3}
