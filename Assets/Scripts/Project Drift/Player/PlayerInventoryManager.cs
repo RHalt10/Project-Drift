@@ -94,6 +94,10 @@ public class PlayerInventoryManager : MonoBehaviour
         GameObject clone = Instantiate(WeaponPrefab, MeleeWeaponParentObject.position, Quaternion.identity);
         clone.transform.SetParent(MeleeWeaponParentObject);
         clone.transform.position = MeleeWeaponParentObject.position;
+
+        //right now player is scaled to x= 0.1, y=0.1 so the lossy scale being based to our clone is 0.1 -Allie
+        clone.transform.localScale = Vector3.one;
+
         meleeWeapon = clone.GetComponent<MeleeWeaponBase>();
         meleeWeapon.owningInventoryManager = this;
 
